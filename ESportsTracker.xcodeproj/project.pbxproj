@@ -1,0 +1,419 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		230A87CE2B0524A9000C4801 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A87CD2B0524A9000C4801 /* AppDelegate.swift */; };
+		230A87D02B0524A9000C4801 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A87CF2B0524A9000C4801 /* SceneDelegate.swift */; };
+		230A87D22B0524A9000C4801 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A87D12B0524A9000C4801 /* ViewController.swift */; };
+		230A87D52B0524A9000C4801 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 230A87D32B0524A9000C4801 /* Main.storyboard */; };
+		230A87D82B0524A9000C4801 /* ESportsTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 230A87D62B0524A9000C4801 /* ESportsTracker.xcdatamodeld */; };
+		230A87DA2B0524AA000C4801 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 230A87D92B0524AA000C4801 /* Assets.xcassets */; };
+		230A87DD2B0524AA000C4801 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 230A87DB2B0524AA000C4801 /* LaunchScreen.storyboard */; };
+		230A87E72B052A6A000C4801 /* AllMatchesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A87E62B052A6A000C4801 /* AllMatchesTableViewController.swift */; };
+		230A87E92B052D41000C4801 /* LiveMatchDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A87E82B052D41000C4801 /* LiveMatchDetailsVC.swift */; };
+		230A87EB2B052EE8000C4801 /* LiveMatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A87EA2B052EE8000C4801 /* LiveMatches.swift */; };
+		230A87F02B05303D000C4801 /* MatchesInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A87EF2B05303D000C4801 /* MatchesInfoManager.swift */; };
+		230A87F22B05394A000C4801 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A87F12B05394A000C4801 /* Presenter.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		230A87CA2B0524A9000C4801 /* ESportsTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ESportsTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		230A87CD2B0524A9000C4801 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		230A87CF2B0524A9000C4801 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		230A87D12B0524A9000C4801 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		230A87D42B0524A9000C4801 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		230A87D72B0524A9000C4801 /* ESportsTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ESportsTracker.xcdatamodel; sourceTree = "<group>"; };
+		230A87D92B0524AA000C4801 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		230A87DC2B0524AA000C4801 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		230A87DE2B0524AA000C4801 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		230A87E62B052A6A000C4801 /* AllMatchesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMatchesTableViewController.swift; sourceTree = "<group>"; };
+		230A87E82B052D41000C4801 /* LiveMatchDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatchDetailsVC.swift; sourceTree = "<group>"; };
+		230A87EA2B052EE8000C4801 /* LiveMatches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatches.swift; sourceTree = "<group>"; };
+		230A87EF2B05303D000C4801 /* MatchesInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesInfoManager.swift; sourceTree = "<group>"; };
+		230A87F12B05394A000C4801 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		230A87C72B0524A9000C4801 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		230A87C12B0524A9000C4801 = {
+			isa = PBXGroup;
+			children = (
+				230A87CC2B0524A9000C4801 /* ESportsTracker */,
+				230A87CB2B0524A9000C4801 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		230A87CB2B0524A9000C4801 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				230A87CA2B0524A9000C4801 /* ESportsTracker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		230A87CC2B0524A9000C4801 /* ESportsTracker */ = {
+			isa = PBXGroup;
+			children = (
+				230A87F32B053951000C4801 /* Presenter */,
+				230A87EC2B052EFF000C4801 /* Models */,
+				230A87CD2B0524A9000C4801 /* AppDelegate.swift */,
+				230A87CF2B0524A9000C4801 /* SceneDelegate.swift */,
+				230A87D12B0524A9000C4801 /* ViewController.swift */,
+				230A87D32B0524A9000C4801 /* Main.storyboard */,
+				230A87D92B0524AA000C4801 /* Assets.xcassets */,
+				230A87DB2B0524AA000C4801 /* LaunchScreen.storyboard */,
+				230A87DE2B0524AA000C4801 /* Info.plist */,
+				230A87D62B0524A9000C4801 /* ESportsTracker.xcdatamodeld */,
+				230A87E62B052A6A000C4801 /* AllMatchesTableViewController.swift */,
+				230A87E82B052D41000C4801 /* LiveMatchDetailsVC.swift */,
+			);
+			path = ESportsTracker;
+			sourceTree = "<group>";
+		};
+		230A87EC2B052EFF000C4801 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				230A87EA2B052EE8000C4801 /* LiveMatches.swift */,
+				230A87EF2B05303D000C4801 /* MatchesInfoManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		230A87F32B053951000C4801 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				230A87F12B05394A000C4801 /* Presenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		230A87C92B0524A9000C4801 /* ESportsTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 230A87E12B0524AA000C4801 /* Build configuration list for PBXNativeTarget "ESportsTracker" */;
+			buildPhases = (
+				230A87C62B0524A9000C4801 /* Sources */,
+				230A87C72B0524A9000C4801 /* Frameworks */,
+				230A87C82B0524A9000C4801 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ESportsTracker;
+			productName = ESportsTracker;
+			productReference = 230A87CA2B0524A9000C4801 /* ESportsTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		230A87C22B0524A9000C4801 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					230A87C92B0524A9000C4801 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 230A87C52B0524A9000C4801 /* Build configuration list for PBXProject "ESportsTracker" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 230A87C12B0524A9000C4801;
+			productRefGroup = 230A87CB2B0524A9000C4801 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				230A87C92B0524A9000C4801 /* ESportsTracker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		230A87C82B0524A9000C4801 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				230A87DD2B0524AA000C4801 /* LaunchScreen.storyboard in Resources */,
+				230A87DA2B0524AA000C4801 /* Assets.xcassets in Resources */,
+				230A87D52B0524A9000C4801 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		230A87C62B0524A9000C4801 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				230A87F22B05394A000C4801 /* Presenter.swift in Sources */,
+				230A87D22B0524A9000C4801 /* ViewController.swift in Sources */,
+				230A87F02B05303D000C4801 /* MatchesInfoManager.swift in Sources */,
+				230A87E92B052D41000C4801 /* LiveMatchDetailsVC.swift in Sources */,
+				230A87E72B052A6A000C4801 /* AllMatchesTableViewController.swift in Sources */,
+				230A87CE2B0524A9000C4801 /* AppDelegate.swift in Sources */,
+				230A87D02B0524A9000C4801 /* SceneDelegate.swift in Sources */,
+				230A87D82B0524A9000C4801 /* ESportsTracker.xcdatamodeld in Sources */,
+				230A87EB2B052EE8000C4801 /* LiveMatches.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		230A87D32B0524A9000C4801 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				230A87D42B0524A9000C4801 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		230A87DB2B0524AA000C4801 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				230A87DC2B0524AA000C4801 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		230A87DF2B0524AA000C4801 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		230A87E02B0524AA000C4801 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		230A87E22B0524AA000C4801 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ESportsTracker/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = FINCH64.ESportsTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		230A87E32B0524AA000C4801 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ESportsTracker/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = FINCH64.ESportsTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		230A87C52B0524A9000C4801 /* Build configuration list for PBXProject "ESportsTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				230A87DF2B0524AA000C4801 /* Debug */,
+				230A87E02B0524AA000C4801 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		230A87E12B0524AA000C4801 /* Build configuration list for PBXNativeTarget "ESportsTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				230A87E22B0524AA000C4801 /* Debug */,
+				230A87E32B0524AA000C4801 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		230A87D62B0524A9000C4801 /* ESportsTracker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				230A87D72B0524A9000C4801 /* ESportsTracker.xcdatamodel */,
+			);
+			currentVersion = 230A87D72B0524A9000C4801 /* ESportsTracker.xcdatamodel */;
+			path = ESportsTracker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 230A87C22B0524A9000C4801 /* Project object */;
+}
