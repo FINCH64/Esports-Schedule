@@ -5,6 +5,8 @@
 
 import Foundation
 
+//описывает то,каким образом будет выглядеть структура каждого матча(Event) и объекта хранящего все матчи(LiveMatches)
+
 // MARK: - LiveMatches
 struct LiveMatches: Codable {
     let events: [Event]?
@@ -27,17 +29,20 @@ struct Event: Codable {
     let startTimestamp: Int?
     let slug: String?
     let finalResultOnly, isEditor, crowdsourcingEnabled: Bool?
+    let roundInfo: RoundInfo?
+    let lastPeriod: String?
 
     enum CodingKeys: String, CodingKey {
         case tournament
         case customID = "customId"
-        case status, winnerCode, homeTeam, awayTeam, homeScore, awayScore, coverage, time, changes, hasGlobalHighlights, crowdsourcingDataDisplayEnabled, id, bestOf, eventType, startTimestamp, slug, finalResultOnly, isEditor, crowdsourcingEnabled
+        case status, winnerCode, homeTeam, awayTeam, homeScore, awayScore, coverage, time, changes, hasGlobalHighlights, crowdsourcingDataDisplayEnabled, id, bestOf, eventType, startTimestamp, slug, finalResultOnly, isEditor, crowdsourcingEnabled, roundInfo, lastPeriod
     }
 }
 
 // MARK: - Score
 struct Score: Codable {
     let current, display, period1, period2: Int?
+    let normaltime: Int?
 }
 
 // MARK: - Team
@@ -51,7 +56,6 @@ struct Team: Codable {
     let country: AwayTeamCountry?
     let subTeams: [JSONAny]?
     let teamColors: TeamColors?
-    let gender: String?
 }
 
 // MARK: - AwayTeamCountry
@@ -94,6 +98,11 @@ struct Changes: Codable {
     let changeTimestamp: Int?
 }
 
+// MARK: - RoundInfo
+struct RoundInfo: Codable {
+    let round: Int?
+}
+
 // MARK: - Status
 struct Status: Codable {
     let code: Int?
@@ -125,19 +134,19 @@ struct Category: Codable {
 enum Flag: String, Codable {
     case csgo = "csgo"
     case dota2 = "dota-2"
-    case lol = "lol"
+    case other = "other"
 }
 
 enum CategoryName: String, Codable {
     case csGo = "CS:GO"
     case dota2 = "Dota 2"
-    case loL = "LoL"
+    case other = "Other"
 }
 
 enum CategorySlug: String, Codable {
     case csgo = "csgo"
     case dota2 = "dota2"
-    case lol = "lol"
+    case other = "other"
 }
 
 // MARK: - UniqueTournament

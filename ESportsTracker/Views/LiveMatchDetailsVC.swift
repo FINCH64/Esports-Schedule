@@ -7,8 +7,9 @@
 
 import UIKit
 
-class LiveMatchDetailsVC: UIViewController {
-
+class LiveMatchDetailsVC: UIViewController,MatchView {
+    var presenter: Presenter?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
