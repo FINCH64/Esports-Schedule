@@ -29,20 +29,29 @@ class LiveMatchPresenter: Presenter {
         let match = (model as! MatchesInfoModel).liveCsMatchesInfo?[indexPath.row]
         
         if let match = match {
+            if let homeTeamLogoData = match.homeTeam?.teamLogoData {
+                cell.homeTeamImage.image = UIImage(data: homeTeamLogoData)
+                cell.homeTeamImageLoadIndicator.stopAnimating()
+                cell.homeTeamImageLoadIndicator.isHidden = true
+            } else {
+                cell.homeTeamImageLoadIndicator.isHidden = false
+                cell.homeTeamImageLoadIndicator.startAnimating()
+            }
+            
+            if let awayTeamLogoData = match.awayTeam?.teamLogoData {
+                cell.awayTeamImage.image = UIImage(data: awayTeamLogoData)
+                cell.awayTeamImageLoadIndicator.stopAnimating()
+                cell.awayTeamImageLoadIndicator.isHidden = true
+            } else {
+                cell.awayTeamImageLoadIndicator.isHidden = false
+                cell.awayTeamImageLoadIndicator.startAnimating()
+            }
+            
             cell.homeTeamId = match.homeTeam?.id ?? 0
             cell.awayTeamId = match.awayTeam?.id ?? 0
             
-            cell.homeTeamImageLoadIndicator.isHidden = false
-            cell.homeTeamImageLoadIndicator.startAnimating()
-            
-            cell.awayTeamImageLoadIndicator.isHidden = false
-            cell.awayTeamImageLoadIndicator.startAnimating()
-            
-            MatchesInfoManager.shared.getTeamImage(teamId: cell.homeTeamId, indexPath: indexPath)
-            MatchesInfoManager.shared.getTeamImage(teamId: cell.awayTeamId, indexPath: indexPath)
-            
-            cell.matchStatus.text = match.status?.type == "inprogress" ? "live" : "not live"
-            cell.matchScore.text = "\(match.homeScore?.current ?? 0):\(match.awayScore?.current ?? 0)" 
+            cell.matchStatus.text = match.status?.type == "inprogress" ? "Live" : "Not live"
+            cell.matchScore.text = "\(match.homeScore?.current ?? 0):\(match.awayScore?.current ?? 0)"
         }
         
         return cell
@@ -50,18 +59,8 @@ class LiveMatchPresenter: Presenter {
     
     //функция обновления картинок в уже созданных ячейках матчей,вызывается по загрузке картинок с сервера
     //сейчас отрисовка происходит прямо в презентере,надо перенести во view с передачей данных отсюда
-    func updateCellsTeamImages(imageData: Data,indexPath: IndexPath,logoTeamId: Int) {
-        if let tableVC = viewToPresent as? AllMatchesTableViewController,
-           let cellToInsertImages = tableVC.tableView(tableVC.tableView, cellForRowAt: indexPath) as? LiveMatchCell {
-            if cellToInsertImages.homeTeamId == logoTeamId {
-                cellToInsertImages.homeTeamImage.image = UIImage(data: imageData)
-                cellToInsertImages.homeTeamImageLoadIndicator.stopAnimating()
-                cellToInsertImages.homeTeamImageLoadIndicator.isHidden = true
-            } else if cellToInsertImages.awayTeamId == logoTeamId {
-                cellToInsertImages.awayTeamImage.image = UIImage(data: imageData)
-                cellToInsertImages.awayTeamImageLoadIndicator.stopAnimating()
-                cellToInsertImages.awayTeamImageLoadIndicator.isHidden = true
-            }
+    func updateRows(rowsToUpdate indexPath: IndexPath) {
+        if let tableVC = viewToPresent as? AllMatchesTableViewController {
             tableVC.tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }

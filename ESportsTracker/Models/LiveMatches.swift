@@ -18,7 +18,7 @@ struct Event: Codable {
     let customID: String?
     let status: Status?
     let winnerCode: Int?
-    let homeTeam, awayTeam: Team?
+    var homeTeam, awayTeam: Team?
     let homeScore, awayScore: Score?
     let coverage: Int?
     let time: Time?
@@ -56,6 +56,7 @@ struct Team: Codable {
     let country: AwayTeamCountry?
     let subTeams: [JSONAny]?
     let teamColors: TeamColors?
+    var teamLogoData: Data?
 }
 
 // MARK: - AwayTeamCountry

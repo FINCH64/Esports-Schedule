@@ -36,9 +36,9 @@ class MatchesInfoModel: Model {
     }
     
     //после подшрузки картинки вызывает метод обновления у презенткра,ограничения такие же как у updateTVLiveMatchesCells()
-    func updateCellsTeamImages(imageData: Data,indexPath: IndexPath,logoTeamId: Int) {
+    func updateRows(rowsToUpdate indexPath: IndexPath) {
         if let presenter = presenter as? LiveMatchPresenter {
-            presenter.updateCellsTeamImages(imageData: imageData,indexPath: indexPath,logoTeamId: logoTeamId)
+            presenter.updateRows(rowsToUpdate: indexPath)
         }
     }
 }
