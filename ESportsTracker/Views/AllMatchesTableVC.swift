@@ -69,6 +69,21 @@ class AllMatchesTableViewController: UITableViewController,MatchView {
         spinner!.isHidden = true
     }
 
+    // MARK: - Navigation
+    
+    //проверка на переход к экрану с полной информацией и передача в него матча
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowMatchDetail" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let detailVC = segue.destination as! LiveMatchDetailsVC
+                detailVC.matchIndex = indexPath
+            }
+        }
+    }
+    
+
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -101,16 +116,6 @@ class AllMatchesTableViewController: UITableViewController,MatchView {
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
     */
 

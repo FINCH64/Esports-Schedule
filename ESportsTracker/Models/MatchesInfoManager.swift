@@ -102,8 +102,8 @@ class MatchesInfoManager {
             var matchIndex = 0 //нужен чтобы понимать в каком ряду будет отрисована ячейка с этим матчем,тк отрисовка идёт для всех кс матчей,то это будет сделано в таком же порядке
                                //как и перебор снизу
             self.matchesModel.liveCsMatchesInfo?.forEach { match in
-                self.getTeamImage(teamId: match.homeTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .home)
-                self.getTeamImage(teamId: match.awayTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .away)
+                //self.getTeamImage(teamId: match.homeTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .home)
+                //self.getTeamImage(teamId: match.awayTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .away)
                 matchIndex += 1
             }
         }

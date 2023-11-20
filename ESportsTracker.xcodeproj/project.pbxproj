@@ -19,6 +19,7 @@
 		230A87EB2B052EE8000C4801 /* LiveMatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A87EA2B052EE8000C4801 /* LiveMatches.swift */; };
 		230A87F02B05303D000C4801 /* MatchesInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A87EF2B05303D000C4801 /* MatchesInfoManager.swift */; };
 		230A87F22B05394A000C4801 /* LiveMatchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A87F12B05394A000C4801 /* LiveMatchPresenter.swift */; };
+		233F43272B0AD7DE00945E52 /* LiveMatchDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233F43262B0AD7DE00945E52 /* LiveMatchDetailsPresenter.swift */; };
 		239AEB142B07F963007D69CC /* MatchesViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AEB132B07F963007D69CC /* MatchesViewProtocol.swift */; };
 		239AEB162B07F9B2007D69CC /* PresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AEB152B07F9B2007D69CC /* PresenterProtocol.swift */; };
 		239AEB182B07FD0D007D69CC /* MatchesInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AEB172B07FD0D007D69CC /* MatchesInfoModel.swift */; };
@@ -42,6 +43,7 @@
 		230A87EA2B052EE8000C4801 /* LiveMatches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatches.swift; sourceTree = "<group>"; };
 		230A87EF2B05303D000C4801 /* MatchesInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesInfoManager.swift; sourceTree = "<group>"; };
 		230A87F12B05394A000C4801 /* LiveMatchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatchPresenter.swift; sourceTree = "<group>"; };
+		233F43262B0AD7DE00945E52 /* LiveMatchDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatchDetailsPresenter.swift; sourceTree = "<group>"; };
 		239AEB132B07F963007D69CC /* MatchesViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesViewProtocol.swift; sourceTree = "<group>"; };
 		239AEB152B07F9B2007D69CC /* PresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterProtocol.swift; sourceTree = "<group>"; };
 		239AEB172B07FD0D007D69CC /* MatchesInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesInfoModel.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			children = (
 				230A87F12B05394A000C4801 /* LiveMatchPresenter.swift */,
 				239AEB152B07F9B2007D69CC /* PresenterProtocol.swift */,
+				233F43262B0AD7DE00945E52 /* LiveMatchDetailsPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				230A87D22B0524A9000C4801 /* ViewController.swift in Sources */,
 				230A87F02B05303D000C4801 /* MatchesInfoManager.swift in Sources */,
 				239AEB1C2B0800E3007D69CC /* ViewProtocol.swift in Sources */,
+				233F43272B0AD7DE00945E52 /* LiveMatchDetailsPresenter.swift in Sources */,
 				230A87E92B052D41000C4801 /* LiveMatchDetailsVC.swift in Sources */,
 				230A87E72B052A6A000C4801 /* AllMatchesTableVC.swift in Sources */,
 				230A87CE2B0524A9000C4801 /* AppDelegate.swift in Sources */,

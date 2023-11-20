@@ -21,7 +21,6 @@ class MatchesInfoModel: Model {
     
     var liveMatchesInfo: LiveMatches?
     var liveCsMatchesInfo : [Event]?
-    var selectedLiveMatch: Event?
     
     func setPresenterForModel(newPresenter: Presenter) {
         self.presenter = newPresenter
@@ -40,5 +39,10 @@ class MatchesInfoModel: Model {
         if let presenter = presenter as? LiveMatchPresenter {
             presenter.updateRows(rowsToUpdate: indexPath)
         }
+    }
+    
+    //вернет по порядковому номеру ячейки идущий матч по кс,с таким же порядковым номером ячейки массива
+    func getSelectedCsMatch(forIndex index: Int) -> Event{
+        liveCsMatchesInfo![index]
     }
 }
