@@ -17,6 +17,8 @@ class LiveMatchCell: UITableViewCell {
     @IBOutlet weak var matchScore: UILabel!
     @IBOutlet weak var homeTeamImageLoadIndicator: UIActivityIndicatorView!
     @IBOutlet weak var awayTeamImageLoadIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var homeTeamName: UILabel!
+    @IBOutlet weak var awayTeamName: UILabel!
     
     //нужно сохранить id команд чтобы после загрузки их лого,можно было понять какое из них к какой команде отнести
     //кроме id с этим поможет indexRow передаваемый в загрузку картинок и обновленние ячейки.Он будет указывать в каком ряду искать команды с id загруженных картинок

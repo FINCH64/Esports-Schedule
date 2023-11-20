@@ -50,6 +50,9 @@ class LiveMatchPresenter: Presenter {
             cell.homeTeamId = match.homeTeam?.id ?? 0
             cell.awayTeamId = match.awayTeam?.id ?? 0
             
+            cell.homeTeamName.text = match.homeTeam?.name ?? "Team 1"
+            cell.awayTeamName.text = match.awayTeam?.name ?? "Team 2"
+            
             cell.matchStatus.text = match.status?.type == "inprogress" ? "Live" : "Not live"
             cell.matchScore.text = "\(match.homeScore?.current ?? 0):\(match.awayScore?.current ?? 0)"
         }

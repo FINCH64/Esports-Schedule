@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 //менеджер запросов и обработки информации об идущих матчах(сетевой слой и обработка результатов)
 enum TeamType {
@@ -42,7 +43,7 @@ class MatchesInfoManager {
                     do {
                         print(response as? HTTPURLResponse ?? "no server response")
                         self.matchesModel.liveMatchesInfo = try JSONDecoder().decode(LiveMatches.self, from: data!)
-                        self.getLiveCSMatches(from: self.matchesModel.liveMatchesInfo?.events)
+                        self.setLiveCSMatches(from: self.matchesModel.liveMatchesInfo?.events)
                         if updateAllMatchesTable == true {
                             //обновить все ячейки TableView синхронно в главном потоке
                             DispatchQueue.main.sync {
@@ -79,10 +80,13 @@ class MatchesInfoManager {
                     print(error as Any)
                 } else {
                     print(response as? HTTPURLResponse ?? "no server response")
+                    
+                    let defaultImageData = UIImage(named: "QuestionMark")?.pngData()
+                    
                     if teamType == .home {
-                        self.matchesModel.liveCsMatchesInfo?[indexPath.row].homeTeam?.teamLogoData = data
+                        self.matchesModel.liveCsMatchesInfo?[indexPath.row].homeTeam?.teamLogoData = data ?? defaultImageData
                     } else if teamType == .away {
-                        self.matchesModel.liveCsMatchesInfo?[indexPath.row].awayTeam?.teamLogoData = data
+                        self.matchesModel.liveCsMatchesInfo?[indexPath.row].awayTeam?.teamLogoData = data ?? defaultImageData
                     }
                     DispatchQueue.main.sync {
                         self.matchesModel.updateRows(rowsToUpdate: indexPath)
@@ -95,15 +99,15 @@ class MatchesInfoManager {
     }
     
     //метод вызывающий через модель-презентер-вью обновление всех ячеек,вызывается после асинхронной загрузки данных о матчах
-    private func getLiveCSMatches(from matches: [Event]?) {
+    private func setLiveCSMatches(from matches: [Event]?) {
         //выбирает все матчи по кс и записывает в переменную внутри модели
         if let matches = matches {
             self.matchesModel.liveCsMatchesInfo = matches.filter{$0.tournament?.category?.flag == Flag.csgo}
             var matchIndex = 0 //нужен чтобы понимать в каком ряду будет отрисована ячейка с этим матчем,тк отрисовка идёт для всех кс матчей,то это будет сделано в таком же порядке
                                //как и перебор снизу
             self.matchesModel.liveCsMatchesInfo?.forEach { match in
-                //self.getTeamImage(teamId: match.homeTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .home)
-                //self.getTeamImage(teamId: match.awayTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .away)
+                self.getTeamImage(teamId: match.homeTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .home)
+                self.getTeamImage(teamId: match.awayTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .away)
                 matchIndex += 1
             }
         }

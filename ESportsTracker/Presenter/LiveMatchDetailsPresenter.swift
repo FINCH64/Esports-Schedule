@@ -20,4 +20,8 @@ class LiveMatchDetailsPresenter: Presenter {
     func getSelectedMatch(forIndex index: Int) -> Event {
         (model as! MatchesInfoModel).liveCsMatchesInfo![index]
     }
+    
+    func updateData() {
+        MatchesInfoManager.shared.updateAllCurrentLiveMatches(updateAllMatchesTable: true)
+    }
 }

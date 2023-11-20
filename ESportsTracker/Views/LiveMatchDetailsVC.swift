@@ -21,6 +21,7 @@ class LiveMatchDetailsVC: UIViewController,MatchView {
     @IBOutlet weak var mapsScoreLabel: UILabel!
     @IBOutlet weak var timeFromStartLabel: UILabel!
     
+    
     var presenter: Presenter?
     var matchIndex: IndexPath? //IndexPath(номер выбранного ряда в таблице) совпадает с номером матча в массиве матчей по кс
     var match: Event?
@@ -28,6 +29,7 @@ class LiveMatchDetailsVC: UIViewController,MatchView {
     override func viewDidLoad() { //получим данные по переданному индексу от TableVC из модели и соберём всё вью по этим данным
         super.viewDidLoad()
         //MatchesInfoManager.shared.updateAllCurrentLiveMatches(updateAllMatchesTable: true)
+        
         presenter = LiveMatchDetailsPresenter(model: MatchesInfoModel.shared,viewToPresent: self)
         self.match = (presenter as! LiveMatchDetailsPresenter).getSelectedMatch(forIndex: matchIndex?.row ?? 0)
         
@@ -48,14 +50,6 @@ class LiveMatchDetailsVC: UIViewController,MatchView {
         timeFromStartLabel.text = "\(Int(secondsPassedFromMapStart/60)) minutes"
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
 }
