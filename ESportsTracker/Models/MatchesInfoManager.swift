@@ -14,6 +14,11 @@ enum TeamType: String,Codable {
     case away = "awayTeam"
 }
 
+enum BetType: String,Codable {
+    case map = "map"
+    case match = "match"
+}
+
 class MatchesInfoManager {
     static let shared = MatchesInfoManager()
     var matchesModel = MatchesInfoModel.shared

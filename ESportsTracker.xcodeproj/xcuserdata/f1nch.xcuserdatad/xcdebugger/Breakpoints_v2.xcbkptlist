@@ -14,8 +14,8 @@
             filePath = "ESportsTracker/Models/MatchesInfoManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "updateAllCurrentLiveMatches(updateAllMatchesTable:)"
             landmarkType = "7">
             <Locations>
@@ -201,8 +201,8 @@
             filePath = "ESportsTracker/Models/MatchesInfoManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "getTeamImage(teamId:indexPath:teamType:)"
             landmarkType = "7">
          </BreakpointContent>

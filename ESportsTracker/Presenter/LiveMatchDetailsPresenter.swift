@@ -29,7 +29,7 @@ class LiveMatchDetailsPresenter: Presenter {
     }
     
     //функция сохранения данных о сделанной ставке,отработает только если все данные введены корректно
-    func saveTask(betAmount amount: Double,betOdd odd: Double,forMatch match: Event,teamBetOn team: TeamType) {
+    func saveTask(betAmount amount: Double,betOdd odd: Double,forMatch match: Event,teamBetOn team: TeamType,betType: BetType) {
         let viewContext = getContext()
         guard let entity = NSEntityDescription.entity(forEntityName: "Bet", in: viewContext) else {return}
         
@@ -42,6 +42,8 @@ class LiveMatchDetailsPresenter: Presenter {
             newBetObject.datePlayed = Date(timeIntervalSince1970: TimeInterval(match.startTimestamp ?? Int(Date().timeIntervalSince1970)))
             newBetObject.isLive = match.status?.type == "inprogress" ? true : false
             newBetObject.matchOdd = odd
+            newBetObject.betType = betType.rawValue
+            newBetObject.mapBetPlacedOn = match.status?.description ?? "No map info"
         } catch {
             print("Cant save match")
         }

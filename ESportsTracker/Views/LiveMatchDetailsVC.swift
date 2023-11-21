@@ -24,6 +24,7 @@ class LiveMatchDetailsVC: UIViewController,MatchView {
     @IBOutlet weak var betOddsTextField: UITextField!
     @IBOutlet weak var betTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var placeBetButton: UIButton!
+    @IBOutlet weak var teamToBetSegmentedControl: UISegmentedControl!
     
     
     var presenter: Presenter?
@@ -74,13 +75,21 @@ class LiveMatchDetailsVC: UIViewController,MatchView {
         }
         
         guard betTypeSegmentedControl.selectedSegmentIndex == 0 || betTypeSegmentedControl.selectedSegmentIndex == 1 else {
-            let a = betTypeSegmentedControl.selectedSegmentIndex == 0
+            alertController.message = "Select bet type"
+            present(alertController, animated: true)
+            return
+        }
+        
+        guard teamToBetSegmentedControl.selectedSegmentIndex == 0 || teamToBetSegmentedControl.selectedSegmentIndex == 1 else {
             alertController.message = "Select on which team to bet"
             present(alertController, animated: true)
             return
         }
-        let betType = betTypeSegmentedControl.selectedSegmentIndex == 0 ? TeamType.home : TeamType.away
         
-        (presenter as! LiveMatchDetailsPresenter).saveTask(betAmount: betAmmount, betOdd: betOdd, forMatch: match!, teamBetOn: betType)
+        let betType = betTypeSegmentedControl.selectedSegmentIndex == 0 ? BetType.map : BetType.match
+        
+        let teamBet = teamToBetSegmentedControl.selectedSegmentIndex == 0 ? TeamType.home : TeamType.away
+        
+        (presenter as! LiveMatchDetailsPresenter).saveTask(betAmount: betAmmount, betOdd: betOdd, forMatch: match!, teamBetOn: teamBet,betType: betType)
     }
 }

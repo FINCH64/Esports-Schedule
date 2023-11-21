@@ -259,7 +259,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qiT-HS-gjD">
-                                <rect key="frame" x="139" y="666" width="115" height="35"/>
+                                <rect key="frame" x="139" y="717" width="115" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Place bet"/>
                                 <connections>
@@ -267,10 +267,18 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="m5m-vz-27c">
-                                <rect key="frame" x="139" y="588" width="115" height="32"/>
+                                <rect key="frame" x="82" y="639" width="229" height="32"/>
                                 <segments>
                                     <segment title="Map"/>
                                     <segment title="Match"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" systemColor="linkColor"/>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="O2K-n6-lvC">
+                                <rect key="frame" x="82" y="580" width="229" height="32"/>
+                                <segments>
+                                    <segment title="Left team"/>
+                                    <segment title="Right team"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" systemColor="linkColor"/>
                             </segmentedControl>
@@ -286,8 +294,10 @@
                             <constraint firstItem="Bpa-lD-RLG" firstAttribute="top" secondItem="FfA-VG-ydo" secondAttribute="bottom" constant="16" id="3tm-Io-zPm"/>
                             <constraint firstItem="Er6-c8-PLu" firstAttribute="leading" secondItem="pbR-AA-INp" secondAttribute="trailing" constant="120.33333333333333" id="5UC-7q-ejk"/>
                             <constraint firstItem="BoF-3h-KSO" firstAttribute="centerX" secondItem="Jua-Yz-FRV" secondAttribute="centerX" id="5cE-iZ-vAi"/>
+                            <constraint firstItem="Jua-Yz-FRV" firstAttribute="trailing" secondItem="O2K-n6-lvC" secondAttribute="trailing" constant="82" id="79I-CI-jqI"/>
                             <constraint firstItem="Jua-Yz-FRV" firstAttribute="trailing" secondItem="WiG-bf-yZ8" secondAttribute="trailing" constant="16" id="7Bl-Ev-KD7"/>
                             <constraint firstItem="Q7e-rA-jKU" firstAttribute="top" secondItem="FfA-VG-ydo" secondAttribute="bottom" constant="81" id="7u0-SM-LxB"/>
+                            <constraint firstItem="O2K-n6-lvC" firstAttribute="leading" secondItem="Jua-Yz-FRV" secondAttribute="leading" constant="82" id="8JD-Kf-jsQ"/>
                             <constraint firstItem="m7f-Ot-DWM" firstAttribute="width" secondItem="3cb-pD-GfX" secondAttribute="width" id="9ne-WV-WNc"/>
                             <constraint firstItem="PPN-Kj-7pT" firstAttribute="leading" secondItem="Jua-Yz-FRV" secondAttribute="leading" constant="16" id="CRB-bS-wQE"/>
                             <constraint firstItem="PPN-Kj-7pT" firstAttribute="top" secondItem="pbR-AA-INp" secondAttribute="bottom" constant="8" symbolic="YES" id="Cg9-uh-Xec"/>
@@ -297,11 +307,12 @@
                             <constraint firstItem="WiG-bf-yZ8" firstAttribute="top" secondItem="Er6-c8-PLu" secondAttribute="bottom" constant="8" id="H6G-0m-gix"/>
                             <constraint firstItem="r5V-4c-uUq" firstAttribute="top" secondItem="WiG-bf-yZ8" secondAttribute="bottom" constant="8" symbolic="YES" id="Iqg-jk-AZr"/>
                             <constraint firstItem="Bpa-lD-RLG" firstAttribute="width" secondItem="4Rx-lr-emH" secondAttribute="width" id="JPZ-mE-R6W"/>
+                            <constraint firstItem="O2K-n6-lvC" firstAttribute="top" secondItem="m7f-Ot-DWM" secondAttribute="bottom" constant="38" id="KUN-9Q-NJz"/>
                             <constraint firstItem="Jua-Yz-FRV" firstAttribute="trailing" secondItem="6Qa-aA-GOQ" secondAttribute="trailing" constant="26" id="L1r-CN-5MR"/>
-                            <constraint firstItem="m5m-vz-27c" firstAttribute="leading" secondItem="Jua-Yz-FRV" secondAttribute="leading" constant="139" id="Lmb-uw-rRJ"/>
+                            <constraint firstItem="m5m-vz-27c" firstAttribute="leading" secondItem="Jua-Yz-FRV" secondAttribute="leading" constant="82" id="Lmb-uw-rRJ"/>
                             <constraint firstItem="4Rx-lr-emH" firstAttribute="top" secondItem="FfA-VG-ydo" secondAttribute="bottom" constant="16" id="MhV-Mh-6kS"/>
                             <constraint firstItem="Jua-Yz-FRV" firstAttribute="trailing" secondItem="Er6-c8-PLu" secondAttribute="trailing" constant="16" id="MvT-nK-zlk"/>
-                            <constraint firstItem="Jua-Yz-FRV" firstAttribute="trailing" secondItem="m5m-vz-27c" secondAttribute="trailing" constant="139" id="Oki-b2-d3b"/>
+                            <constraint firstItem="Jua-Yz-FRV" firstAttribute="trailing" secondItem="m5m-vz-27c" secondAttribute="trailing" constant="82" id="Oki-b2-d3b"/>
                             <constraint firstItem="Bpa-lD-RLG" firstAttribute="height" secondItem="4Rx-lr-emH" secondAttribute="height" id="Ovw-Jm-Vb5"/>
                             <constraint firstItem="m7f-Ot-DWM" firstAttribute="height" secondItem="3cb-pD-GfX" secondAttribute="height" id="RpF-Au-DDl"/>
                             <constraint firstItem="Jua-Yz-FRV" firstAttribute="trailing" secondItem="1PV-25-5pR" secondAttribute="trailing" constant="16" id="Scp-ud-LeO"/>
@@ -321,9 +332,9 @@
                             <constraint firstItem="Bpa-lD-RLG" firstAttribute="leading" secondItem="Q7e-rA-jKU" secondAttribute="trailing" constant="20" id="jFh-av-pSO"/>
                             <constraint firstItem="Jua-Yz-FRV" firstAttribute="trailing" secondItem="r5V-4c-uUq" secondAttribute="trailing" constant="16" id="jbN-sh-pq1"/>
                             <constraint firstItem="m7f-Ot-DWM" firstAttribute="top" secondItem="1PV-25-5pR" secondAttribute="bottom" constant="45" id="jfq-oc-pmi"/>
-                            <constraint firstItem="m7f-Ot-DWM" firstAttribute="leading" secondItem="m5m-vz-27c" secondAttribute="trailing" constant="-27" id="k1K-Ei-DnP"/>
+                            <constraint firstItem="m7f-Ot-DWM" firstAttribute="leading" secondItem="m5m-vz-27c" secondAttribute="trailing" constant="-84" id="k1K-Ei-DnP"/>
+                            <constraint firstItem="m5m-vz-27c" firstAttribute="top" secondItem="O2K-n6-lvC" secondAttribute="bottom" constant="28" id="lc5-he-asT"/>
                             <constraint firstItem="Er6-c8-PLu" firstAttribute="top" secondItem="6Qa-aA-GOQ" secondAttribute="bottom" constant="7" id="mYM-9e-dBE"/>
-                            <constraint firstItem="m5m-vz-27c" firstAttribute="top" secondItem="3cb-pD-GfX" secondAttribute="bottom" constant="46" id="osc-MS-93d"/>
                             <constraint firstItem="pbR-AA-INp" firstAttribute="top" secondItem="Lc7-pQ-jch" secondAttribute="bottom" constant="8" symbolic="YES" id="oyC-E4-dfG"/>
                             <constraint firstItem="1PV-25-5pR" firstAttribute="top" secondItem="r5V-4c-uUq" secondAttribute="bottom" constant="11" id="p5O-pJ-Ebt"/>
                             <constraint firstItem="bUy-8l-znR" firstAttribute="centerX" secondItem="Bpa-lD-RLG" secondAttribute="centerX" id="qam-tL-HQK"/>
@@ -333,7 +344,7 @@
                             <constraint firstItem="ddM-ME-KZ5" firstAttribute="top" secondItem="4Rx-lr-emH" secondAttribute="bottom" constant="8" symbolic="YES" id="u2c-hJ-0UI"/>
                             <constraint firstItem="m7f-Ot-DWM" firstAttribute="leading" secondItem="3cb-pD-GfX" secondAttribute="trailing" constant="61" id="uPa-Fn-UtH"/>
                             <constraint firstItem="zhv-MT-3OZ" firstAttribute="leading" secondItem="Jua-Yz-FRV" secondAttribute="leading" constant="16" id="w8R-Nu-2P8"/>
-                            <constraint firstItem="m5m-vz-27c" firstAttribute="leading" secondItem="3cb-pD-GfX" secondAttribute="trailing" constant="-27" id="w9E-hR-s3j"/>
+                            <constraint firstItem="m5m-vz-27c" firstAttribute="leading" secondItem="3cb-pD-GfX" secondAttribute="trailing" constant="-84" id="w9E-hR-s3j"/>
                             <constraint firstItem="Jua-Yz-FRV" firstAttribute="trailing" secondItem="m7f-Ot-DWM" secondAttribute="trailing" constant="16" id="ywj-jw-cSc"/>
                         </constraints>
                     </view>
@@ -351,6 +362,7 @@
                         <outlet property="matchStatusLabel" destination="6Qa-aA-GOQ" id="pwY-NU-mEA"/>
                         <outlet property="matchTypeLabel" destination="Er6-c8-PLu" id="cDs-wS-vzl"/>
                         <outlet property="placeBetButton" destination="qiT-HS-gjD" id="JT8-aT-vws"/>
+                        <outlet property="teamToBetSegmentedControl" destination="O2K-n6-lvC" id="Q1d-aw-Cpf"/>
                         <outlet property="timeFromStartLabel" destination="1PV-25-5pR" id="vu8-kI-Anh"/>
                         <outlet property="tournamentFullNameLabel" destination="FfA-VG-ydo" id="zP8-Nl-yZJ"/>
                         <outlet property="tournamentShortNameLabel" destination="BoF-3h-KSO" id="KWT-KH-5p2"/>
