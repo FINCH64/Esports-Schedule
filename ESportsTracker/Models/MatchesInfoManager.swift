@@ -9,8 +9,9 @@ import Foundation
 import UIKit
 
 //менеджер запросов и обработки информации об идущих матчах(сетевой слой и обработка результатов)
-enum TeamType {
-    case home,away
+enum TeamType: String,Codable {
+    case home = "homeTeam"
+    case away = "awayTeam"
 }
 
 class MatchesInfoManager {
@@ -80,14 +81,19 @@ class MatchesInfoManager {
                     print(error as Any)
                 } else {
                     print(response as? HTTPURLResponse ?? "no server response")
+                    var imageData = UIImage(named: "QuestionMark")!.pngData()
                     
-                    let defaultImageData = UIImage(named: "QuestionMark")?.pngData()
+                    if data != nil,
+                       !data!.isEmpty {
+                        imageData = data!
+                    }
                     
                     if teamType == .home {
-                        self.matchesModel.liveCsMatchesInfo?[indexPath.row].homeTeam?.teamLogoData = data ?? defaultImageData
+                        self.matchesModel.liveCsMatchesInfo?[indexPath.row].homeTeam?.teamLogoData = imageData
                     } else if teamType == .away {
-                        self.matchesModel.liveCsMatchesInfo?[indexPath.row].awayTeam?.teamLogoData = data ?? defaultImageData
+                        self.matchesModel.liveCsMatchesInfo?[indexPath.row].awayTeam?.teamLogoData = imageData
                     }
+                    
                     DispatchQueue.main.sync {
                         self.matchesModel.updateRows(rowsToUpdate: indexPath)
                     }
@@ -106,8 +112,8 @@ class MatchesInfoManager {
             var matchIndex = 0 //нужен чтобы понимать в каком ряду будет отрисована ячейка с этим матчем,тк отрисовка идёт для всех кс матчей,то это будет сделано в таком же порядке
                                //как и перебор снизу
             self.matchesModel.liveCsMatchesInfo?.forEach { match in
-                self.getTeamImage(teamId: match.homeTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .home)
-                self.getTeamImage(teamId: match.awayTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .away)
+                //self.getTeamImage(teamId: match.homeTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .home)
+                //self.getTeamImage(teamId: match.awayTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .away)
                 matchIndex += 1
             }
         }

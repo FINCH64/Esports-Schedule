@@ -22,6 +22,7 @@ class MatchesInfoModel: Model {
     var liveMatchesInfo: LiveMatches?
     var liveCsMatchesInfo : [Event]?
     
+    //установить презентер пользующийся моделью на данный момент
     func setPresenterForModel(newPresenter: Presenter) {
         self.presenter = newPresenter
     }

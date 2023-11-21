@@ -20,6 +20,10 @@ class LiveMatchDetailsVC: UIViewController,MatchView {
     @IBOutlet weak var mapNumberLabel: UILabel!
     @IBOutlet weak var mapsScoreLabel: UILabel!
     @IBOutlet weak var timeFromStartLabel: UILabel!
+    @IBOutlet weak var betAmountTextField: UITextField!
+    @IBOutlet weak var betOddsTextField: UITextField!
+    @IBOutlet weak var betTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var placeBetButton: UIButton!
     
     
     var presenter: Presenter?
@@ -51,5 +55,32 @@ class LiveMatchDetailsVC: UIViewController,MatchView {
     }
     
     
-    
+    @IBAction func placeBetTapped(_ sender: UIButton) {
+        let alertController = UIAlertController()
+        let okAction =  UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        alertController.title = "Wrong input"
+        
+        guard let betAmmount = Double(betAmountTextField.text ?? "err") else {
+            alertController.message = "Bet ammount must contain only numbers"
+            present(alertController, animated: true)
+            return
+        }
+        
+        guard let betOdd = Double(betOddsTextField.text ?? "err") else {
+            alertController.message = "Bet odd must contain only numbers"
+            present(alertController, animated: true)
+            return
+        }
+        
+        guard betTypeSegmentedControl.selectedSegmentIndex == 0 || betTypeSegmentedControl.selectedSegmentIndex == 1 else {
+            let a = betTypeSegmentedControl.selectedSegmentIndex == 0
+            alertController.message = "Select on which team to bet"
+            present(alertController, animated: true)
+            return
+        }
+        let betType = betTypeSegmentedControl.selectedSegmentIndex == 0 ? TeamType.home : TeamType.away
+        
+        (presenter as! LiveMatchDetailsPresenter).saveTask(betAmount: betAmmount, betOdd: betOdd, forMatch: match!, teamBetOn: betType)
+    }
 }

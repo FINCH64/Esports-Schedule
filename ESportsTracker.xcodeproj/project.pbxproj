@@ -26,6 +26,9 @@
 		239AEB1A2B08007F007D69CC /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AEB192B08007F007D69CC /* ModelProtocol.swift */; };
 		239AEB1C2B0800E3007D69CC /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AEB1B2B0800E3007D69CC /* ViewProtocol.swift */; };
 		239AEB1E2B080999007D69CC /* LiveMatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AEB1D2B080999007D69CC /* LiveMatchCell.swift */; };
+		23BA4DC32B0D2F2500C00B74 /* MyBetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA4DC22B0D2F2500C00B74 /* MyBetsVC.swift */; };
+		23BA4DC52B0D2F4200C00B74 /* MyBetsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA4DC42B0D2F4200C00B74 /* MyBetsPresenter.swift */; };
+		23BA4DC72B0D2F5D00C00B74 /* MyBetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA4DC62B0D2F5D00C00B74 /* MyBetsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		239AEB192B08007F007D69CC /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
 		239AEB1B2B0800E3007D69CC /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
 		239AEB1D2B080999007D69CC /* LiveMatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatchCell.swift; sourceTree = "<group>"; };
+		23BA4DC22B0D2F2500C00B74 /* MyBetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBetsVC.swift; sourceTree = "<group>"; };
+		23BA4DC42B0D2F4200C00B74 /* MyBetsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBetsPresenter.swift; sourceTree = "<group>"; };
+		23BA4DC62B0D2F5D00C00B74 /* MyBetsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBetsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,7 @@
 				230A87EF2B05303D000C4801 /* MatchesInfoManager.swift */,
 				239AEB172B07FD0D007D69CC /* MatchesInfoModel.swift */,
 				239AEB192B08007F007D69CC /* ModelProtocol.swift */,
+				23BA4DC62B0D2F5D00C00B74 /* MyBetsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -113,6 +120,7 @@
 				230A87F12B05394A000C4801 /* LiveMatchPresenter.swift */,
 				239AEB152B07F9B2007D69CC /* PresenterProtocol.swift */,
 				233F43262B0AD7DE00945E52 /* LiveMatchDetailsPresenter.swift */,
+				23BA4DC42B0D2F4200C00B74 /* MyBetsPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -126,6 +134,7 @@
 				239AEB132B07F963007D69CC /* MatchesViewProtocol.swift */,
 				239AEB1B2B0800E3007D69CC /* ViewProtocol.swift */,
 				239AEB1D2B080999007D69CC /* LiveMatchCell.swift */,
+				23BA4DC22B0D2F2500C00B74 /* MyBetsVC.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,8 +210,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23BA4DC32B0D2F2500C00B74 /* MyBetsVC.swift in Sources */,
 				239AEB142B07F963007D69CC /* MatchesViewProtocol.swift in Sources */,
 				230A87F22B05394A000C4801 /* LiveMatchPresenter.swift in Sources */,
+				23BA4DC72B0D2F5D00C00B74 /* MyBetsModel.swift in Sources */,
 				230A87D22B0524A9000C4801 /* ViewController.swift in Sources */,
 				230A87F02B05303D000C4801 /* MatchesInfoManager.swift in Sources */,
 				239AEB1C2B0800E3007D69CC /* ViewProtocol.swift in Sources */,
@@ -210,6 +221,7 @@
 				230A87E92B052D41000C4801 /* LiveMatchDetailsVC.swift in Sources */,
 				230A87E72B052A6A000C4801 /* AllMatchesTableVC.swift in Sources */,
 				230A87CE2B0524A9000C4801 /* AppDelegate.swift in Sources */,
+				23BA4DC52B0D2F4200C00B74 /* MyBetsPresenter.swift in Sources */,
 				239AEB1A2B08007F007D69CC /* ModelProtocol.swift in Sources */,
 				239AEB182B07FD0D007D69CC /* MatchesInfoModel.swift in Sources */,
 				230A87D02B0524A9000C4801 /* SceneDelegate.swift in Sources */,
