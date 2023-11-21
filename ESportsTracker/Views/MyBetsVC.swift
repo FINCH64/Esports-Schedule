@@ -13,7 +13,7 @@ class MyBetsVC: UIViewController,View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = LiveMatchDetailsPresenter(model: MatchesInfoModel.shared,viewToPresent: self)
+        presenter = MyBetsPresenter(model: MatchesInfoModel.shared,viewToPresent: self)
         (presenter as! MyBetsPresenter).fetchBets()
     }
     
