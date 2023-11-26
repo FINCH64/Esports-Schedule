@@ -15,6 +15,7 @@ struct LiveMatches: Codable {
 // MARK: - Event
 struct Event: Codable {
     let tournament: Tournament?
+    let season: Season?
     let customID: String?
     let status: Status?
     let winnerCode: Int?
@@ -28,20 +29,21 @@ struct Event: Codable {
     let eventType: String?
     let startTimestamp: Int?
     let slug: String?
-    let finalResultOnly, isEditor, crowdsourcingEnabled: Bool?
+    let finalResultOnly, fanRatingEvent, showTotoPromo, isEditor, crowdsourcingEnabled: Bool?
     let roundInfo: RoundInfo?
     let lastPeriod: String?
 
     enum CodingKeys: String, CodingKey {
-        case tournament
+        case tournament, season
         case customID = "customId"
-        case status, winnerCode, homeTeam, awayTeam, homeScore, awayScore, coverage, time, changes, hasGlobalHighlights, crowdsourcingDataDisplayEnabled, id, bestOf, eventType, startTimestamp, slug, finalResultOnly, isEditor, crowdsourcingEnabled, roundInfo, lastPeriod
+        case status, winnerCode, homeTeam, awayTeam, homeScore, awayScore, coverage, time, changes, hasGlobalHighlights, crowdsourcingDataDisplayEnabled, id, bestOf, eventType, startTimestamp, slug, finalResultOnly,fanRatingEvent, showTotoPromo, isEditor, crowdsourcingEnabled, roundInfo, lastPeriod
     }
 }
 
 // MARK: - Score
 struct Score: Codable {
     let current, display, period1, period2: Int?
+    
     let normaltime: Int?
 }
 
@@ -53,50 +55,41 @@ struct Team: Codable {
     let nameCode: String?
     let national: Bool?
     let type, id: Int?
-    let country: AwayTeamCountry?
+    let country: Country?
     let subTeams: [JSONAny]?
+    let fullName: String?
     let teamColors: TeamColors?
     var teamLogoData: Data?
 }
 
-// MARK: - AwayTeamCountry
-struct AwayTeamCountry: Codable {
+// MARK: - Country
+struct Country: Codable {
     let alpha2, name: String?
 }
 
 // MARK: - Sport
 struct Sport: Codable {
-    let name: SportName?
-    let slug: SportSlug?
+    let name: String?
+    let slug: String?
     let id: Int?
-}
-
-enum SportName: String, Codable {
-    case eSports = "E-sports"
-}
-
-enum SportSlug: String, Codable {
-    case esports = "esports"
 }
 
 // MARK: - TeamColors
 struct TeamColors: Codable {
-    let primary, secondary: Ary?
-    let text: Text?
-}
-
-enum Ary: String, Codable {
-    case the52B030 = "#52b030"
-}
-
-enum Text: String, Codable {
-    case ffffff = "#ffffff"
+    let primary, secondary, text: String?
 }
 
 // MARK: - Changes
 struct Changes: Codable {
     let changes: [String]?
     let changeTimestamp: Int?
+}
+
+// MARK: - Season
+struct Season: Codable {
+    let name, year: String?
+    let editor: Bool?
+    let id: Int?
 }
 
 // MARK: - RoundInfo
@@ -120,34 +113,15 @@ struct Tournament: Codable {
     let name, slug: String?
     let category: Category?
     let uniqueTournament: UniqueTournament?
-    let priority, id: Int?
+    let priority, competitionType, id: Int?
 }
 
 // MARK: - Category
 struct Category: Codable {
-    let name: CategoryName?
-    let slug: CategorySlug?
+    let name, slug: String?
     let sport: Sport?
     let id: Int?
-    let flag: Flag?
-}
-
-enum Flag: String, Codable {
-    case csgo = "csgo"
-    case dota2 = "dota-2"
-    case other = "other"
-}
-
-enum CategoryName: String, Codable {
-    case csGo = "CS:GO"
-    case dota2 = "Dota 2"
-    case other = "Other"
-}
-
-enum CategorySlug: String, Codable {
-    case csgo = "csgo"
-    case dota2 = "dota2"
-    case other = "other"
+    let flag: String?
 }
 
 // MARK: - UniqueTournament

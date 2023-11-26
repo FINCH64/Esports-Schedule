@@ -52,13 +52,13 @@ class LiveMatchDetailsPresenter: Presenter {
             try viewContext.save()
             model = MyBetsModel.shared
             (model as! MyBetsModel).addCreatedBet(newBet: newBetObject)
-            let alertController = UIAlertController(title: "Sucess", message: "You bet saved.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Sucess", message: "Your bet saved.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default)
             alertController.addAction(okAction)
             (viewToPresent as! UIViewController).present(alertController, animated: true)
         } catch let error as NSError{
             print(error.localizedDescription)
-            let alertController = UIAlertController(title: "Error", message: "You bet cant be saved.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Error", message: "Your bet cant be saved.", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
             alertController.addAction(cancelAction)
             (viewToPresent as! UIViewController).present(alertController, animated: true)

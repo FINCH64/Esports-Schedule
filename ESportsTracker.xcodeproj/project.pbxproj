@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2304B9792B0E72B8003A8A04 /* MyBetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2304B9782B0E72B8003A8A04 /* MyBetsCell.swift */; };
 		230A87CE2B0524A9000C4801 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A87CD2B0524A9000C4801 /* AppDelegate.swift */; };
 		230A87D02B0524A9000C4801 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A87CF2B0524A9000C4801 /* SceneDelegate.swift */; };
-		230A87D22B0524A9000C4801 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230A87D12B0524A9000C4801 /* ViewController.swift */; };
 		230A87D52B0524A9000C4801 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 230A87D32B0524A9000C4801 /* Main.storyboard */; };
 		230A87D82B0524A9000C4801 /* ESportsTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 230A87D62B0524A9000C4801 /* ESportsTracker.xcdatamodeld */; };
 		230A87DA2B0524AA000C4801 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 230A87D92B0524AA000C4801 /* Assets.xcassets */; };
@@ -26,16 +26,19 @@
 		239AEB1A2B08007F007D69CC /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AEB192B08007F007D69CC /* ModelProtocol.swift */; };
 		239AEB1C2B0800E3007D69CC /* ViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AEB1B2B0800E3007D69CC /* ViewProtocol.swift */; };
 		239AEB1E2B080999007D69CC /* LiveMatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239AEB1D2B080999007D69CC /* LiveMatchCell.swift */; };
+		23AF026B2B114799001D5C6E /* FinishedMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23AF026A2B114799001D5C6E /* FinishedMatch.swift */; };
 		23BA4DC32B0D2F2500C00B74 /* MyBetsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA4DC22B0D2F2500C00B74 /* MyBetsVC.swift */; };
 		23BA4DC52B0D2F4200C00B74 /* MyBetsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA4DC42B0D2F4200C00B74 /* MyBetsPresenter.swift */; };
 		23BA4DC72B0D2F5D00C00B74 /* MyBetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA4DC62B0D2F5D00C00B74 /* MyBetsModel.swift */; };
+		23BC86AA2B13C4F200F0C473 /* StatisticsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BC86A92B13C4F200F0C473 /* StatisticsPresenter.swift */; };
+		23BC86AE2B13C58700F0C473 /* StatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BC86AD2B13C58700F0C473 /* StatisticsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2304B9782B0E72B8003A8A04 /* MyBetsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBetsCell.swift; sourceTree = "<group>"; };
 		230A87CA2B0524A9000C4801 /* ESportsTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ESportsTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		230A87CD2B0524A9000C4801 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		230A87CF2B0524A9000C4801 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		230A87D12B0524A9000C4801 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		230A87D42B0524A9000C4801 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		230A87D72B0524A9000C4801 /* ESportsTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ESportsTracker.xcdatamodel; sourceTree = "<group>"; };
 		230A87D92B0524AA000C4801 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,9 +56,12 @@
 		239AEB192B08007F007D69CC /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
 		239AEB1B2B0800E3007D69CC /* ViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewProtocol.swift; sourceTree = "<group>"; };
 		239AEB1D2B080999007D69CC /* LiveMatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMatchCell.swift; sourceTree = "<group>"; };
+		23AF026A2B114799001D5C6E /* FinishedMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedMatch.swift; sourceTree = "<group>"; usesTabs = 0; };
 		23BA4DC22B0D2F2500C00B74 /* MyBetsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBetsVC.swift; sourceTree = "<group>"; };
 		23BA4DC42B0D2F4200C00B74 /* MyBetsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBetsPresenter.swift; sourceTree = "<group>"; };
 		23BA4DC62B0D2F5D00C00B74 /* MyBetsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBetsModel.swift; sourceTree = "<group>"; };
+		23BC86A92B13C4F200F0C473 /* StatisticsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPresenter.swift; sourceTree = "<group>"; };
+		23BC86AD2B13C58700F0C473 /* StatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +94,8 @@
 		230A87CC2B0524A9000C4801 /* ESportsTracker */ = {
 			isa = PBXGroup;
 			children = (
-				239AEB122B07F91A007D69CC /* Views */,
 				230A87F32B053951000C4801 /* Presenter */,
+				239AEB122B07F91A007D69CC /* Views */,
 				230A87EC2B052EFF000C4801 /* Models */,
 				230A87CD2B0524A9000C4801 /* AppDelegate.swift */,
 				230A87CF2B0524A9000C4801 /* SceneDelegate.swift */,
@@ -105,11 +111,12 @@
 		230A87EC2B052EFF000C4801 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				230A87EA2B052EE8000C4801 /* LiveMatches.swift */,
-				230A87EF2B05303D000C4801 /* MatchesInfoManager.swift */,
 				239AEB172B07FD0D007D69CC /* MatchesInfoModel.swift */,
-				239AEB192B08007F007D69CC /* ModelProtocol.swift */,
+				230A87EF2B05303D000C4801 /* MatchesInfoManager.swift */,
 				23BA4DC62B0D2F5D00C00B74 /* MyBetsModel.swift */,
+				230A87EA2B052EE8000C4801 /* LiveMatches.swift */,
+				23AF026A2B114799001D5C6E /* FinishedMatch.swift */,
+				239AEB192B08007F007D69CC /* ModelProtocol.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -118,9 +125,10 @@
 			isa = PBXGroup;
 			children = (
 				230A87F12B05394A000C4801 /* LiveMatchPresenter.swift */,
-				239AEB152B07F9B2007D69CC /* PresenterProtocol.swift */,
 				233F43262B0AD7DE00945E52 /* LiveMatchDetailsPresenter.swift */,
 				23BA4DC42B0D2F4200C00B74 /* MyBetsPresenter.swift */,
+				23BC86A92B13C4F200F0C473 /* StatisticsPresenter.swift */,
+				239AEB152B07F9B2007D69CC /* PresenterProtocol.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -128,13 +136,14 @@
 		239AEB122B07F91A007D69CC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				230A87D12B0524A9000C4801 /* ViewController.swift */,
 				230A87E62B052A6A000C4801 /* AllMatchesTableVC.swift */,
 				230A87E82B052D41000C4801 /* LiveMatchDetailsVC.swift */,
+				23BA4DC22B0D2F2500C00B74 /* MyBetsVC.swift */,
+				23BC86AD2B13C58700F0C473 /* StatisticsVC.swift */,
+				239AEB1D2B080999007D69CC /* LiveMatchCell.swift */,
+				2304B9782B0E72B8003A8A04 /* MyBetsCell.swift */,
 				239AEB132B07F963007D69CC /* MatchesViewProtocol.swift */,
 				239AEB1B2B0800E3007D69CC /* ViewProtocol.swift */,
-				239AEB1D2B080999007D69CC /* LiveMatchCell.swift */,
-				23BA4DC22B0D2F2500C00B74 /* MyBetsVC.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -214,9 +223,11 @@
 				239AEB142B07F963007D69CC /* MatchesViewProtocol.swift in Sources */,
 				230A87F22B05394A000C4801 /* LiveMatchPresenter.swift in Sources */,
 				23BA4DC72B0D2F5D00C00B74 /* MyBetsModel.swift in Sources */,
-				230A87D22B0524A9000C4801 /* ViewController.swift in Sources */,
+				23BC86AA2B13C4F200F0C473 /* StatisticsPresenter.swift in Sources */,
 				230A87F02B05303D000C4801 /* MatchesInfoManager.swift in Sources */,
 				239AEB1C2B0800E3007D69CC /* ViewProtocol.swift in Sources */,
+				2304B9792B0E72B8003A8A04 /* MyBetsCell.swift in Sources */,
+				23AF026B2B114799001D5C6E /* FinishedMatch.swift in Sources */,
 				233F43272B0AD7DE00945E52 /* LiveMatchDetailsPresenter.swift in Sources */,
 				230A87E92B052D41000C4801 /* LiveMatchDetailsVC.swift in Sources */,
 				230A87E72B052A6A000C4801 /* AllMatchesTableVC.swift in Sources */,
@@ -225,6 +236,7 @@
 				239AEB1A2B08007F007D69CC /* ModelProtocol.swift in Sources */,
 				239AEB182B07FD0D007D69CC /* MatchesInfoModel.swift in Sources */,
 				230A87D02B0524A9000C4801 /* SceneDelegate.swift in Sources */,
+				23BC86AE2B13C58700F0C473 /* StatisticsVC.swift in Sources */,
 				230A87D82B0524A9000C4801 /* ESportsTracker.xcdatamodeld in Sources */,
 				239AEB1E2B080999007D69CC /* LiveMatchCell.swift in Sources */,
 				230A87EB2B052EE8000C4801 /* LiveMatches.swift in Sources */,

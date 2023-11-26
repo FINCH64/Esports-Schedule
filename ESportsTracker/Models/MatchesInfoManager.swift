@@ -31,7 +31,7 @@ class MatchesInfoManager {
 
         DispatchQueue.global(qos: .userInteractive).async(flags: .barrier) {
             let headers = [
-                "X-RapidAPI-Key": "af06df5541msh49a64a9df42bb9cp153137jsn4398a4d33471",
+                "X-RapidAPI-Key": "870e045e39msh57024c7382b163bp119e20jsn21651b96b866",
                 "X-RapidAPI-Host": "esportapi1.p.rapidapi.com"
             ]
             
@@ -48,6 +48,7 @@ class MatchesInfoManager {
                 } else {
                     do {
                         print(response as? HTTPURLResponse ?? "no server response")
+                        let b = try? JSONDecoder().decode(LiveMatches.self, from: data!)
                         self.matchesModel.liveMatchesInfo = try JSONDecoder().decode(LiveMatches.self, from: data!)
                         self.setLiveCSMatches(from: self.matchesModel.liveMatchesInfo?.events)
                         if updateAllMatchesTable == true {
@@ -70,7 +71,7 @@ class MatchesInfoManager {
     func getTeamImage(teamId id: Int,indexPath: IndexPath,teamType: TeamType) {
         DispatchQueue.global(qos: .default).async {
             let headers = [
-                "X-RapidAPI-Key": "af06df5541msh49a64a9df42bb9cp153137jsn4398a4d33471",
+                "X-RapidAPI-Key": "870e045e39msh57024c7382b163bp119e20jsn21651b96b866",
                 "X-RapidAPI-Host": "esportapi1.p.rapidapi.com"
             ]
             
@@ -113,12 +114,12 @@ class MatchesInfoManager {
     private func setLiveCSMatches(from matches: [Event]?) {
         //выбирает все матчи по кс и записывает в переменную внутри модели
         if let matches = matches {
-            self.matchesModel.liveCsMatchesInfo = matches.filter{$0.tournament?.category?.flag == Flag.csgo}
+            self.matchesModel.liveCsMatchesInfo = matches.filter{$0.tournament?.category?.flag == "csgo"}
             var matchIndex = 0 //нужен чтобы понимать в каком ряду будет отрисована ячейка с этим матчем,тк отрисовка идёт для всех кс матчей,то это будет сделано в таком же порядке
                                //как и перебор снизу
             self.matchesModel.liveCsMatchesInfo?.forEach { match in
-                self.getTeamImage(teamId: match.homeTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .home)
-                self.getTeamImage(teamId: match.awayTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .away)
+                //self.getTeamImage(teamId: match.homeTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .home)
+                //self.getTeamImage(teamId: match.awayTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .away)
                 matchIndex += 1
             }
         }
