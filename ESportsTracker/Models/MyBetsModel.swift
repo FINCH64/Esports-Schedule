@@ -37,12 +37,18 @@ class MyBetsModel: Model {
                 self.allMyBets = results
                 self.betsInSelectedRange = results
                 
+//                for bet in results {
+//                    bet.matchResultChecked = false
+//                }
+                
                 let myBetsToCheckResult = results.filter{bet in
                     if bet.matchResultChecked == false {
                         return true
                     }
                     return false
                 }
+                
+                
                 
                 for bet in myBetsToCheckResult {
                     self.getBetResult(bet: bet)

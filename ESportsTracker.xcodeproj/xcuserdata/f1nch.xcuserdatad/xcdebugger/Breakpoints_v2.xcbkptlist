@@ -236,8 +236,8 @@
             filePath = "ESportsTracker/Models/MyBetsModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "fetchBets()"
             landmarkType = "7">
          </BreakpointContent>
@@ -252,8 +252,8 @@
             filePath = "ESportsTracker/Models/MyBetsModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "fetchBets()"
             landmarkType = "7">
             <Locations>
@@ -300,8 +300,8 @@
             filePath = "ESportsTracker/Models/MyBetsModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "getBetResult(bet:)"
             landmarkType = "7">
             <Locations>
@@ -393,8 +393,8 @@
             filePath = "ESportsTracker/Models/MyBetsModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "getBetResult(bet:)"
             landmarkType = "7">
          </BreakpointContent>

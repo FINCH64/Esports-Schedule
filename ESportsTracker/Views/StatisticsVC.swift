@@ -47,7 +47,6 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //колличество строк в TableView == колличеству лайв кс матчей в модели
-        print((presenter as! StatisticsPresenter).getBetsCount())
         return (presenter as! StatisticsPresenter).getBetsCount()
     }
 
