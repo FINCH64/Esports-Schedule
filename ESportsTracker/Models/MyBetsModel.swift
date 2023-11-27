@@ -37,6 +37,17 @@ class MyBetsModel: Model {
                 self.allMyBets = results
                 self.betsInSelectedRange = results
                 
+                let myBetsToCheckResult = results.filter{bet in
+                    if bet.matchResultChecked == false {
+                        return true
+                    }
+                    return false
+                }
+                
+                for bet in myBetsToCheckResult {
+                    self.getBetResult(bet: bet)
+                }
+                
                 let liveBets = results.filter{bet in
                     if bet.isLive == true {
                         return true
@@ -45,17 +56,6 @@ class MyBetsModel: Model {
                 }
                 
                 self.myLiveBets = liveBets
-                
-                let myBetsToCheckResult = results.filter{bet in
-                    if bet.matchResultChecked == false {
-                        return true
-                    }
-                    return false
-                }
-                
-                //for bet in myBetsToCheckResult {
-                    self.getBetResult(bet: myBetsToCheckResult[0])
-                //}
             }
             
             DispatchQueue.main.sync{
@@ -79,8 +79,9 @@ class MyBetsModel: Model {
             let eventId = event.id
         {
             let headers = [
-                "X-RapidAPI-Key": "870e045e39msh57024c7382b163bp119e20jsn21651b96b866",
+                "X-RapidAPI-Key": "af06df5541msh49a64a9df42bb9cp153137jsn4398a4d33471",
                 "X-RapidAPI-Host": "esportapi1.p.rapidapi.com"
+
             ]
             
             let request = NSMutableURLRequest(url: NSURL(string: "https://esportapi1.p.rapidapi.com/api/esport/event/\(eventId)")! as URL,
@@ -94,8 +95,6 @@ class MyBetsModel: Model {
                 if (error != nil) {
                     print(error as Any)
                 } else {
-                    let httpResponse = response as? HTTPURLResponse
-                    print(data)
                     if let finishedEvent = try? JSONDecoder().decode(finishedEvent.self, from: data!),
                        let eventToCheck = finishedEvent.event {
                         if eventToCheck.status?.type ?? "unknown" == "finished" {
@@ -106,6 +105,7 @@ class MyBetsModel: Model {
                             let betAmmount = checkedResultBet.betAmount
                             let betProfit = (betOdd * betAmmount) - betAmmount
                             
+                            checkedResultBet.isLive = false
                             checkedResultBet.matchResultChecked = true
                             
                             if teamBettedOn ?? "none" == TeamType.home.rawValue {

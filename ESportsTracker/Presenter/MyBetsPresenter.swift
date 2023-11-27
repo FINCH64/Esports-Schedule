@@ -23,9 +23,9 @@ class MyBetsPresenter: Presenter {
         let bet = (model as! MyBetsModel).myLiveBets[indexPath.row]
         do {
             let match = try JSONDecoder().decode(Event.self, from: bet.matchEvent!)
-            let mapBetPlacedOn = match.status?.description ?? "Unknown map"
             let homeTeamName = match.homeTeam?.name ?? "Home team name"
             let awayTeamName = match.awayTeam?.name ?? "Away team name"
+            let mapBetPlacedOn = bet.mapBetPlacedOn ?? "No map info"
             let dateEventPlayed = bet.datePlayed ?? Date()
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
@@ -36,16 +36,14 @@ class MyBetsPresenter: Presenter {
             
             cell.betTypeLabel.text = bet.betType == BetType.map.rawValue ? "\(mapBetPlacedOn) winner" : "Match winner"
             cell.teamBetMadeOnLabel.text = bet.teamBetOn == TeamType.home.rawValue ? homeTeamName : awayTeamName
-            cell.mapBetPlacedLabel.text = bet.mapBetPlacedOn ?? "No map info"
-            
-            let a = bet.mapBetPlacedOn
+            cell.mapBetPlacedLabel.text = mapBetPlacedOn
             
             if bet.matchResultChecked == true {
                 cell.betStatusLabel.text = bet.betWon ? "Win" : "Lose"
                 cell.betProfitLabel.text = "\(bet.betProfit)$"
             } else {
                 cell.betStatusLabel.text = "Not finished"
-                cell.betProfitLabel.text = "0.0"
+                cell.betProfitLabel.text = "0.0$"
             }
             
             

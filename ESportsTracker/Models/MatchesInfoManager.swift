@@ -31,7 +31,7 @@ class MatchesInfoManager {
 
         DispatchQueue.global(qos: .userInteractive).async(flags: .barrier) {
             let headers = [
-                "X-RapidAPI-Key": "870e045e39msh57024c7382b163bp119e20jsn21651b96b866",
+                "X-RapidAPI-Key": "af06df5541msh49a64a9df42bb9cp153137jsn4398a4d33471",
                 "X-RapidAPI-Host": "esportapi1.p.rapidapi.com"
             ]
             
@@ -48,7 +48,6 @@ class MatchesInfoManager {
                 } else {
                     do {
                         print(response as? HTTPURLResponse ?? "no server response")
-                        let b = try? JSONDecoder().decode(LiveMatches.self, from: data!)
                         self.matchesModel.liveMatchesInfo = try JSONDecoder().decode(LiveMatches.self, from: data!)
                         self.setLiveCSMatches(from: self.matchesModel.liveMatchesInfo?.events)
                         if updateAllMatchesTable == true {
@@ -71,7 +70,7 @@ class MatchesInfoManager {
     func getTeamImage(teamId id: Int,indexPath: IndexPath,teamType: TeamType) {
         DispatchQueue.global(qos: .default).async {
             let headers = [
-                "X-RapidAPI-Key": "870e045e39msh57024c7382b163bp119e20jsn21651b96b866",
+                "X-RapidAPI-Key": "af06df5541msh49a64a9df42bb9cp153137jsn4398a4d33471",
                 "X-RapidAPI-Host": "esportapi1.p.rapidapi.com"
             ]
             

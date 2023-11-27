@@ -15,17 +15,28 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
     @IBOutlet weak var betLostCounterLabel: UILabel!
     @IBOutlet weak var overallIncomeLabel: UILabel!
     @IBOutlet weak var statisticBetsTableView: UITableView!
+    @IBOutlet var statisticsView: UIView!
     
     var filterBeginningDate: Date?
     var filterEndingDate: Date?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let weekIntervalInSeconds: Double = 604800
+        let dateMinusWeekInSeconds = Date().timeIntervalSince1970 - weekIntervalInSeconds
+        
         presenter = StatisticsPresenter(model: MyBetsModel.shared,viewToPresent: self)
         (presenter as! StatisticsPresenter).setModelPresenter(newPresenter: presenter!)
         (presenter as! StatisticsPresenter).fetchBets()
+        beginDateFilterPicker.date = Date(timeIntervalSince1970: dateMinusWeekInSeconds)
+        filterBeginningDate = beginDateFilterPicker.date
+        filterEndingDate = endDateFilterPicking.date
         statisticBetsTableView.rowHeight = 230
         statisticBetsTableView.dataSource = self
+        
+        findSelectedBets(beginSearcDate: filterBeginningDate, endSearchDate: filterEndingDate)
+        statisticBetsTableView.reloadData()
+        
     }
     
     
@@ -50,11 +61,21 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
         return cell
     }
     
-    func findSelectedBets() {
+    func findSelectedBets(beginSearcDate beginDate: Date?,endSearchDate endDate: Date?) {
         if let beginDate = filterBeginningDate,
-           let endDate = filterEndingDate {
-            (presenter as! StatisticsPresenter).findSelectedBets(inDates: DateInterval(start: beginDate, end: endDate))
-            statisticBetsTableView.reloadData()
+           let endDate = filterEndingDate
+        {
+            if beginDate <= endDate {
+                let searchInterval = DateInterval(start: beginDate, end: endDate)
+                (presenter as! StatisticsPresenter).findSelectedBets(inDates: searchInterval)
+                statisticBetsTableView.reloadData()
+            } else {
+                let alertController = UIAlertController(title: "Wrong input", message: "Selected filter dates are incorrect.", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+                alertController.addAction(cancelAction)
+                self.presentedViewController?.dismiss(animated: false)
+                present(alertController, animated: true)
+            }
         }
     }
     
@@ -70,14 +91,14 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
         overallIncomeLabel.text = overallIncome ?? "unknown"
     }
  
-    @IBAction func changedBeginFilterDate(_ sender: UIDatePicker) {
+    @IBAction func beginFilterDateClosed(_ sender: UIDatePicker) {
         self.filterBeginningDate = sender.date
-        self.findSelectedBets()
+        findSelectedBets(beginSearcDate: filterBeginningDate, endSearchDate: filterEndingDate)
     }
     
-    @IBAction func changedEndFilterDate(_ sender: UIDatePicker) {
+    @IBAction func endFilterDateClosed(_ sender: UIDatePicker) {
         self.filterEndingDate = sender.date
-        self.findSelectedBets()
+        findSelectedBets(beginSearcDate: filterBeginningDate, endSearchDate: filterEndingDate)
     }
     
     /*

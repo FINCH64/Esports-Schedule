@@ -393,7 +393,7 @@
             </objects>
             <point key="canvasLocation" x="-28.244274809160306" y="-25.35211267605634"/>
         </scene>
-        <!--My Bets-->
+        <!--Live Bets-->
         <scene sceneID="PfI-4a-loH">
             <objects>
                 <viewController id="vbr-5y-Lwq" customClass="MyBetsVC" customModule="ESportsTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -401,7 +401,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ft7-mh-LiI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ft7-mh-LiI">
                                 <rect key="frame" x="16" y="59" width="361" height="710"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -560,7 +560,7 @@
                         <viewLayoutGuide key="safeArea" id="4rr-OV-YFi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My Bets" image="person.circle.fill" catalog="system" id="ac6-O6-Mz0">
+                    <tabBarItem key="tabBarItem" title="Live Bets" image="person.circle.fill" catalog="system" id="ac6-O6-Mz0">
                         <imageReference key="selectedImage" image="person.circle.fill" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <connections>
@@ -579,7 +579,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0ck-nh-Kcn">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0ck-nh-Kcn">
                                 <rect key="frame" x="16" y="59" width="361" height="434"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -734,25 +734,25 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="uFW-FR-rD8">
-                                <rect key="frame" x="0.0" y="555" width="393" height="36"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="uFW-FR-rD8">
+                                <rect key="frame" x="146" y="558.33333333333337" width="101" height="34.333333333333371"/>
                                 <connections>
-                                    <action selector="changedBeginFilterDate:" destination="Gle-Xs-ONH" eventType="valueChanged" id="6NH-ZC-VYd"/>
+                                    <action selector="beginFilterDateClosed:" destination="Gle-Xs-ONH" eventType="editingDidEnd" id="487-X3-nM9"/>
                                 </connections>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To date:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6k-8M-O3V">
-                                <rect key="frame" x="159" y="599" width="75" height="24"/>
+                                <rect key="frame" x="159" y="600.66666666666663" width="75" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="jrS-MT-KJ3">
-                                <rect key="frame" x="0.0" y="631" width="393" height="36"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="jrS-MT-KJ3">
+                                <rect key="frame" x="146" y="632.66666666666663" width="101" height="34.333333333333371"/>
                                 <connections>
-                                    <action selector="changedEndFilterDate:" destination="Gle-Xs-ONH" eventType="valueChanged" id="a2x-jd-l7h"/>
+                                    <action selector="endFilterDateClosed:" destination="Gle-Xs-ONH" eventType="editingDidEnd" id="v1C-U4-2NR"/>
                                 </connections>
                             </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bets won:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dz0-zX-4c2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bets won:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dz0-zX-4c2">
                                 <rect key="frame" x="16" y="675" width="90" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
@@ -770,27 +770,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bets won:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4N-Kg-pO5">
-                                <rect key="frame" x="287" y="675" width="90" height="26"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bets lost:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7w-d7-5w9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bets lost:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7w-d7-5w9">
                                 <rect key="frame" x="287" y="699" width="85" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overall income:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goi-Jo-hKU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overall income:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goi-Jo-hKU">
                                 <rect key="frame" x="231" y="733" width="141" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From date:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSC-XW-wYO">
-                                <rect key="frame" x="146" y="523" width="101.33333333333331" height="24"/>
+                                <rect key="frame" x="146" y="526.33333333333337" width="101.33333333333331" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bets won:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4N-Kg-pO5">
+                                <rect key="frame" x="282" y="675" width="90" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -799,27 +799,27 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dz0-zX-4c2" firstAttribute="leading" secondItem="Jig-8k-R2U" secondAttribute="leading" constant="16" id="239-kc-nKM"/>
-                            <constraint firstItem="Jig-8k-R2U" firstAttribute="trailing" secondItem="jrS-MT-KJ3" secondAttribute="trailing" id="4Zd-Bx-eTz"/>
-                            <constraint firstItem="uFW-FR-rD8" firstAttribute="leading" secondItem="Jig-8k-R2U" secondAttribute="leading" id="7Os-7y-MOr"/>
-                            <constraint firstItem="nSC-XW-wYO" firstAttribute="centerX" secondItem="Jig-8k-R2U" secondAttribute="centerX" id="8g6-cT-aCe"/>
-                            <constraint firstItem="G6k-8M-O3V" firstAttribute="centerX" secondItem="Jig-8k-R2U" secondAttribute="centerX" id="B5z-Vg-EOR"/>
+                            <constraint firstItem="Jig-8k-R2U" firstAttribute="trailing" secondItem="jrS-MT-KJ3" secondAttribute="trailing" constant="146" id="4Zd-Bx-eTz"/>
+                            <constraint firstItem="uFW-FR-rD8" firstAttribute="leading" secondItem="Jig-8k-R2U" secondAttribute="leading" constant="146" id="7Os-7y-MOr"/>
                             <constraint firstItem="uFW-FR-rD8" firstAttribute="centerX" secondItem="Jig-8k-R2U" secondAttribute="centerX" id="Ctd-Zk-EYy"/>
                             <constraint firstItem="jrS-MT-KJ3" firstAttribute="centerX" secondItem="Jig-8k-R2U" secondAttribute="centerX" id="Dnp-q5-bNq"/>
                             <constraint firstItem="Jig-8k-R2U" firstAttribute="bottom" secondItem="pUF-G6-OoF" secondAttribute="bottom" constant="10" id="Ezo-9Y-8U2"/>
-                            <constraint firstItem="Jig-8k-R2U" firstAttribute="trailing" secondItem="Y4N-Kg-pO5" secondAttribute="trailing" constant="16" id="JZH-iU-prf"/>
+                            <constraint firstItem="Jig-8k-R2U" firstAttribute="trailing" secondItem="Y4N-Kg-pO5" secondAttribute="trailing" constant="21" id="JZH-iU-prf"/>
                             <constraint firstItem="eX7-KB-ZcZ" firstAttribute="leading" secondItem="Jig-8k-R2U" secondAttribute="leading" constant="16" id="Ooq-fh-ktm"/>
                             <constraint firstItem="jrS-MT-KJ3" firstAttribute="top" secondItem="G6k-8M-O3V" secondAttribute="bottom" constant="8" symbolic="YES" id="UtZ-zf-nuA"/>
                             <constraint firstItem="pUF-G6-OoF" firstAttribute="leading" secondItem="Jig-8k-R2U" secondAttribute="leading" constant="16" id="UuL-OB-BFo"/>
                             <constraint firstItem="s7w-d7-5w9" firstAttribute="top" secondItem="Y4N-Kg-pO5" secondAttribute="bottom" constant="-2" id="Ywe-1Y-MXZ"/>
                             <constraint firstItem="pUF-G6-OoF" firstAttribute="top" secondItem="eX7-KB-ZcZ" secondAttribute="bottom" constant="8" symbolic="YES" id="Z9K-Vu-Q3s"/>
-                            <constraint firstItem="jrS-MT-KJ3" firstAttribute="leading" secondItem="Jig-8k-R2U" secondAttribute="leading" id="dBA-VS-BBp"/>
-                            <constraint firstItem="Jig-8k-R2U" firstAttribute="trailing" secondItem="uFW-FR-rD8" secondAttribute="trailing" id="eIQ-lz-nbS"/>
+                            <constraint firstItem="jrS-MT-KJ3" firstAttribute="leading" secondItem="Jig-8k-R2U" secondAttribute="leading" constant="146" id="dBA-VS-BBp"/>
+                            <constraint firstItem="G6k-8M-O3V" firstAttribute="centerX" secondItem="jrS-MT-KJ3" secondAttribute="centerX" id="e6R-Ot-KbI"/>
+                            <constraint firstItem="Jig-8k-R2U" firstAttribute="trailing" secondItem="uFW-FR-rD8" secondAttribute="trailing" constant="146" id="eIQ-lz-nbS"/>
                             <constraint firstItem="goi-Jo-hKU" firstAttribute="leading" secondItem="pUF-G6-OoF" secondAttribute="trailing" constant="74" id="f17-fj-scR"/>
-                            <constraint firstItem="Y4N-Kg-pO5" firstAttribute="leading" secondItem="dz0-zX-4c2" secondAttribute="trailing" constant="181" id="fsY-3O-0k7"/>
+                            <constraint firstItem="Y4N-Kg-pO5" firstAttribute="leading" secondItem="dz0-zX-4c2" secondAttribute="trailing" constant="176" id="fsY-3O-0k7"/>
                             <constraint firstItem="uFW-FR-rD8" firstAttribute="top" secondItem="nSC-XW-wYO" secondAttribute="bottom" constant="8" symbolic="YES" id="lS8-Zp-f4J"/>
                             <constraint firstItem="s7w-d7-5w9" firstAttribute="leading" secondItem="eX7-KB-ZcZ" secondAttribute="trailing" constant="186" id="mTQ-qM-ZrT"/>
                             <constraint firstItem="Jig-8k-R2U" firstAttribute="trailing" secondItem="goi-Jo-hKU" secondAttribute="trailing" constant="21" id="oRz-hM-1oL"/>
                             <constraint firstItem="Jig-8k-R2U" firstAttribute="bottom" secondItem="goi-Jo-hKU" secondAttribute="bottom" constant="10" id="oqC-m1-Mqp"/>
+                            <constraint firstItem="nSC-XW-wYO" firstAttribute="centerX" secondItem="uFW-FR-rD8" secondAttribute="centerX" id="pDf-il-c5S"/>
                             <constraint firstItem="eX7-KB-ZcZ" firstAttribute="top" secondItem="dz0-zX-4c2" secondAttribute="bottom" constant="-2" id="pkb-2Y-o3g"/>
                             <constraint firstItem="G6k-8M-O3V" firstAttribute="top" secondItem="uFW-FR-rD8" secondAttribute="bottom" constant="8" symbolic="YES" id="qyJ-9Q-KgS"/>
                             <constraint firstItem="dz0-zX-4c2" firstAttribute="top" secondItem="jrS-MT-KJ3" secondAttribute="bottom" constant="8" symbolic="YES" id="tWc-fb-ozP"/>

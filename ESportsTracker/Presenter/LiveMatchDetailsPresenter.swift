@@ -13,6 +13,14 @@ class LiveMatchDetailsPresenter: Presenter {
     var model: Model
     var viewToPresent: View
     
+    var AcceptableStatusDescriptions = [
+        "Second game",
+        "Third game",
+        "Fourth game",
+        "Fifth game",
+        "No map info"
+    ]
+    
     init(model: Model, viewToPresent: View) {
         self.model = model
         self.viewToPresent = viewToPresent
@@ -37,13 +45,15 @@ class LiveMatchDetailsPresenter: Presenter {
         
         do {
             try newBetObject.matchEvent = JSONEncoder().encode(match)
+            let betMap = match.status?.description ?? "No map info"
+             
             newBetObject.teamBetOn = team.rawValue
             newBetObject.betAmount = amount
             newBetObject.datePlayed = Date(timeIntervalSince1970: TimeInterval(match.startTimestamp ?? Int(Date().timeIntervalSince1970)))
             newBetObject.isLive = match.status?.type == "inprogress" ? true : false
             newBetObject.matchOdd = odd
             newBetObject.betType = betType.rawValue
-            newBetObject.mapBetPlacedOn = match.status?.description ?? "No map info"
+            newBetObject.mapBetPlacedOn = AcceptableStatusDescriptions.contains(betMap) ? betMap : "No map info"
         } catch {
             print("Cant save match")
         }
