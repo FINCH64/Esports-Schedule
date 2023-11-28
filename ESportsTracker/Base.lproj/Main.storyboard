@@ -18,8 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reddit hot discussions:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVV-em-l4o">
+                                <rect key="frame" x="72.333333333333329" y="59.000000000000007" width="248.66666666666669" height="25.333333333333336"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="pum-KC-zC9">
-                                <rect key="frame" x="16" y="59" width="361" height="250"/>
+                                <rect key="frame" x="16" y="92" width="361" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -55,6 +61,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Lhs-rQ-QkU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dVV-em-l4o" firstAttribute="centerX" secondItem="Lhs-rQ-QkU" secondAttribute="centerX" id="DFp-3J-s7J"/>
+                            <constraint firstItem="dVV-em-l4o" firstAttribute="top" secondItem="Lhs-rQ-QkU" secondAttribute="top" id="VaK-9v-e07"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="News" id="yof-aF-W1z">
                         <imageReference key="image" image="newspaper.fill" catalog="system" symbolScale="large"/>
