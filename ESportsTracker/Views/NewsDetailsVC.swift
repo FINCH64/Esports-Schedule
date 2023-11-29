@@ -6,16 +6,14 @@
 //
 
 import UIKit
+import SafariServices
 
-class NewsDetailsVC: UIViewController,View {
+class NewsDetailsVC: UIViewController,View,SFSafariViewControllerDelegate {
     var presenter: Presenter?
     var articleToShow: Article?
     
-    var articleSelectedRowIndex: IndexPath? {
-        didSet {
-            articleToShow = (presenter as? NewsDetailsPresenter)?.getArticle(forSelectedIndex: articleSelectedRowIndex!)
-        }
-    }
+    var articleSelectedRowIndex: IndexPath?
+    var safariVC: SFSafariViewController?
     
     @IBOutlet weak var articleHeaderLabel: UILabel!
     @IBOutlet weak var articleBodyLabel: UILabel!
@@ -25,12 +23,25 @@ class NewsDetailsVC: UIViewController,View {
         super.viewDidLoad()
 
         presenter = NewsDetailsPresenter(model: NewsModel.shared,viewToPresent: self)
+        articleToShow = (presenter as? NewsDetailsPresenter)?.getArticle(forSelectedIndex: articleSelectedRowIndex)
         articleHeaderLabel.text = articleToShow!.title ?? "No title"
         articleBodyLabel.text = articleToShow!.text ?? "No description"
     }
     
     @IBAction func checkDiscussionButton(_ sender: UIButton) {
-        
+        openSafari(stringUrl: articleToShow?.url)
+    }
+    
+    func openSafari(stringUrl: String?) {
+        if let url = URL(string: stringUrl ?? "") {
+            safariVC = SFSafariViewController(url: url)
+            present(safariVC!, animated: true)
+        } else {
+            let alertController = UIAlertController(title: "Wrong url", message: "Discussion have incorrect url adress", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            alertController.addAction(cancelAction)
+            present(alertController, animated: true)
+        }
     }
     
     /*

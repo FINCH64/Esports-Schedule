@@ -15,10 +15,15 @@ class NewsPresenter: Presenter {
     init(model: Model, viewToPresent: View) {
         self.model = model
         self.viewToPresent = viewToPresent
+        setMatchesModelPresenter(newPresenter: self)
     }
     
-    func setModelPresenter(newPresenter: Presenter) {
+    func setNewsModelPresenter(newPresenter: Presenter) {
         (model as! NewsModel).setPresenter(newPresenter: newPresenter)
+    }
+    
+    func setMatchesModelPresenter(newPresenter: Presenter) {
+        MatchesInfoModel.shared.setPresenterForModel(newPresenter: newPresenter)
     }
     
     func getNews() {
@@ -37,16 +42,40 @@ class NewsPresenter: Presenter {
         return cell
     }
     
+    func fillUpcomingMatchCell(cellToFill: UICollectionViewCell,cellForRowAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = cellToFill as! UpcomingMatchCell
+        
+        if let match = MatchesInfoModel.shared.upcomingCsMatches?[indexPath.row] {
+            cell.homeTeamNameLabel.text = match.homeTeam?.name ?? "unknown team"
+            cell.awayTeamNameLabel.text = match.awayTeam?.name ?? "unkown team"
+        }
+        
+        return cell
+    }
+    
     func getBetsCount() -> Int {
         (model as! NewsModel).news?.data?.count ?? 0
     }
     
+    func getUpcomingCount() -> Int {
+        MatchesInfoModel.shared.upcomingCsMatches?.count ?? 0
+    }
+    
     func updateNewsCells() {
         if let view = viewToPresent as? NewsVC,
-           let news = (model as? NewsModel)?.news?.data,
+           let news = NewsModel.shared.news?.data,
            news.count > 0
         {
             view.newsTableView.reloadData()
+        }
+    }
+    
+    func updateUpcomingMatchesCells() {
+        if let view = viewToPresent as? NewsVC,
+           let upcomingMatches = MatchesInfoModel.shared.upcomingCsMatches,
+           upcomingMatches.count > 0
+        {
+            view.upcomingMatchesCollectionView.reloadData()
         }
     }
 }

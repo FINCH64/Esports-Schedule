@@ -108,8 +108,8 @@
             filePath = "ESportsTracker/Models/MatchesInfoManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "getTeamImage(teamId:indexPath:teamType:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -396,6 +396,70 @@
             startingLineNumber = "83"
             endingLineNumber = "83"
             landmarkName = "getBetResult(bet:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7D7E1B71-474C-41D7-B2EA-CC109219500E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ESportsTracker/Views/NewsDetailsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "openSafari(stringUrl:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7D7E1B71-474C-41D7-B2EA-CC109219500E - cdc870b6786975de"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ESportsTracker.NewsDetailsVC.openSafari(stringUrl: Swift.String) -&gt; ()"
+                  moduleName = "ESportsTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Views/NewsDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "198">
+               </Location>
+               <Location
+                  uuid = "7D7E1B71-474C-41D7-B2EA-CC109219500E - 5a20fa319ebf120b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ESportsTracker.NewsDetailsVC.openSafari(stringUrl: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "ESportsTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Views/NewsDetailsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "212">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9D9632D4-C331-4850-8B27-2547A47B4F02"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ESportsTracker/Views/NewsDetailsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "checkDiscussionButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

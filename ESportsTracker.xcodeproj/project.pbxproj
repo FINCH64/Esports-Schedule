@@ -39,6 +39,8 @@
 		23BA4DC72B0D2F5D00C00B74 /* MyBetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA4DC62B0D2F5D00C00B74 /* MyBetsModel.swift */; };
 		23BC86AA2B13C4F200F0C473 /* StatisticsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BC86A92B13C4F200F0C473 /* StatisticsPresenter.swift */; };
 		23BC86AE2B13C58700F0C473 /* StatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BC86AD2B13C58700F0C473 /* StatisticsVC.swift */; };
+		23C9836A2B17DB1A009159F5 /* UpcomingMatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C983692B17DB1A009159F5 /* UpcomingMatchCell.swift */; };
+		23C9836C2B17DD62009159F5 /* UpcomingMatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C9836B2B17DD62009159F5 /* UpcomingMatches.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		23BA4DC62B0D2F5D00C00B74 /* MyBetsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBetsModel.swift; sourceTree = "<group>"; };
 		23BC86A92B13C4F200F0C473 /* StatisticsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPresenter.swift; sourceTree = "<group>"; };
 		23BC86AD2B13C58700F0C473 /* StatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsVC.swift; sourceTree = "<group>"; };
+		23C983692B17DB1A009159F5 /* UpcomingMatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMatchCell.swift; sourceTree = "<group>"; };
+		23C9836B2B17DD62009159F5 /* UpcomingMatches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingMatches.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,7 @@
 				239AEB1D2B080999007D69CC /* LiveMatchCell.swift */,
 				2304B9782B0E72B8003A8A04 /* MyBetsCell.swift */,
 				2307899A2B15477A00E631F9 /* NewsCell.swift */,
+				23C983692B17DB1A009159F5 /* UpcomingMatchCell.swift */,
 			);
 			path = TableViewsCels;
 			sourceTree = "<group>";
@@ -119,6 +124,7 @@
 		230789A32B1549A100E631F9 /* Structures */ = {
 			isa = PBXGroup;
 			children = (
+				23C9836B2B17DD62009159F5 /* UpcomingMatches.swift */,
 				230A87EA2B052EE8000C4801 /* LiveMatches.swift */,
 				23AF026A2B114799001D5C6E /* FinishedMatch.swift */,
 				230789A52B1551E100E631F9 /* News.swift */,
@@ -289,6 +295,7 @@
 				23BC86AA2B13C4F200F0C473 /* StatisticsPresenter.swift in Sources */,
 				230A87F02B05303D000C4801 /* MatchesInfoManager.swift in Sources */,
 				239AEB1C2B0800E3007D69CC /* ViewProtocol.swift in Sources */,
+				23C9836A2B17DB1A009159F5 /* UpcomingMatchCell.swift in Sources */,
 				2304B9792B0E72B8003A8A04 /* MyBetsCell.swift in Sources */,
 				23AF026B2B114799001D5C6E /* FinishedMatch.swift in Sources */,
 				233F43272B0AD7DE00945E52 /* LiveMatchDetailsPresenter.swift in Sources */,
@@ -305,6 +312,7 @@
 				230A87D82B0524A9000C4801 /* ESportsTracker.xcdatamodeld in Sources */,
 				230789A62B1551E100E631F9 /* News.swift in Sources */,
 				239AEB1E2B080999007D69CC /* LiveMatchCell.swift in Sources */,
+				23C9836C2B17DD62009159F5 /* UpcomingMatches.swift in Sources */,
 				230789992B1546D300E631F9 /* NewsVC.swift in Sources */,
 				230A87EB2B052EE8000C4801 /* LiveMatches.swift in Sources */,
 				2307899B2B15477A00E631F9 /* NewsCell.swift in Sources */,

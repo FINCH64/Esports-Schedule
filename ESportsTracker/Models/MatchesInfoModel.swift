@@ -21,6 +21,7 @@ class MatchesInfoModel: Model {
     
     var liveMatchesInfo: LiveMatches?
     var liveCsMatchesInfo : [Event]?
+    var upcomingCsMatches : [UpcomingEvent]?
     
     //установить презентер пользующийся моделью на данный момент
     func setPresenterForModel(newPresenter: Presenter) {
@@ -45,5 +46,11 @@ class MatchesInfoModel: Model {
     //вернет по порядковому номеру ячейки идущий матч по кс,с таким же порядковым номером ячейки массива
     func getSelectedCsMatch(forIndex index: Int) -> Event{
         liveCsMatchesInfo![index]
+    }
+    
+    func updateCVUpcomingMatchesCells() {
+        if let presenter = presenter as? NewsPresenter {
+            presenter.updateUpcomingMatchesCells()
+        }
     }
 }

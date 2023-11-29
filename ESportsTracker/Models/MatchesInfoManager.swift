@@ -65,6 +65,46 @@ class MatchesInfoManager {
         }
     }
     
+    func updateUpcomingMatches() {
+        DispatchQueue.global(qos: .userInteractive).async(flags: .barrier) {
+            let headers = [
+                "X-RapidAPI-Key": "af06df5541msh49a64a9df42bb9cp153137jsn4398a4d33471",
+                "X-RapidAPI-Host": "esportapi1.p.rapidapi.com"
+            ]
+
+            let request = NSMutableURLRequest(url: NSURL(string: "https://esportapi1.p.rapidapi.com/api/esport/matches/1/12/2023")! as URL,
+                                                    cachePolicy: .useProtocolCachePolicy,
+                                                timeoutInterval: 10.0)
+            request.httpMethod = "GET"
+            request.allHTTPHeaderFields = headers
+
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                if (error != nil) {
+                    print(error as Any)
+                } else {
+                    let httpResponse = response as? HTTPURLResponse
+                    print(httpResponse)
+                    do {
+                        let upcomingMatches = try JSONDecoder().decode(UpcomingMatches.self, from: data ?? Data())
+                        self.setUpcomingCsMatches(upcomingMatches: upcomingMatches)
+                        if let upcomingCsMatches = self.matchesModel.upcomingCsMatches,
+                           upcomingCsMatches.count > 0
+                        {
+                            DispatchQueue.main.sync {
+                                self.matchesModel.updateCVUpcomingMatchesCells()
+                            }
+                        }
+                    } catch let parsingError as NSError {
+                        print(parsingError.localizedDescription)
+                    }
+                }
+            })
+
+            dataTask.resume()
+        }
+    }
+    
     //метод подгрузки лэйбла команды(картинки) по её id,внутренности будут работать и будут закомменчены чтобы не тратить запросы
     //indexPath нужен чтобы было понятно в каком ряду искать UIImage для вставки загруженных картинок
     func getTeamImage(teamId id: Int,indexPath: IndexPath,teamType: TeamType) {
@@ -121,6 +161,19 @@ class MatchesInfoManager {
                 //self.getTeamImage(teamId: match.awayTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .away)
                 matchIndex += 1
             }
+        }
+    }
+    
+    func setUpcomingCsMatches(upcomingMatches: UpcomingMatches?) {
+        if let upcomingMatches = upcomingMatches {
+            let upcomingCsMatches = upcomingMatches.events?.filter {upcomingEvent in
+                if upcomingEvent.tournament?.category?.slug?.rawValue == "csgo" {
+                    return true
+                }
+                return false
+            }
+            
+            self.matchesModel.upcomingCsMatches = upcomingCsMatches
         }
     }
 }
