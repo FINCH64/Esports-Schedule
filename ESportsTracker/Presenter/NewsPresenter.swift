@@ -10,26 +10,21 @@ import UIKit
 
 class NewsPresenter: Presenter {
     var model: Model
+    var upcomingMatchesModel: Model//upcomingMatches model
     var viewToPresent: View
     
-    init(model: Model, viewToPresent: View) {
+    init(newsModel model: Model,upcomingMatchesModel: Model,viewToPresent: View) {
         self.model = model
+        self.upcomingMatchesModel = upcomingMatchesModel
         self.viewToPresent = viewToPresent
-        setMatchesModelPresenter(newPresenter: self)
-    }
-    
-    func setNewsModelPresenter(newPresenter: Presenter) {
-        (model as! NewsModel).setPresenter(newPresenter: newPresenter)
-    }
-    
-    func setMatchesModelPresenter(newPresenter: Presenter) {
-        MatchesInfoModel.shared.setPresenterForModel(newPresenter: newPresenter)
     }
     
     func getNews() {
-        if let model = model as? NewsModel {
-            model.getNews()
-        }
+        (model as! NewsModel).getNews()
+    }
+    
+    func getUpcomingMatches() {
+        (upcomingMatchesModel as! MatchesInfoModel).updateUpcomingMatches()
     }
     
     func fillNewsCell(cellToFill: UITableViewCell,cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,7 +40,7 @@ class NewsPresenter: Presenter {
     func fillUpcomingMatchCell(cellToFill: UICollectionViewCell,cellForRowAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = cellToFill as! UpcomingMatchCell
         
-        if let match = MatchesInfoModel.shared.upcomingCsMatches?[indexPath.row] {
+        if let match = (upcomingMatchesModel as! MatchesInfoModel).upcomingCsMatches?[indexPath.row] {
             cell.homeTeamNameLabel.text = match.homeTeam?.name ?? "unknown team"
             cell.awayTeamNameLabel.text = match.awayTeam?.name ?? "unkown team"
         }
@@ -58,24 +53,28 @@ class NewsPresenter: Presenter {
     }
     
     func getUpcomingCount() -> Int {
-        MatchesInfoModel.shared.upcomingCsMatches?.count ?? 0
+        (upcomingMatchesModel as! MatchesInfoModel).upcomingCsMatches?.count ?? 0
     }
     
     func updateNewsCells() {
-        if let view = viewToPresent as? NewsVC,
-           let news = NewsModel.shared.news?.data,
-           news.count > 0
-        {
-            view.newsTableView.reloadData()
+        if let view = viewToPresent as? NewsVC {
+            view.newsSpinnerStopAnimating()
+            if let news = NewsModel.shared.news?.data,
+               news.count > 0
+            {
+                view.newsTableView.reloadData()
+            }
         }
     }
     
     func updateUpcomingMatchesCells() {
-        if let view = viewToPresent as? NewsVC,
-           let upcomingMatches = MatchesInfoModel.shared.upcomingCsMatches,
-           upcomingMatches.count > 0
-        {
-            view.upcomingMatchesCollectionView.reloadData()
+        if let view = viewToPresent as? NewsVC {
+            view.matchesSpinnerStopAnimating()
+            if let upcomingMatches = (upcomingMatchesModel as! MatchesInfoModel).upcomingCsMatches,
+                upcomingMatches.count > 0
+            {
+                view.upcomingMatchesCollectionView.reloadData()
+            }
         }
     }
 }

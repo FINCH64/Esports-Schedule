@@ -20,8 +20,11 @@ class AllMatchesTableViewController: UITableViewController,MatchView {
         self.tableView.backgroundView = spinner
         spinner!.startAnimating()
         
-        MatchesInfoManager.shared.updateAllCurrentLiveMatches(updateAllMatchesTable: true)
         presenter = LiveMatchPresenter(viewToPresent: self, matchesModel: MatchesInfoModel.shared)
+        (presenter as! LiveMatchPresenter).setModelPresenter(newPresenter: presenter!)
+        (presenter as! LiveMatchPresenter).updateCurrentLiveMatches()
+        
+        
     }
     
     override func viewDidLoad() {
@@ -36,6 +39,7 @@ class AllMatchesTableViewController: UITableViewController,MatchView {
 
     // MARK: - Table view data source
 
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1

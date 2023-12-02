@@ -23,6 +23,14 @@ class LiveMatchPresenter: Presenter {
         (model as! MatchesInfoModel).liveCsMatchesInfo?.count ?? 0
     }
     
+    func setModelPresenter(newPresenter: Presenter) {
+        (model as! MatchesInfoModel).setPresenterForModel(newPresenter: newPresenter)
+    }
+    
+    func updateCurrentLiveMatches() {
+        (model as! MatchesInfoModel).updateAllCurrentLiveMatches()
+    }
+    
     //заполняет ячейку таблицы созданную во встроенном методе,сделано в презентере,тк view не должно иметь доступа к данным модели
     func fillCellLiveMatch(cellToFill: UITableViewCell,cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = cellToFill as! LiveMatchCell
@@ -70,12 +78,13 @@ class LiveMatchPresenter: Presenter {
     
     //метод обновления всех ячеек,будет работать только если presenter обновляет TableView с матчами,если в нем хранится Модель матчей и матчей > 0
     func updateLiveMatchesTVCells() {
-        if let tableVC = viewToPresent as? AllMatchesTableViewController,
-           let model = model as? MatchesInfoModel,
-           let matchesCount = model.liveCsMatchesInfo?.count,
-           matchesCount > 0 {
-                tableVC.tableView.reloadData()//reloadData вызывает заново у TableView мтетоды подсчёта колличества рядов и создание каждой ячейки
+        if let tableVC = viewToPresent as? AllMatchesTableViewController {
             tableVC.spinnerStopAnimating()
+            if let model = model as? MatchesInfoModel,
+               let matchesCount = model.liveCsMatchesInfo?.count,
+               matchesCount > 0 {
+                tableVC.tableView.reloadData()//reloadData вызывает заново у TableView мтетоды подсчёта колличества рядов и создание каждой ячейки
+            }
         }
     }
 }

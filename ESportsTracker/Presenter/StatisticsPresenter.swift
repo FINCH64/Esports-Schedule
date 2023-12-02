@@ -60,12 +60,13 @@ class StatisticsPresenter: Presenter {
     
     //метод обновления всех ячеек со ставками,будет работать только если presenter обновляет таблицу на экране со статистикой,если с ним свяязана модель всех ставок и в диапазоне их > 0
     func updateMyBetsCells() {
-        if let tableVC = viewToPresent as? StatisticsVC,
-           let model = model as? MyBetsModel,
-           model.betsInSelectedRange.count > 0 {
-                self.calculateAndShowStats() 
+        if let tableVC = viewToPresent as? StatisticsVC {
+            tableVC.spinnerStopAnimating()
+            if let model = model as? MyBetsModel,
+                model.betsInSelectedRange.count > 0 {
+                self.calculateAndShowStats()
                 tableVC.statisticBetsTableView.reloadData()//reloadData вызывает заново у TableView мтетоды подсчёта колличества рядов и создание каждой ячейки
-                //tableVC.spinnerStopAnimating()
+            }
         }
     }
     
@@ -77,10 +78,6 @@ class StatisticsPresenter: Presenter {
         if let model = model as? MyBetsModel {
             model.fetchBets()
         }
-    }
-    
-    func setModelPresenter(newPresenter: Presenter) {
-        (model as! MyBetsModel).setPresenter(presenter: newPresenter)
     }
     
     func findSelectedBets(inDates dateInterval: DateInterval? = nil) {

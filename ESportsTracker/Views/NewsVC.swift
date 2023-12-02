@@ -12,12 +12,27 @@ class NewsVC: UIViewController,UITableViewDataSource,UICollectionViewDataSource 
     var presenter: Presenter?
     @IBOutlet weak var newsTableView: UITableView!
     @IBOutlet weak var upcomingMatchesCollectionView: UICollectionView!
+    @IBOutlet var newsLoadingSpinner: UIActivityIndicatorView?
+    @IBOutlet var matchesLoadingSpinner: UIActivityIndicatorView?
+    
+    override func loadView() {
+        super.loadView()
+        
+        newsLoadingSpinner = UIActivityIndicatorView(style: .medium)
+        self.newsTableView.backgroundView = newsLoadingSpinner
+        
+        matchesLoadingSpinner = UIActivityIndicatorView(style: .medium)
+        self.upcomingMatchesCollectionView.backgroundView = matchesLoadingSpinner
+        
+        self.matchesSpinnerStartAnimating()
+        self.newsSpinnerStartAnimating()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = NewsPresenter(model: NewsModel.shared,viewToPresent: self)
-        (presenter as! NewsPresenter).setNewsModelPresenter(newPresenter: presenter!)
+        presenter = NewsPresenter(newsModel: NewsModel.shared, upcomingMatchesModel: MatchesInfoModel.shared, viewToPresent: self)
         (presenter as! NewsPresenter).getNews()
+        (presenter as! NewsPresenter).getUpcomingMatches()
         newsTableView.dataSource = self
         upcomingMatchesCollectionView.dataSource = self
         newsTableView.rowHeight = 50
@@ -47,7 +62,8 @@ class NewsVC: UIViewController,UITableViewDataSource,UICollectionViewDataSource 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        (presenter as! NewsPresenter).getUpcomingCount()
+        let count = (presenter as! NewsPresenter).getUpcomingCount()
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,6 +77,27 @@ class NewsVC: UIViewController,UITableViewDataSource,UICollectionViewDataSource 
         return cell
     }
     
+    func matchesSpinnerStartAnimating() {
+        matchesLoadingSpinner!.startAnimating()
+        matchesLoadingSpinner!.isHidden = false
+    }
+    
+    //выключить крутилку означающую загрузку данных о матчах
+    func matchesSpinnerStopAnimating() {
+        matchesLoadingSpinner!.stopAnimating()
+        matchesLoadingSpinner!.isHidden = true
+    }
+    
+    func newsSpinnerStartAnimating() {
+        newsLoadingSpinner!.startAnimating()
+        newsLoadingSpinner!.isHidden = false
+    }
+    
+    //выключить крутилку означающую загрузку данных о матчах
+    func newsSpinnerStopAnimating() {
+        newsLoadingSpinner!.stopAnimating()
+        newsLoadingSpinner!.isHidden = true
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowFullArticle" {

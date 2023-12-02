@@ -71,8 +71,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="360" id="7hd-bd-8rD"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="X0O-NY-u9d">
-                                    <size key="itemSize" width="90" height="82"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="X0O-NY-u9d">
+                                    <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="20" minY="20" maxX="20" maxY="20"/>
@@ -86,31 +86,33 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home team" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSx-4N-cHX">
-                                                    <rect key="frame" x="15.333333333333336" y="7.9999999999999991" width="69.666666666666657" height="15.666666666666664"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Away team" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46Y-k0-f1b">
-                                                    <rect key="frame" x="17.333333333333336" y="36.333333333333336" width="65.333333333333314" height="15.666666666666664"/>
+                                                    <rect key="frame" x="18" y="19" width="69.666666666666671" height="15.666666666666664"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3r-9u-Rpd">
-                                                    <rect key="frame" x="41.666666666666664" y="22.666666666666668" width="17" height="15.666666666666668"/>
+                                                    <rect key="frame" x="41.666666666666664" y="43" width="17" height="15.666666666666664"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Away team" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46Y-k0-f1b">
+                                                    <rect key="frame" x="17.333333333333336" y="66" width="65.333333333333314" height="15.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="46Y-k0-f1b" firstAttribute="top" secondItem="K3r-9u-Rpd" secondAttribute="bottom" constant="-2" id="9xc-Is-MXc"/>
-                                                <constraint firstItem="MSx-4N-cHX" firstAttribute="centerX" secondItem="L2m-GC-lQh" secondAttribute="centerX" id="Jz5-jq-NFX"/>
-                                                <constraint firstItem="MSx-4N-cHX" firstAttribute="top" secondItem="L2m-GC-lQh" secondAttribute="top" constant="8" id="Vk6-FV-teH"/>
-                                                <constraint firstItem="46Y-k0-f1b" firstAttribute="centerX" secondItem="L2m-GC-lQh" secondAttribute="centerX" id="fdp-DG-Iyj"/>
+                                                <constraint firstItem="46Y-k0-f1b" firstAttribute="top" secondItem="K3r-9u-Rpd" secondAttribute="bottom" constant="7.3333333333333286" id="9xc-Is-MXc"/>
+                                                <constraint firstAttribute="trailing" secondItem="46Y-k0-f1b" secondAttribute="trailing" constant="17.333333333333343" id="Mgu-Vt-2KA"/>
+                                                <constraint firstItem="MSx-4N-cHX" firstAttribute="top" secondItem="L2m-GC-lQh" secondAttribute="top" constant="19" id="Vk6-FV-teH"/>
+                                                <constraint firstAttribute="trailing" secondItem="MSx-4N-cHX" secondAttribute="trailing" constant="12.333333333333329" id="Y58-29-Ylz"/>
+                                                <constraint firstItem="46Y-k0-f1b" firstAttribute="leading" secondItem="L2m-GC-lQh" secondAttribute="leading" constant="17.333333333333336" id="cau-uI-jCD"/>
+                                                <constraint firstItem="MSx-4N-cHX" firstAttribute="leading" secondItem="L2m-GC-lQh" secondAttribute="leading" constant="18" id="h2q-Qf-kdY"/>
                                                 <constraint firstItem="K3r-9u-Rpd" firstAttribute="centerX" secondItem="L2m-GC-lQh" secondAttribute="centerX" id="sIF-xG-5mO"/>
-                                                <constraint firstItem="K3r-9u-Rpd" firstAttribute="top" secondItem="MSx-4N-cHX" secondAttribute="bottom" constant="-1" id="sos-KF-14m"/>
+                                                <constraint firstItem="K3r-9u-Rpd" firstAttribute="top" secondItem="MSx-4N-cHX" secondAttribute="bottom" constant="8.3333333333333357" id="sos-KF-14m"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -122,8 +124,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcomg matches:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Th-pP-y23">
-                                <rect key="frame" x="99.666666666666686" y="59" width="194" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tomorrow matches:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Th-pP-y23">
+                                <rect key="frame" x="90.666666666666686" y="59" width="212" height="27"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -216,7 +218,7 @@
             </objects>
             <point key="canvasLocation" x="2212.9770992366412" y="-1189.4366197183099"/>
         </scene>
-        <!--Live matches-->
+        <!--Live Matches-->
         <scene sceneID="2wq-QW-JBm">
             <objects>
                 <tableViewController id="lHM-PN-1Js" customClass="AllMatchesTableViewController" customModule="ESportsTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -325,8 +327,8 @@
                             <outlet property="delegate" destination="lHM-PN-1Js" id="E41-yr-6Vh"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Live matches" id="E3G-h0-IdS">
-                        <imageReference key="image" image="arrowshape.forward.circle.fill" catalog="system" symbolScale="medium"/>
+                    <tabBarItem key="tabBarItem" title="Live Matches" id="E3G-h0-IdS">
+                        <imageReference key="image" image="arrowshape.forward.circle.fill" catalog="system" symbolScale="medium" variableValue="1"/>
                         <imageReference key="selectedImage" image="arrowshape.forward.circle.fill" catalog="system" symbolScale="large" variableValue="1"/>
                     </tabBarItem>
                 </tableViewController>
@@ -578,17 +580,25 @@
             </objects>
             <point key="canvasLocation" x="1809.9236641221373" y="-392.25352112676057"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar Navigation Controller-->
         <scene sceneID="lRz-z3-V4z">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="IAp-Ht-iQc" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="IAp-Ht-iQc" customClass="TabBarNavigationController" customModule="ESportsTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7Ae-bB-KEW">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="lHM-PN-1Js" kind="relationship" relationship="viewControllers" id="4mS-rY-p0Z"/>
                         <segue destination="vbr-5y-Lwq" kind="relationship" relationship="viewControllers" id="pUf-DC-M1s"/>

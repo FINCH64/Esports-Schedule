@@ -11,11 +11,19 @@ class MyBetsVC: UIViewController,UITableViewDataSource,View {
     var presenter: Presenter?
     
     @IBOutlet weak var betsTableView: UITableView!
+    @IBOutlet var spinner: UIActivityIndicatorView?
+    
+    override func loadView() {
+        super.loadView()
+        
+        spinner = UIActivityIndicatorView(style: .medium)
+        self.betsTableView.backgroundView = spinner
+        self.spinnerStartAnimating()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = MyBetsPresenter(model: MyBetsModel.shared,viewToPresent: self)
-        (presenter as! MyBetsPresenter).setModelPresenter(newPresenter: presenter!)
         (presenter as! MyBetsPresenter).fetchBets()
         betsTableView.rowHeight = 230
         betsTableView.dataSource = self
@@ -43,6 +51,16 @@ class MyBetsVC: UIViewController,UITableViewDataSource,View {
         return cell
     }
     
+    func spinnerStartAnimating() {
+        spinner!.startAnimating()
+        spinner!.isHidden = false
+    }
+    
+    //выключить крутилку означающую загрузку данных о матчах
+    func spinnerStopAnimating() {
+        spinner!.stopAnimating()
+        spinner!.isHidden = true
+    }
     
     /*
     // MARK: - Navigation

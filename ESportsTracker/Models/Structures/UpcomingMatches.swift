@@ -1,10 +1,3 @@
-//
-//  UpcomingMatch.swift
-//  ESportsTracker
-//
-//  Created by f1nch on 29.11.23.
-//
-
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
 //
@@ -22,10 +15,11 @@ struct UpcomingEvent: Codable {
     let tournament: UpcomingTournament?
     let customId: String?
     let status: UpcomingStatus?
+    let winnerCode: Int?
     let homeTeam, awayTeam: UpcomingTeam?
-    let homeScore, awayScore: UpcomingAwayScore?
+    let homeScore, awayScore: UpcomingScore?
     let coverage: Int?
-    let time: UpcomingAwayScore?
+    let time: UpcomingTime?
     let changes: UpcomingChanges?
     let hasGlobalHighlights, crowdsourcingDataDisplayEnabled: Bool?
     let id, bestOf: Int?
@@ -33,12 +27,14 @@ struct UpcomingEvent: Codable {
     let startTimestamp: Int?
     let slug: String?
     let finalResultOnly, isEditor, crowdsourcingEnabled: Bool?
-    let winnerCode: Int?
     let roundInfo: UpcomingRoundInfo?
+    let lastPeriod: String?
 }
 
-// MARK: - UpcomingAwayScore
-struct UpcomingAwayScore: Codable {
+// MARK: - UpcomingScore
+struct UpcomingScore: Codable {
+    let current, display, period1, period2: Int?
+    let period3, normaltime: Int?
 }
 
 // MARK: - UpcomingTeam
@@ -89,14 +85,8 @@ enum UpcomingText: String, Codable {
 
 // MARK: - UpcomingChanges
 struct UpcomingChanges: Codable {
+    let changes: [String]?
     let changeTimestamp: Int?
-    let changes: [UpcomingChange]?
-}
-
-enum UpcomingChange: String, Codable {
-    case statusCode = "status.code"
-    case statusDescription = "status.description"
-    case statusType = "status.type"
 }
 
 enum UpcomingEventType: String, Codable {
@@ -117,12 +107,24 @@ struct UpcomingStatus: Codable {
 
 enum UpcomingDescription: String, Codable {
     case canceled = "Canceled"
+    case ended = "Ended"
+    case firstGame = "First game"
     case notStarted = "Not started"
+    case pause = "Pause"
+    case secondGame = "Second game"
+    case the1StHalf = "1st half"
 }
 
 enum UpcomingType: String, Codable {
     case canceled = "canceled"
+    case finished = "finished"
+    case inprogress = "inprogress"
     case notstarted = "notstarted"
+}
+
+// MARK: - UpcomingTime
+struct UpcomingTime: Codable {
+    let currentPeriodStartTimestamp: Int?
 }
 
 // MARK: - UpcomingTournament

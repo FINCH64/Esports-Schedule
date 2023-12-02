@@ -31,11 +31,6 @@ class LiveMatchDetailsPresenter: Presenter {
         (model as! MatchesInfoModel).liveCsMatchesInfo![index]
     }
     
-    //обновить данные о всех идущих матчах
-    func updateData() {
-        MatchesInfoManager.shared.updateAllCurrentLiveMatches(updateAllMatchesTable: true)
-    }
-    
     //функция сохранения данных о сделанной ставке,отработает только если все данные введены корректно
     func saveTask(betAmount amount: Double,betOdd odd: Double,forMatch match: Event,teamBetOn team: TeamType,betType: BetType) {
         let viewContext = getContext()
@@ -54,6 +49,7 @@ class LiveMatchDetailsPresenter: Presenter {
             newBetObject.matchOdd = odd
             newBetObject.betType = betType.rawValue
             newBetObject.mapBetPlacedOn = AcceptableStatusDescriptions.contains(betMap) ? betMap : "No map info"
+            MyBetsModel.shared.myLiveBets.append(newBetObject)
         } catch {
             print("Cant save match")
         }

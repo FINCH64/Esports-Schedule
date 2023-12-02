@@ -40,6 +40,7 @@ class NewsModel: Model {
                     let httpResponse = response as? HTTPURLResponse
                     do {
                         self.news = try JSONDecoder().decode(News.self, from: data ?? Data())
+                        let news = self.news
                         DispatchQueue.main.sync {
                             self.updateNewsCells()
                         }

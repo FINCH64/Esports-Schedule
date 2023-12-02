@@ -58,16 +58,14 @@ class MyBetsPresenter: Presenter {
    
     //метод обновления всех ячеек со ставками,будет работать только если presenter обновляет таблицу на экране со ставками,если с ним свяязана модель всех ставок и их больше 0
     func updateMyBetsCells() {
-        if let tableVC = viewToPresent as? MyBetsVC,
-           let model = model as? MyBetsModel,
-           model.myLiveBets.count > 0 {
-                tableVC.betsTableView.reloadData()//reloadData вызывает заново у TableView мтетоды подсчёта колличества рядов и создание каждой ячейки
-                //tableVC.spinnerStopAnimating()
+        if let tableVC = viewToPresent as? MyBetsVC {
+            tableVC.spinnerStopAnimating()
+            
+            if let model = model as? MyBetsModel,
+               model.myLiveBets.count > 0 {
+                    tableVC.betsTableView.reloadData()//reloadData вызывает заново у TableView мтетоды подсчёта колличества рядов и создание каждой ячейки
+            }
         }
-    }
-    
-    func getBetsCount() -> Int {
-        (model as? MyBetsModel)?.allMyBets.count ?? 0
     }
     
     func getLiveBetsCount() -> Int {
@@ -80,7 +78,4 @@ class MyBetsPresenter: Presenter {
         }
     }
     
-    func setModelPresenter(newPresenter: Presenter) {
-        (model as! MyBetsModel).setPresenter(presenter: newPresenter)
-    }
 }

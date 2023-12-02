@@ -16,9 +16,18 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
     @IBOutlet weak var overallIncomeLabel: UILabel!
     @IBOutlet weak var statisticBetsTableView: UITableView!
     @IBOutlet var statisticsView: UIView!
+    @IBOutlet var spinner: UIActivityIndicatorView?
     
     var filterBeginningDate: Date?
     var filterEndingDate: Date?
+
+    override func loadView() {
+        super.loadView()
+        
+        spinner = UIActivityIndicatorView(style: .medium)
+        self.statisticBetsTableView.backgroundView = spinner
+        self.spinnerStartAnimating()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +35,6 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
         let dateMinusWeekInSeconds = Date().timeIntervalSince1970 - weekIntervalInSeconds
         
         presenter = StatisticsPresenter(model: MyBetsModel.shared,viewToPresent: self)
-        (presenter as! StatisticsPresenter).setModelPresenter(newPresenter: presenter!)
         (presenter as! StatisticsPresenter).fetchBets()
         beginDateFilterPicker.date = Date(timeIntervalSince1970: dateMinusWeekInSeconds)
         filterBeginningDate = beginDateFilterPicker.date
@@ -90,6 +98,17 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
         overallIncomeLabel.text = overallIncome ?? "unknown"
     }
  
+    func spinnerStartAnimating() {
+        spinner!.startAnimating()
+        spinner!.isHidden = false
+    }
+    
+    //выключить крутилку означающую загрузку данных о матчах
+    func spinnerStopAnimating() {
+        spinner!.stopAnimating()
+        spinner!.isHidden = true
+    }
+    
     @IBAction func beginFilterDateClosed(_ sender: UIDatePicker) {
         self.filterBeginningDate = sender.date
         findSelectedBets(beginSearcDate: filterBeginningDate, endSearchDate: filterEndingDate)
@@ -99,7 +118,6 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
         self.filterEndingDate = sender.date
         findSelectedBets(beginSearcDate: filterBeginningDate, endSearchDate: filterEndingDate)
     }
-    
     /*
     // MARK: - Navigation
 

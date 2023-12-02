@@ -30,8 +30,8 @@
             filePath = "ESportsTracker/Presenter/LiveMatchPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "updateRows(rowsToUpdate:)"
             landmarkType = "7">
             <Locations>
@@ -101,22 +101,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BE9514F1-8F76-4D5C-8336-F2DF2B0F338D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ESportsTracker/Models/MatchesInfoManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "getTeamImage(teamId:indexPath:teamType:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "0673E294-5B2E-4625-AE94-D9A4E556F7A4"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -124,58 +108,10 @@
             filePath = "ESportsTracker/Presenter/LiveMatchPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "fillCellLiveMatch(cellToFill:cellForRowAt:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "13873C2F-D900-4826-BB69-73B1375A57FC"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ESportsTracker/Presenter/LiveMatchDetailsPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "updateData()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "13873C2F-D900-4826-BB69-73B1375A57FC - a150ffbe8310517f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ESportsTracker.LiveMatchDetailsPresenter.updateData() -&gt; ()"
-                  moduleName = "ESportsTracker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Presenter/LiveMatchDetailsPresenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "28"
-                  endingLineNumber = "28"
-                  offsetFromSymbolStart = "22">
-               </Location>
-               <Location
-                  uuid = "13873C2F-D900-4826-BB69-73B1375A57FC - a150ffbe83105067"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ESportsTracker.LiveMatchDetailsPresenter.updateData() -&gt; ()"
-                  moduleName = "ESportsTracker"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Presenter/LiveMatchDetailsPresenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "22">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -461,6 +397,291 @@
             endingLineNumber = "32"
             landmarkName = "checkDiscussionButton(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F6B9C33F-DA69-44C8-B90C-FB5726614B56"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ESportsTracker/Views/NewsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F6B9C33F-DA69-44C8-B90C-FB5726614B56 - b16f8a483ce4b01e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ESportsTracker.NewsVC.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "ESportsTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Views/NewsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "162">
+               </Location>
+               <Location
+                  uuid = "F6B9C33F-DA69-44C8-B90C-FB5726614B56 - b16f8a483ce4b1fd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ESportsTracker.NewsVC.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "ESportsTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Views/NewsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "162">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A8802C12-D505-448A-BBF4-E30AFE5B8DD3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ESportsTracker/Presenter/NewsPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "fillNewsCell(cellToFill:cellForRowAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A8802C12-D505-448A-BBF4-E30AFE5B8DD3 - 29276709de5b70eb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ESportsTracker.NewsPresenter.fillNewsCell(cellToFill: __C.UITableViewCell, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "ESportsTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Presenter/NewsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "158">
+               </Location>
+               <Location
+                  uuid = "A8802C12-D505-448A-BBF4-E30AFE5B8DD3 - 29276709de5b7729"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ESportsTracker.NewsPresenter.fillNewsCell(cellToFill: __C.UITableViewCell, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "ESportsTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Presenter/NewsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "158">
+               </Location>
+               <Location
+                  uuid = "A8802C12-D505-448A-BBF4-E30AFE5B8DD3 - 29276709de5b7797"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ESportsTracker.NewsPresenter.fillNewsCell(cellToFill: __C.UITableViewCell, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "ESportsTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Presenter/NewsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "158">
+               </Location>
+               <Location
+                  uuid = "A8802C12-D505-448A-BBF4-E30AFE5B8DD3 - 29276709de5b7632"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ESportsTracker.NewsPresenter.fillNewsCell(cellToFill: __C.UITableViewCell, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "ESportsTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Presenter/NewsPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "158">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F46BD635-2C3E-4DEA-A453-ABEC4195A94E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ESportsTracker/Models/MatchesInfoModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "updateUpcomingMatches()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F46BD635-2C3E-4DEA-A453-ABEC4195A94E - ef4450a283e55d4c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 @Sendable () -&gt; () in ESportsTracker.MatchesInfoModel.updateUpcomingMatches() -&gt; ()"
+                  moduleName = "ESportsTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Models/MatchesInfoModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "1221">
+               </Location>
+               <Location
+                  uuid = "F46BD635-2C3E-4DEA-A453-ABEC4195A94E - ef4450a283e55d4c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 @Sendable () -&gt; () in ESportsTracker.MatchesInfoModel.updateUpcomingMatches() -&gt; ()"
+                  moduleName = "ESportsTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Models/MatchesInfoModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "936">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7D4BB705-1A07-4F7C-8952-6762AA1CD3F7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ESportsTracker/Models/MatchesInfoModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "updateAllCurrentLiveMatches()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7D4BB705-1A07-4F7C-8952-6762AA1CD3F7 - d45f014f9615a691"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 @Sendable () -&gt; () in ESportsTracker.MatchesInfoModel.updateAllCurrentLiveMatches() -&gt; ()"
+                  moduleName = "ESportsTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Models/MatchesInfoModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "1572">
+               </Location>
+               <Location
+                  uuid = "7D4BB705-1A07-4F7C-8952-6762AA1CD3F7 - c4342284ba4116db"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 @Sendable () -&gt; () in ESportsTracker.MatchesInfoModel.updateAllCurrentLiveMatches() -&gt; ()"
+                  moduleName = "ESportsTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Models/MatchesInfoModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "22">
+               </Location>
+               <Location
+                  uuid = "7D4BB705-1A07-4F7C-8952-6762AA1CD3F7 - d45f014f9615a691"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 @Sendable () -&gt; () in ESportsTracker.MatchesInfoModel.updateAllCurrentLiveMatches() -&gt; ()"
+                  moduleName = "ESportsTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Models/MatchesInfoModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "1482">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "55CFC8C2-B5E3-4DF5-BDAF-E2B837F28589"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ESportsTracker/Models/MatchesInfoModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "updateAllCurrentLiveMatches()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "55CFC8C2-B5E3-4DF5-BDAF-E2B837F28589 - d45f014f9615a6cf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 @Sendable () -&gt; () in ESportsTracker.MatchesInfoModel.updateAllCurrentLiveMatches() -&gt; ()"
+                  moduleName = "ESportsTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Models/MatchesInfoModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "1068">
+               </Location>
+               <Location
+                  uuid = "55CFC8C2-B5E3-4DF5-BDAF-E2B837F28589 - d45f014f9615a6cf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 @Sendable () -&gt; () in ESportsTracker.MatchesInfoModel.updateAllCurrentLiveMatches() -&gt; ()"
+                  moduleName = "ESportsTracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/f1nch/Desktop/uikit%20Lessons/ESportsTracker/ESportsTracker/Models/MatchesInfoModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "1087">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
