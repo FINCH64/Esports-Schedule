@@ -70,7 +70,7 @@ class StatisticsPresenter: Presenter {
         }
     }
     
-    func getBetsCount() -> Int {
+    func getBetsInSelectedRange() -> Int {
         (model as! MyBetsModel).betsInSelectedRange.count
     }
     
@@ -108,7 +108,7 @@ class StatisticsPresenter: Presenter {
             if let statisticVC = (viewToPresent as? StatisticsVC) {
                 statisticVC.setBetsWon(wonCount: "\(betsWonCounter)")
                 statisticVC.setBetsLost(lostCount: "\(betsLostCounter)")
-                statisticVC.setOverallIncome(overallIncome: "\(overallIncomeCounter)")
+                statisticVC.setOverallIncome(overallIncome: overallIncomeCounter)
             }
         }
     }

@@ -39,6 +39,7 @@
 		23BA4DC72B0D2F5D00C00B74 /* MyBetsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BA4DC62B0D2F5D00C00B74 /* MyBetsModel.swift */; };
 		23BC86AA2B13C4F200F0C473 /* StatisticsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BC86A92B13C4F200F0C473 /* StatisticsPresenter.swift */; };
 		23BC86AE2B13C58700F0C473 /* StatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BC86AD2B13C58700F0C473 /* StatisticsVC.swift */; };
+		23C031432B1D14F2002C7640 /* OptionallyDecodable in Frameworks */ = {isa = PBXBuildFile; productRef = 23C031422B1D14F2002C7640 /* OptionallyDecodable */; };
 		23C9836A2B17DB1A009159F5 /* UpcomingMatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C983692B17DB1A009159F5 /* UpcomingMatchCell.swift */; };
 		23C9836C2B17DD62009159F5 /* UpcomingMatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C9836B2B17DD62009159F5 /* UpcomingMatches.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23C031432B1D14F2002C7640 /* OptionallyDecodable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,10 +161,10 @@
 		230A87CC2B0524A9000C4801 /* ESportsTracker */ = {
 			isa = PBXGroup;
 			children = (
+				23C031402B1D145C002C7640 /* Navigation */,
 				239AEB122B07F91A007D69CC /* Views */,
 				230A87F32B053951000C4801 /* Presenter */,
 				230A87EC2B052EFF000C4801 /* Models */,
-				2315BADF2B1BA5A200CC1AD4 /* TabBarNavigationController.swift */,
 				230A87CD2B0524A9000C4801 /* AppDelegate.swift */,
 				230A87CF2B0524A9000C4801 /* SceneDelegate.swift */,
 				230A87D32B0524A9000C4801 /* Main.storyboard */,
@@ -215,6 +217,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		23C031402B1D145C002C7640 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				2315BADF2B1BA5A200CC1AD4 /* TabBarNavigationController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -231,6 +241,9 @@
 			dependencies = (
 			);
 			name = ESportsTracker;
+			packageProductDependencies = (
+				23C031422B1D14F2002C7640 /* OptionallyDecodable */,
+			);
 			productName = ESportsTracker;
 			productReference = 230A87CA2B0524A9000C4801 /* ESportsTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -259,6 +272,9 @@
 				Base,
 			);
 			mainGroup = 230A87C12B0524A9000C4801;
+			packageReferences = (
+				23C031412B1D14F2002C7640 /* XCRemoteSwiftPackageReference "OptionallyDecodable" */,
+			);
 			productRefGroup = 230A87CB2B0524A9000C4801 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -537,6 +553,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		23C031412B1D14F2002C7640 /* XCRemoteSwiftPackageReference "OptionallyDecodable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/idrougge/OptionallyDecodable";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		23C031422B1D14F2002C7640 /* OptionallyDecodable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23C031412B1D14F2002C7640 /* XCRemoteSwiftPackageReference "OptionallyDecodable" */;
+			productName = OptionallyDecodable;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		230A87D62B0524A9000C4801 /* ESportsTracker.xcdatamodeld */ = {

@@ -31,12 +31,12 @@ class LiveMatchDetailsVC: UIViewController,MatchView {
     var matchIndex: IndexPath? //IndexPath(номер выбранного ряда в таблице) совпадает с номером матча в массиве матчей по кс
     var match: Event?
     
+    //установим презентер и отрисуем view,на основе переданного матча
     override func viewDidLoad() { //получим данные по переданному индексу от TableVC из модели и соберём всё вью по этим данным
         super.viewDidLoad()
-        //MatchesInfoManager.shared.updateAllCurrentLiveMatches(updateAllMatchesTable: true)
         
         presenter = LiveMatchDetailsPresenter(model: MatchesInfoModel.shared,viewToPresent: self)
-        self.match = (presenter as! LiveMatchDetailsPresenter).getSelectedMatch(forIndex: matchIndex?.row ?? 0)
+        self.match = getSelectedMatch(forIndex: matchIndex?.row ?? 0)
         
         let currentUnixTime = Date().timeIntervalSince1970
         let mapStartUnixTime = Double(match?.time?.currentPeriodStartTimestamp ?? Int(currentUnixTime))
@@ -55,7 +55,7 @@ class LiveMatchDetailsVC: UIViewController,MatchView {
         timeFromStartLabel.text = "\(Int(secondsPassedFromMapStart/60)) minutes"
     }
     
-    
+    //при нажатии на кнопку проверяет введённые данные и если они верны пытается сохранить ставку
     @IBAction func placeBetTapped(_ sender: UIButton) {
         let alertController = UIAlertController()
         let okAction =  UIAlertAction(title: "OK", style: .default)
@@ -90,6 +90,21 @@ class LiveMatchDetailsVC: UIViewController,MatchView {
         
         let teamBet = teamToBetSegmentedControl.selectedSegmentIndex == 0 ? TeamType.home : TeamType.away
         
-        (presenter as! LiveMatchDetailsPresenter).saveTask(betAmount: betAmmount, betOdd: betOdd, forMatch: match!, teamBetOn: teamBet,betType: betType)
+        saveTask(betAmount: betAmmount, betOdd: betOdd, forMatch: match!, teamBetOn: teamBet,betType: betType)
+    }
+    
+    //возвращает презентер типа презентера деталей лайв матчей,сделано чтобы не приводить искуственно при каждой надобности использовать презентер
+    func getLiveMatchDetailsPresenter() -> LiveMatchDetailsPresenter {
+        presenter as! LiveMatchDetailsPresenter
+    }
+    
+    //вернет Event(идущий матч) под номером ряда,на который нажали
+    func getSelectedMatch(forIndex: Int) -> Event{
+        getLiveMatchDetailsPresenter().getSelectedMatch(forIndex: forIndex)
+    }
+    
+    //сохранить ставку,сделанную на идущий матч
+    func saveTask(betAmount: Double, betOdd: Double, forMatch: Event, teamBetOn: TeamType,betType: BetType) {
+        getLiveMatchDetailsPresenter().saveTask(betAmount: betAmount, betOdd: betOdd, forMatch: forMatch, teamBetOn: teamBetOn,betType: betType)
     }
 }

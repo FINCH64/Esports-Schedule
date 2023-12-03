@@ -50,7 +50,7 @@ class TabBarNavigationController: UITabBarController,UITabBarControllerDelegate 
                         print("News")
                     }
                 }
-            case let destinationVC as MyBetsVC:
+            case let destinationVC as LiveBetsVC:
                 if let betsModel = setModelsPresenter(presenterOfView: destinationVC) as? MyBetsModel {
                     betsModel.fetchBets()
                     print("unfinished bets")

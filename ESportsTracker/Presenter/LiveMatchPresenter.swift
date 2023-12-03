@@ -12,6 +12,8 @@ class LiveMatchPresenter: Presenter {
     var model: Model
     var viewToPresent: View
     
+    //презентер модели устанавливается только на этом экране,
+    //тк он выбран в TabBar controller по умолчанию,в дальнейшем презентеры моделей устанавливаются в классе навигатора
     init(viewToPresent: MatchView, matchesModel: MatchesInfoModel) {
         self.viewToPresent = viewToPresent
         self.model = matchesModel
@@ -22,6 +24,7 @@ class LiveMatchPresenter: Presenter {
     func getCsMatchesCount() -> Int {
         (model as! MatchesInfoModel).liveCsMatchesInfo?.count ?? 0
     }
+    
     
     func setModelPresenter(newPresenter: Presenter) {
         (model as! MatchesInfoModel).setPresenterForModel(newPresenter: newPresenter)

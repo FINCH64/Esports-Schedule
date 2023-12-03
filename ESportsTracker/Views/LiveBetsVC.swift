@@ -7,12 +7,13 @@
 
 import UIKit
 
-class MyBetsVC: UIViewController,UITableViewDataSource,View {
+class LiveBetsVC: UIViewController,UITableViewDataSource,View {
     var presenter: Presenter?
     
     @IBOutlet weak var betsTableView: UITableView!
     @IBOutlet var spinner: UIActivityIndicatorView?
     
+    //при загрузке включим спинер,отображающийся пока подгружаются ставки пользователя
     override func loadView() {
         super.loadView()
         
@@ -21,24 +22,24 @@ class MyBetsVC: UIViewController,UITableViewDataSource,View {
         self.spinnerStartAnimating()
     }
     
+    //установим высоту ряда таблицы всех матчей,сделано тк оно неверно считывало её со сториборда и ломалась,
+    //укажем что этот класс и есть источник данных таблицы идущих ставок
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = MyBetsPresenter(model: MyBetsModel.shared,viewToPresent: self)
-        (presenter as! MyBetsPresenter).fetchBets()
+        presenter = LiveBetsPresenter(model: MyBetsModel.shared,viewToPresent: self)
+        fetchBets()
         betsTableView.rowHeight = 230
         betsTableView.dataSource = self
     }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //колличество строк в TableView == колличеству лайв кс матчей в модели
-        print((presenter as! MyBetsPresenter).getLiveBetsCount())
-        return (presenter as! MyBetsPresenter).getLiveBetsCount()
+        //колличество строк в TableView == колличеству лайв ставок в модели
+        return getLiveBetsCount()
     }
 
     
@@ -47,10 +48,11 @@ class MyBetsVC: UIViewController,UITableViewDataSource,View {
         //заполняем созданную ячейку внутри презентера лайв матчей,
         //тк у view нет доступа кнапрямую к модели
         
-        cell = (presenter as! MyBetsPresenter).fillCellLiveMatch(cellToFill: cell, cellForRowAt: indexPath)
+        cell = fillCellLiveMatch(cellToFill: cell, cellForRowAt: indexPath)
         return cell
     }
     
+    //включить крутилку означающую загрузку данных о матчах
     func spinnerStartAnimating() {
         spinner!.startAnimating()
         spinner!.isHidden = false
@@ -62,14 +64,23 @@ class MyBetsVC: UIViewController,UITableViewDataSource,View {
         spinner!.isHidden = true
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //возвращает презентер типа презентера лайв ставок,сделано чтобы не приводить искуственно при каждой надобности использовать презентер
+    func getLiveBetsPresenter() -> LiveBetsPresenter {
+        presenter as! LiveBetsPresenter
     }
-    */
 
+    //обновить данные о ставках пользователя
+    func fetchBets() {
+        getLiveBetsPresenter().fetchBets()
+    }
+    
+    //получить колличество идущих ставок
+    func getLiveBetsCount() -> Int {
+        getLiveBetsPresenter().getLiveBetsCount()
+    }
+    
+    //заполнить ячейку таблицы с идущими ставками
+    func fillCellLiveMatch(cellToFill: UITableViewCell, cellForRowAt: IndexPath) -> UITableViewCell {
+        getLiveBetsPresenter().fillCellLiveMatch(cellToFill: cellToFill, cellForRowAt: cellForRowAt)
+    }
 }

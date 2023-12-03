@@ -12,6 +12,7 @@ class AllMatchesTableViewController: UITableViewController,MatchView {
     var presenter: Presenter?
     @IBOutlet var spinner: UIActivityIndicatorView?
     
+    //при загрузке установим крутилку пока матчи грузятся + установим презентер модели,
     override func loadView() {
         super.loadView()
         
@@ -21,34 +22,24 @@ class AllMatchesTableViewController: UITableViewController,MatchView {
         spinner!.startAnimating()
         
         presenter = LiveMatchPresenter(viewToPresent: self, matchesModel: MatchesInfoModel.shared)
-        (presenter as! LiveMatchPresenter).setModelPresenter(newPresenter: presenter!)
-        (presenter as! LiveMatchPresenter).updateCurrentLiveMatches()
-        
-        
+        setModelPresenter(newPresenter: presenter)
+        updateCurrentLiveMatches()
     }
     
+    //установим высоту ряда таблицы всех матчей,сделано тк оно неверно считывало её со сториборда и ломалась
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.rowHeight = 123
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    // MARK: - Table view data source
-
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
+    //кол-во рядов таблицы = количеству лайв матчей кс в MatchesInfoModel
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //колличество строк в TableView == колличеству лайв кс матчей в модели
-        print((presenter as! LiveMatchPresenter).getCsMatchesCount())
-        return (presenter as! LiveMatchPresenter).getCsMatchesCount()
+        return getLiveMatchPresenter().getCsMatchesCount()
     }
 
     
@@ -57,7 +48,7 @@ class AllMatchesTableViewController: UITableViewController,MatchView {
         //заполняем созданную ячейку внутри презентера лайв матчей,
         //тк у view нет доступа кнапрямую к модели
         
-        cell = (presenter as! LiveMatchPresenter).fillCellLiveMatch(cellToFill: cell, cellForRowAt: indexPath)
+        cell = fillCellLiveMatch(cellToFill: cell, cellForRowAt: indexPath)
         return cell
     }
     
@@ -73,10 +64,30 @@ class AllMatchesTableViewController: UITableViewController,MatchView {
         spinner!.isHidden = true
     }
 
+    //возвращает презентер типа презентера лайв матчей,сделано чтобы не приводить искуственно при каждой надобности использовать презентер
+    func getLiveMatchPresenter() -> LiveMatchPresenter {
+        presenter as! LiveMatchPresenter
+    }
+    
+    //установить презентер модели
+    //он устанавливается только на этом экране,тк он выбран в TabBar controller по умолчанию,в дальнейшем презентеры моделей устанавливаются в классе навигатора
+    func setModelPresenter(newPresenter: Presenter?) {
+        getLiveMatchPresenter().setModelPresenter(newPresenter: newPresenter!)
+    }
+    
+    //обновить список идущих матчей
+    func updateCurrentLiveMatches() {
+        getLiveMatchPresenter().updateCurrentLiveMatches()
+    }
+    
+    //заполнить ячейку таблицы списка идущих матчей
+    func fillCellLiveMatch(cellToFill: UITableViewCell, cellForRowAt: IndexPath) -> UITableViewCell{
+        getLiveMatchPresenter().fillCellLiveMatch(cellToFill: cellToFill, cellForRowAt: cellForRowAt)
+    }
+    
     // MARK: - Navigation
     
     //проверка на переход к экрану с полной информацией и передача в него матча
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowMatchDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
@@ -85,42 +96,4 @@ class AllMatchesTableViewController: UITableViewController,MatchView {
             }
         }
     }
-    
-
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
 }

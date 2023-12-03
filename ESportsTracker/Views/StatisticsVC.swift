@@ -21,6 +21,7 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
     var filterBeginningDate: Date?
     var filterEndingDate: Date?
 
+    //при загрузке включим спинер,отображающийся пока подгружаются ставки пользователя
     override func loadView() {
         super.loadView()
         
@@ -29,16 +30,21 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
         self.spinnerStartAnimating()
     }
     
+    //установим высоту ряда таблицы всех матчей,сделано тк оно неверно считывало её со сториборда и ломалась,
+    //укажем что этот класс и есть источник данных таблицы ставок
+    //считаем показатели фильтров по дате и установим нижнюю границу фильтра на текущую дату минус неделя,обновим данные ставок,найдём ставки за последнюю неделю
     override func viewDidLoad() {
         super.viewDidLoad()
         let weekIntervalInSeconds: Double = 604800
         let dateMinusWeekInSeconds = Date().timeIntervalSince1970 - weekIntervalInSeconds
         
         presenter = StatisticsPresenter(model: MyBetsModel.shared,viewToPresent: self)
-        (presenter as! StatisticsPresenter).fetchBets()
+        fetchBets()
+        
         beginDateFilterPicker.date = Date(timeIntervalSince1970: dateMinusWeekInSeconds)
         filterBeginningDate = beginDateFilterPicker.date
         filterEndingDate = endDateFilterPicking.date
+        
         statisticBetsTableView.rowHeight = 230
         statisticBetsTableView.dataSource = self
         
@@ -49,13 +55,12 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //колличество строк в TableView == колличеству лайв кс матчей в модели
-        return (presenter as! StatisticsPresenter).getBetsCount()
+        //колличество строк в TableView == колличеству ставок в диапазоне
+        return getBetsInSelectedRange()
     }
 
     
@@ -64,17 +69,18 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
         //заполняем созданную ячейку внутри презентера лайв матчей,
         //тк у view нет доступа кнапрямую к модели
         
-        cell = (presenter as! StatisticsPresenter).fillStatisticCellMatch(cellToFill: cell, cellForRowAt: indexPath)
+        cell = fillStatisticCellMatch(cellToFill: cell, cellForRowAt: indexPath)
         return cell
     }
     
+    //найти ставки в выбранном диапазоне,результат не возвращается но сохраняется в модели
     func findSelectedBets(beginSearcDate beginDate: Date?,endSearchDate endDate: Date?) {
         if let beginDate = filterBeginningDate,
            let endDate = filterEndingDate
         {
             if beginDate <= endDate {
                 let searchInterval = DateInterval(start: beginDate, end: endDate)
-                (presenter as! StatisticsPresenter).findSelectedBets(inDates: searchInterval)
+                findSelectedBets(inDates: searchInterval)
                 statisticBetsTableView.reloadData()
             } else {
                 let alertController = UIAlertController(title: "Wrong input", message: "Selected filter dates are incorrect.", preferredStyle: .alert)
@@ -86,18 +92,29 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
         }
     }
     
+    //установить колличество выигранных ставок
     func setBetsWon(wonCount: String?) {
         betWonCounterLabel.text = wonCount ?? "unknown"
     }
     
+    //установить колличество проиграных ставок
     func setBetsLost(lostCount: String?) {
         betLostCounterLabel.text = lostCount ?? "unknown"
     }
     
-    func setOverallIncome(overallIncome: String?) {
-        overallIncomeLabel.text = overallIncome ?? "unknown"
+    //установить общую прибыль от ставок
+    func setOverallIncome(overallIncome: Double) {
+        switch overallIncome >= 0 {
+        case true:
+            overallIncomeLabel.textColor = .systemGreen
+        case false:
+            overallIncomeLabel.textColor = .systemRed
+        }
+        
+        overallIncomeLabel.text = "\(overallIncome)"
     }
  
+    //включить крутилку означающую загрузку данных о матчах
     func spinnerStartAnimating() {
         spinner!.startAnimating()
         spinner!.isHidden = false
@@ -109,6 +126,7 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
         spinner!.isHidden = true
     }
     
+    //при зыкрытии обновлении границ поиска найти все ставки в этом диапазоне
     @IBAction func beginFilterDateClosed(_ sender: UIDatePicker) {
         self.filterBeginningDate = sender.date
         findSelectedBets(beginSearcDate: filterBeginningDate, endSearchDate: filterEndingDate)
@@ -118,14 +136,29 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
         self.filterEndingDate = sender.date
         findSelectedBets(beginSearcDate: filterBeginningDate, endSearchDate: filterEndingDate)
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //возвращает презентер типа презентера статистики ставок,сделано чтобы не приводить искуственно при каждой надобности использовать презентер
+    func getStatisticsPresenter() -> StatisticsPresenter {
+        presenter as! StatisticsPresenter
     }
-    */
-
+    
+    //обновить данные о всех ставках
+    func fetchBets() {
+        getStatisticsPresenter().fetchBets()
+    }
+    
+    //получить колличество ставок в диапазоне
+    func getBetsInSelectedRange() -> Int {
+        getStatisticsPresenter().getBetsInSelectedRange()
+    }
+    
+    //заполнить ячейку таблицы со статистикой ставок
+    func fillStatisticCellMatch(cellToFill: UITableViewCell, cellForRowAt: IndexPath) -> UITableViewCell {
+        getStatisticsPresenter().fillStatisticCellMatch(cellToFill: cellToFill, cellForRowAt: cellForRowAt)
+    }
+    
+    //найти все ставки в предоставленном диапазоне
+    func findSelectedBets(inDates: DateInterval) {
+        getStatisticsPresenter().findSelectedBets(inDates: inDates)
+    }
 }

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MyBetsPresenter: Presenter {
+class LiveBetsPresenter: Presenter {
     var model: Model
     var viewToPresent: View
     
@@ -58,7 +58,7 @@ class MyBetsPresenter: Presenter {
    
     //метод обновления всех ячеек со ставками,будет работать только если presenter обновляет таблицу на экране со ставками,если с ним свяязана модель всех ставок и их больше 0
     func updateMyBetsCells() {
-        if let tableVC = viewToPresent as? MyBetsVC {
+        if let tableVC = viewToPresent as? LiveBetsVC {
             tableVC.spinnerStopAnimating()
             
             if let model = model as? MyBetsModel,

@@ -35,7 +35,7 @@ class MyBetsModel: Model {
             
             if let results = try? self.viewContext.fetch(fetchRequest) {
                 self.allMyBets = results
-                self.betsInSelectedRange = results
+                //self.betsInSelectedRange = results
                 
 //                for bet in results {
 //                    bet.matchResultChecked = false
@@ -70,11 +70,8 @@ class MyBetsModel: Model {
                 } catch let error as NSError {
                     print(error.localizedDescription)
                 }
-                if let liveMatchPresenter = self.presenter as? MyBetsPresenter {
-                    liveMatchPresenter.updateMyBetsCells()
-                } else if let statisticsMatchPresenter = self.presenter as? StatisticsPresenter {
-                    statisticsMatchPresenter.updateMyBetsCells()
-                }
+                
+                self.updateViewCells()
             }
         }
     }
@@ -156,6 +153,16 @@ class MyBetsModel: Model {
         }
         else {
             betsInSelectedRange = allMyBets
+        }
+        
+        updateViewCells()
+    }
+    
+    func updateViewCells() {
+        if let liveMatchPresenter = self.presenter as? LiveBetsPresenter {
+            liveMatchPresenter.updateMyBetsCells()
+        } else if let statisticsMatchPresenter = self.presenter as? StatisticsPresenter {
+            statisticsMatchPresenter.updateMyBetsCells()
         }
     }
     

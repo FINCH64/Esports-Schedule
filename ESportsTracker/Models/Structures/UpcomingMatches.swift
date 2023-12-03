@@ -4,6 +4,7 @@
 //   let upcomingMatches = try? JSONDecoder().decode(UpcomingMatches.self, from: jsonData)
 
 import Foundation
+import OptionallyDecodable // https://github.com/idrougge/OptionallyDecodable
 
 // MARK: - UpcomingMatches
 struct UpcomingMatches: Codable {
@@ -15,7 +16,6 @@ struct UpcomingEvent: Codable {
     let tournament: UpcomingTournament?
     let customId: String?
     let status: UpcomingStatus?
-    let winnerCode: Int?
     let homeTeam, awayTeam: UpcomingTeam?
     let homeScore, awayScore: UpcomingScore?
     let coverage: Int?
@@ -23,10 +23,11 @@ struct UpcomingEvent: Codable {
     let changes: UpcomingChanges?
     let hasGlobalHighlights, crowdsourcingDataDisplayEnabled: Bool?
     let id, bestOf: Int?
-    let eventType: UpcomingEventType?
+    @OptionallyDecodable var eventType: UpcomingEventType?
     let startTimestamp: Int?
     let slug: String?
     let finalResultOnly, isEditor, crowdsourcingEnabled: Bool?
+    let winnerCode: Int?
     let roundInfo: UpcomingRoundInfo?
     let lastPeriod: String?
 }
@@ -34,7 +35,7 @@ struct UpcomingEvent: Codable {
 // MARK: - UpcomingScore
 struct UpcomingScore: Codable {
     let current, display, period1, period2: Int?
-    let period3, normaltime: Int?
+    let period3, period4, normaltime: Int?
 }
 
 // MARK: - UpcomingTeam
@@ -56,8 +57,8 @@ struct UpcomingCountry: Codable {
 
 // MARK: - UpcomingSport
 struct UpcomingSport: Codable {
-    let name: UpcomingSportName?
-    let slug: UpcomingSlug?
+    @OptionallyDecodable var name: UpcomingSportName?
+    @OptionallyDecodable var slug: UpcomingSportSlug?
     let id: Int?
 }
 
@@ -65,14 +66,15 @@ enum UpcomingSportName: String, Codable {
     case eSports = "E-sports"
 }
 
-enum UpcomingSlug: String, Codable {
+enum UpcomingSportSlug: String, Codable {
     case esports = "esports"
 }
 
 // MARK: - UpcomingTeamColors
 struct UpcomingTeamColors: Codable {
-    let primary, secondary: UpcomingAry?
-    let text: UpcomingText?
+    @OptionallyDecodable var primary: UpcomingAry?
+    @OptionallyDecodable var secondary: UpcomingAry?
+    @OptionallyDecodable var text: UpcomingText?
 }
 
 enum UpcomingAry: String, Codable {
@@ -85,8 +87,8 @@ enum UpcomingText: String, Codable {
 
 // MARK: - UpcomingChanges
 struct UpcomingChanges: Codable {
-    let changes: [String]?
     let changeTimestamp: Int?
+    let changes: [String]?
 }
 
 enum UpcomingEventType: String, Codable {
@@ -101,8 +103,8 @@ struct UpcomingRoundInfo: Codable {
 // MARK: - UpcomingStatus
 struct UpcomingStatus: Codable {
     let code: Int?
-    let description: UpcomingDescription?
-    let type: UpcomingType?
+    @OptionallyDecodable var description: UpcomingDescription?
+    @OptionallyDecodable var type: UpcomingType?
 }
 
 enum UpcomingDescription: String, Codable {
@@ -110,9 +112,9 @@ enum UpcomingDescription: String, Codable {
     case ended = "Ended"
     case firstGame = "First game"
     case notStarted = "Not started"
-    case pause = "Pause"
     case secondGame = "Second game"
     case the1StHalf = "1st half"
+    case thirdGame = "Third game"
 }
 
 enum UpcomingType: String, Codable {
@@ -137,26 +139,29 @@ struct UpcomingTournament: Codable {
 
 // MARK: - UpcomingCategory
 struct UpcomingCategory: Codable {
-    let name: UpcomingCategoryName?
-    let slug: UpcomingFlag?
+    @OptionallyDecodable var name: UpcomingCategoryName?
+    @OptionallyDecodable var slug: UpcomingCategorySlug?
     let sport: UpcomingSport?
     let id: Int?
-    let flag: UpcomingFlag?
+    @OptionallyDecodable var flag: UpcomingFlag?
 }
 
 enum UpcomingFlag: String, Codable {
     case csgo = "csgo"
-    case dota2 = "dota2"
-    case flagDota2 = "dota-2"
-    case lol = "lol"
+    case dota2 = "dota-2"
     case other = "other"
 }
 
 enum UpcomingCategoryName: String, Codable {
     case csGo = "CS:GO"
     case dota2 = "Dota 2"
-    case loL = "LoL"
     case other = "Other"
+}
+
+enum UpcomingCategorySlug: String, Codable {
+    case csgo = "csgo"
+    case dota2 = "dota2"
+    case other = "other"
 }
 
 // MARK: - UpcomingUniqueTournament
