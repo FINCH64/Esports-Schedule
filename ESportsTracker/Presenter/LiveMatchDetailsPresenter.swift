@@ -10,9 +10,11 @@ import CoreData
 import UIKit
 
 class LiveMatchDetailsPresenter: Presenter {
-    var model: Model
+    var model: Model//модель идущих матчей
+    var myBetsModel: Model//модель сделанных ставок
     var viewToPresent: View
     
+    //список подходящих статусов карты матча,сделано для исключения необычных статусов,по типу паузы и переноса,пока матч не пропадёт из идущих
     var AcceptableStatusDescriptions = [
         "Second game",
         "Third game",
@@ -21,14 +23,15 @@ class LiveMatchDetailsPresenter: Presenter {
         "No map info"
     ]
     
-    init(model: Model, viewToPresent: View) {
-        self.model = model
+    init(matchesModel: Model,betsModel: Model, viewToPresent: View) {
+        self.model = matchesModel
+        self.myBetsModel = betsModel
         self.viewToPresent = viewToPresent
     }
     
     //возвращает выбранный идущий кс матч
     func getSelectedMatch(forIndex index: Int) -> Event {
-        (model as! MatchesInfoModel).liveCsMatchesInfo![index]
+        getMatchesModel().liveCsMatchesInfo![index]
     }
     
     //функция сохранения данных о сделанной ставке,отработает только если все данные введены корректно
@@ -49,30 +52,49 @@ class LiveMatchDetailsPresenter: Presenter {
             newBetObject.matchOdd = odd
             newBetObject.betType = betType.rawValue
             newBetObject.mapBetPlacedOn = AcceptableStatusDescriptions.contains(betMap) ? betMap : "No map info"
-            MyBetsModel.shared.myLiveBets.append(newBetObject)
         } catch {
             print("Cant save match")
         }
  
         do {
             try viewContext.save()
-            model = MyBetsModel.shared
-            (model as! MyBetsModel).addCreatedBet(newBet: newBetObject)
+            
+            getBetsModel().addCreatedBet(newBet: newBetObject)
+            
             let alertController = UIAlertController(title: "Sucess", message: "Your bet saved.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK", style: .default)
             alertController.addAction(okAction)
-            (viewToPresent as! UIViewController).present(alertController, animated: true)
+            
+            getAsVC().present(alertController, animated: true)
         } catch let error as NSError{
             print(error.localizedDescription)
+            
             let alertController = UIAlertController(title: "Error", message: "Your bet cant be saved.", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
             alertController.addAction(cancelAction)
-            (viewToPresent as! UIViewController).present(alertController, animated: true)
+            
+            getAsVC().present(alertController, animated: true)
         }
     }
     
+    //получить контекст для сохранения ставки
     private func getContext() -> NSManagedObjectContext {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
+    }
+    
+    //возвращает Model типа MatchesInfoModel,сделано чтобы не приводить искуственно при каждой надобности использовать
+    func getMatchesModel() -> MatchesInfoModel {
+        model as! MatchesInfoModel
+    }
+    
+    //возвращает Model типа MyBetsModel,сделано чтобы не приводить искуственно при каждой надобности использовать
+    func getBetsModel() -> MyBetsModel {
+        myBetsModel as! MyBetsModel
+    }
+    
+    //получить View как UIViewController,сделано чтобы не приводить искуственно при каждой надобности использовать
+    func getAsVC() -> UIViewController {
+        (viewToPresent as! UIViewController)
     }
 }

@@ -9,62 +9,51 @@ import UIKit
 
 class TabBarNavigationController: UITabBarController,UITabBarControllerDelegate {
 
-    override func loadView() {
-        super.loadView()
-        self.selectedIndex = 3
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        // Do any additional setup after loading the view.
     }
     
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    //override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    //}
-    
-    //при переключении по вкладкам вызывает обновление данных,отображаемых на выбранной странице
+    //при переключении по вкладкам вызывает обновление данных,отображаемых на выбранной странице и вызывает метод установки презентера у модели
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         switch viewController {
             case let destinationVC as AllMatchesTableViewController:
+            
                 if let matchesModel = setModelsPresenter(presenterOfView: destinationVC) as? MatchesInfoModel {
                     matchesModel.updateAllCurrentLiveMatches()
                 }
-                print("LiveMatches")
+
             case let destinationVC as NewsVC:
-                if let newsPresenter = destinationVC.presenter as? NewsPresenter {
-                    if let matchesModel = newsPresenter.upcomingMatchesModel as? MatchesInfoModel,
-                       let newsModel = newsPresenter.model as? NewsModel {
+            
+                if let newsPresenter = destinationVC.presenter as? NewsPresenter,
+                   let matchesModel = newsPresenter.upcomingMatchesModel as? MatchesInfoModel,
+                   let newsModel = newsPresenter.model as? NewsModel {
                         
                         matchesModel.presenter = newsPresenter
                         newsModel.presenter = newsPresenter
                         
                         matchesModel.updateUpcomingMatches()
                         newsModel.getNews()
-                        print("News")
-                    }
                 }
+            
             case let destinationVC as LiveBetsVC:
+            
                 if let betsModel = setModelsPresenter(presenterOfView: destinationVC) as? MyBetsModel {
                     betsModel.fetchBets()
-                    print("unfinished bets")
                 }
+            
             case let destinationVC as StatisticsVC:
+            
                 if let betsModel = setModelsPresenter(presenterOfView: destinationVC) as? MyBetsModel {
                     betsModel.fetchBets()
-                    print("Stats")
                 }
+            
         default:
             print("Wrong navigator destination")
         }
     }
     
+    //при переходе на экран View устанавливает у нужных этому экрану моделей соответсвующий презентер,отвечающий за этот экран
     func setModelsPresenter(presenterOfView view: View) -> Model?{
         if let presenter = view.presenter {
             presenter.model.presenter = presenter

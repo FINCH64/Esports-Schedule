@@ -85,6 +85,17 @@ class AllMatchesTableViewController: UITableViewController,MatchView {
         getLiveMatchPresenter().fillCellLiveMatch(cellToFill: cellToFill, cellForRowAt: cellForRowAt)
     }
     
+    //функция обновления картинок в уже созданных ячейках матчей,вызывается по загрузке картинок с сервера
+    func reloadRows(at: [IndexPath], with: UITableView.RowAnimation) {
+        tableView.reloadRows(at: at, with: with)
+    }
+    
+    //функий перерисовки всей таблицы лайв матчей,вызывается после загрузки лайв матчей
+    func reloadData() {
+        tableView.reloadData()
+    }
+    
+    
     // MARK: - Navigation
     
     //проверка на переход к экрану с полной информацией и передача в него матча

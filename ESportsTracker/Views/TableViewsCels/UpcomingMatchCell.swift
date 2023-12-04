@@ -7,6 +7,7 @@
 
 import UIKit
 
+//класс отображающий структуру ячейки с будущими матчами
 class UpcomingMatchCell: UICollectionViewCell {
     
     @IBOutlet weak var homeTeamNameLabel: UILabel!

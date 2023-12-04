@@ -22,22 +22,24 @@ class LiveMatchPresenter: Presenter {
     
     //возвращает колличество кс матчей из модели
     func getCsMatchesCount() -> Int {
-        (model as! MatchesInfoModel).liveCsMatchesInfo?.count ?? 0
+        getMatchesModel().liveCsMatchesInfo?.count ?? 0
     }
     
-    
+    //установить презентер модели
+    //он устанавливается только на этом экране,тк он выбран в TabBar controller по умолчанию,в дальнейшем презентеры моделей устанавливаются в классе навигатора
     func setModelPresenter(newPresenter: Presenter) {
-        (model as! MatchesInfoModel).setPresenterForModel(newPresenter: newPresenter)
+        getMatchesModel().setPresenterForModel(newPresenter: newPresenter)
     }
     
+    //обновить текущие матчи
     func updateCurrentLiveMatches() {
-        (model as! MatchesInfoModel).updateAllCurrentLiveMatches()
+        getMatchesModel().updateAllCurrentLiveMatches()
     }
     
     //заполняет ячейку таблицы созданную во встроенном методе,сделано в презентере,тк view не должно иметь доступа к данным модели
     func fillCellLiveMatch(cellToFill: UITableViewCell,cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = cellToFill as! LiveMatchCell
-        let match = (model as! MatchesInfoModel).liveCsMatchesInfo?[indexPath.row]
+        let match = getMatchesModel().liveCsMatchesInfo?[indexPath.row]
         
         if let match = match {
             if let homeTeamLogoData = match.homeTeam?.teamLogoData {
@@ -72,22 +74,37 @@ class LiveMatchPresenter: Presenter {
     }
     
     //функция обновления картинок в уже созданных ячейках матчей,вызывается по загрузке картинок с сервера
-    //сейчас отрисовка происходит прямо в презентере,надо перенести во view с передачей данных отсюда
     func updateRows(rowsToUpdate indexPath: IndexPath) {
-        if let tableVC = viewToPresent as? AllMatchesTableViewController {
-            tableVC.tableView.reloadRows(at: [indexPath], with: .automatic)
+        getLiveMatchesVC().reloadRows(at: [indexPath], with: .automatic)
+    }
+    
+    //reloadData вызывает заново у TableView мтетоды подсчёта колличества рядов и создание каждой ячейки
+    func reloadData() {
+        getLiveMatchesVC().reloadData()
+    }
+    
+    //метод обновления всех ячеек с лайв матчами если матчей > 0
+    func updateLiveMatchesTVCells() {
+        spinnerStopAnimating()
+        
+        if let matchesCount = getMatchesModel().liveCsMatchesInfo?.count,
+            matchesCount > 0 {
+            reloadData()
         }
     }
     
-    //метод обновления всех ячеек,будет работать только если presenter обновляет TableView с матчами,если в нем хранится Модель матчей и матчей > 0
-    func updateLiveMatchesTVCells() {
-        if let tableVC = viewToPresent as? AllMatchesTableViewController {
-            tableVC.spinnerStopAnimating()
-            if let model = model as? MatchesInfoModel,
-               let matchesCount = model.liveCsMatchesInfo?.count,
-               matchesCount > 0 {
-                tableVC.tableView.reloadData()//reloadData вызывает заново у TableView мтетоды подсчёта колличества рядов и создание каждой ячейки
-            }
-        }
+    //возвращает View типа View лайв матчей,сделано чтобы не приводить искуственно при каждой надобности использовать
+    func getLiveMatchesVC() -> AllMatchesTableViewController {
+        viewToPresent as! AllMatchesTableViewController
+    }
+    
+    //возвращает Model типа MatchesInfoModel,сделано чтобы не приводить искуственно при каждой надобности использовать
+    func getMatchesModel() -> MatchesInfoModel {
+        model as! MatchesInfoModel
+    }
+    
+    //остановить спинер означающий подгрузку лайв матчей
+    func spinnerStopAnimating() {
+        getLiveMatchesVC().spinnerStopAnimating()
     }
 }

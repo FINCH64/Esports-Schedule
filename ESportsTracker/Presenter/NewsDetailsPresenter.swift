@@ -16,10 +16,10 @@ class NewsDetailsPresenter: Presenter {
         self.viewToPresent = viewToPresent
     }
     
+    //вернуть новсть по её индексу для отрисовки во View
     func getArticle(forSelectedIndex index: IndexPath?) -> Article? {
         if let index = index {
-            let a = (model as? NewsModel)?.news?.data?[index.row]
-            return a
+            return (model as? NewsModel)?.news?.data?[index.row]
         }
         return nil
     }

@@ -19,19 +19,22 @@ class NewsDetailsVC: UIViewController,View,SFSafariViewControllerDelegate {
     @IBOutlet weak var articleBodyLabel: UILabel!
     
     
+    //после загрузки заполним экран данными о новости,на основание его индекса TableView и матча в модели
     override func viewDidLoad() {
         super.viewDidLoad()
 
         presenter = NewsDetailsPresenter(model: NewsModel.shared,viewToPresent: self)
-        articleToShow = (presenter as? NewsDetailsPresenter)?.getArticle(forSelectedIndex: articleSelectedRowIndex)
-        articleHeaderLabel.text = articleToShow!.title ?? "No title"
-        articleBodyLabel.text = articleToShow!.text ?? "No description"
+        articleToShow = getArticle(forSelectedIndex: articleSelectedRowIndex)
+        articleHeaderLabel.text = articleToShow?.title ?? "No title"
+        articleBodyLabel.text = articleToShow?.text ?? "No description"
     }
     
+    //при нажатии на кнопку откроется экран с полной информацией в сафари
     @IBAction func checkDiscussionButton(_ sender: UIButton) {
         openSafari(stringUrl: articleToShow?.url)
     }
     
+    //создание View Safari для отображения полной новости,и показ его
     func openSafari(stringUrl: String?) {
         if let url = URL(string: stringUrl ?? "") {
             safariVC = SFSafariViewController(url: url)
@@ -44,14 +47,13 @@ class NewsDetailsVC: UIViewController,View,SFSafariViewControllerDelegate {
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //возвращает презентер типа презентера деталей новостей,сделано чтобы не приводить искуственно при каждой надобности использовать презентер
+    func getNewsDetailsPresenter() -> NewsDetailsPresenter {
+        (presenter as! NewsDetailsPresenter)
     }
-    */
-
+    
+    //получить новость из модели по выбранному индексу в таблице
+    func getArticle(forSelectedIndex: IndexPath?) -> Article? {
+        getNewsDetailsPresenter().getArticle(forSelectedIndex: forSelectedIndex)
+    }
 }

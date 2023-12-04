@@ -35,7 +35,7 @@ class LiveMatchDetailsVC: UIViewController,MatchView {
     override func viewDidLoad() { //получим данные по переданному индексу от TableVC из модели и соберём всё вью по этим данным
         super.viewDidLoad()
         
-        presenter = LiveMatchDetailsPresenter(model: MatchesInfoModel.shared,viewToPresent: self)
+        presenter = LiveMatchDetailsPresenter(matchesModel: MatchesInfoModel.shared, betsModel: MyBetsModel.shared, viewToPresent: self)
         self.match = getSelectedMatch(forIndex: matchIndex?.row ?? 0)
         
         let currentUnixTime = Date().timeIntervalSince1970

@@ -20,7 +20,7 @@ class LiveBetsPresenter: Presenter {
     //заполняет ячейку таблицы со ставками на основе данных из модели
     func fillCellLiveMatch(cellToFill: UITableViewCell,cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = cellToFill as! MyBetsCell
-        let bet = (model as! MyBetsModel).myLiveBets[indexPath.row]
+        let bet = getBetsModel().myLiveBets[indexPath.row]
         do {
             let match = try JSONDecoder().decode(Event.self, from: bet.matchEvent!)
             let homeTeamName = match.homeTeam?.name ?? "Home team name"
@@ -46,36 +46,47 @@ class LiveBetsPresenter: Presenter {
                 cell.betProfitLabel.text = "0.0$"
             }
             
-            
         } catch let error as NSError {
             print(error.localizedDescription)
             return cell
         }
         
-        
         return cell
     }
    
-    //метод обновления всех ячеек со ставками,будет работать только если presenter обновляет таблицу на экране со ставками,если с ним свяязана модель всех ставок и их больше 0
+    //метод обновления всех ячеек со ставками,будет работать только если ставок больше 0,останавливает спинер подгрузки лайв ставок
     func updateMyBetsCells() {
-        if let tableVC = viewToPresent as? LiveBetsVC {
-            tableVC.spinnerStopAnimating()
-            
-            if let model = model as? MyBetsModel,
-               model.myLiveBets.count > 0 {
-                    tableVC.betsTableView.reloadData()//reloadData вызывает заново у TableView мтетоды подсчёта колличества рядов и создание каждой ячейки
-            }
+        getLiveBetsVC().spinnerStopAnimating()
+   
+        if getBetsModel().myLiveBets.count > 0 {
+            reloadData()
         }
     }
     
+    //возвращает колличество лайв ставок
     func getLiveBetsCount() -> Int {
         (model as? MyBetsModel)?.myLiveBets.count ?? 0
     }
     
+    //обновить данные о ставках
     func fetchBets() {
         if let model = model as? MyBetsModel {
             model.fetchBets()
         }
     }
     
+    //возвращает Model типа MyBetsModel,сделано чтобы не приводить искуственно при каждой надобности использовать
+    func getBetsModel() -> MyBetsModel {
+        model as! MyBetsModel
+    }
+    
+    //возвращает View типа View лайв ставок,сделано чтобы не приводить искуственно при каждой надобности использовать
+    func getLiveBetsVC() -> LiveBetsVC {
+        viewToPresent as! LiveBetsVC
+    }
+    
+    //reloadData вызывает заново у TableView мтетоды подсчёта колличества рядов и создание каждой ячейки
+    func reloadData() {
+        getLiveBetsVC().betsTableView.reloadData()
+    }
 }

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+//класс отображающий ячейку таблицы со сделанными ставками
 class MyBetsCell: UITableViewCell {
     
     
@@ -20,14 +21,4 @@ class MyBetsCell: UITableViewCell {
     @IBOutlet weak var teamBetMadeOnLabel: UILabel!
     @IBOutlet weak var mapBetPlacedLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 }

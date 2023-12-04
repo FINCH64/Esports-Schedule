@@ -17,9 +17,10 @@ class StatisticsPresenter: Presenter {
         self.viewToPresent = viewToPresent
     }
     
+    //заполняет ячейку таблицы со ставками на основе данных из модели
     func fillStatisticCellMatch(cellToFill: UITableViewCell,cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = cellToFill as! MyBetsCell
-        let bet = (model as! MyBetsModel).betsInSelectedRange[indexPath.row]
+        let bet = getBetsModel().betsInSelectedRange[indexPath.row]
         let betOdd = bet.matchOdd
         let betAmmount = bet.betAmount
         let betProfit = (betOdd * betAmmount) - betAmmount
@@ -60,56 +61,64 @@ class StatisticsPresenter: Presenter {
     
     //метод обновления всех ячеек со ставками,будет работать только если presenter обновляет таблицу на экране со статистикой,если с ним свяязана модель всех ставок и в диапазоне их > 0
     func updateMyBetsCells() {
-        if let tableVC = viewToPresent as? StatisticsVC {
-            tableVC.spinnerStopAnimating()
-            if let model = model as? MyBetsModel,
-                model.betsInSelectedRange.count > 0 {
-                self.calculateAndShowStats()
-                tableVC.statisticBetsTableView.reloadData()//reloadData вызывает заново у TableView мтетоды подсчёта колличества рядов и создание каждой ячейки
-            }
-        }
-    }
-    
-    func getBetsInSelectedRange() -> Int {
-        (model as! MyBetsModel).betsInSelectedRange.count
-    }
-    
-    func fetchBets() {
-        if let model = model as? MyBetsModel {
-            model.fetchBets()
-        }
-    }
-    
-    func findSelectedBets(inDates dateInterval: DateInterval? = nil) {
-        if let myBetsModel = model as? MyBetsModel {
-            myBetsModel.findSelectedBets(inDates: dateInterval)
+        getStatsVC().spinnerStopAnimating()
+        
+        if getBetsModel().betsInSelectedRange.count > 0 {
             self.calculateAndShowStats()
+            reloadData()
         }
     }
     
+    //получить количество ставок в заданом диапазоне
+    func getBetsInSelectedRange() -> Int {
+        getBetsModel().betsInSelectedRange.count
+    }
+    
+    //обновить данные о ставках
+    func fetchBets() {
+        getBetsModel().fetchBets()
+    }
+    
+    //найти все ставки в заданном диапазоне и записать их в поле в модели ставок
+    func findSelectedBets(inDates dateInterval: DateInterval? = nil) {
+        getBetsModel().findSelectedBets(inDates: dateInterval)
+        self.calculateAndShowStats()
+    }
+    
+    //подсчитать и отрисовать статистику по ставкам,попадающим в диапазон фильтра
     func calculateAndShowStats() {
-        if let myBetsModel = model as? MyBetsModel {
-            var betsWonCounter = 0
-            var betsLostCounter = 0
-            var overallIncomeCounter = 0.0
+        var betsWonCounter = 0
+        var betsLostCounter = 0
+        var overallIncomeCounter = 0.0
             
-            myBetsModel.betsInSelectedRange.forEach{ bet in
-                if bet.matchResultChecked {
-                    if bet.betWon {
-                        betsWonCounter += 1
-                    }else if !bet.betWon {
-                        betsLostCounter += 1
-                    }
-                    
-                    overallIncomeCounter += bet.betProfit
-                }
+        getBetsModel().betsInSelectedRange.forEach{ bet in
+        if bet.matchResultChecked {
+            if bet.betWon {
+                betsWonCounter += 1
+            }else if !bet.betWon {
+                betsLostCounter += 1
             }
-            
-            if let statisticVC = (viewToPresent as? StatisticsVC) {
-                statisticVC.setBetsWon(wonCount: "\(betsWonCounter)")
-                statisticVC.setBetsLost(lostCount: "\(betsLostCounter)")
-                statisticVC.setOverallIncome(overallIncome: overallIncomeCounter)
+                overallIncomeCounter += bet.betProfit
             }
         }
+             
+        getStatsVC().setBetsWon(wonCount: "\(betsWonCounter)")
+        getStatsVC().setBetsLost(lostCount: "\(betsLostCounter)")
+        getStatsVC().setOverallIncome(overallIncome: overallIncomeCounter)
+    }
+    
+    //возвращает Model типа MyBetsModel,сделано чтобы не приводить искуственно при каждой надобности использовать
+    func getBetsModel() -> MyBetsModel {
+        model as! MyBetsModel
+    }
+    
+    //возвращает View типа View статистики ставок,сделано чтобы не приводить искуственно при каждой надобности использовать
+    func getStatsVC() -> StatisticsVC {
+        viewToPresent as! StatisticsVC
+    }
+    
+    //reloadData вызывает заново у TableView мтетоды подсчёта колличества рядов и создание каждой ячейки
+    func reloadData() {
+        getStatsVC().statisticBetsTableView.reloadData()
     }
 }
