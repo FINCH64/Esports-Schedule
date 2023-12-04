@@ -1,10 +1,7 @@
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let upcomingMatches = try? JSONDecoder().decode(UpcomingMatches.self, from: jsonData)
-
 import Foundation
 import OptionallyDecodable // https://github.com/idrougge/OptionallyDecodable
+
+//структура того как будет выглядеть объект ближайшего матча описана в этом файле
 
 // MARK: - UpcomingMatches
 struct UpcomingMatches: Codable {

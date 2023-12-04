@@ -1,8 +1,3 @@
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let liveMatches = try? JSONDecoder().decode(LiveMatches.self, from: jsonData)
-
 import Foundation
 
 //описывает то,каким образом будет выглядеть структура каждого матча(Event) и объекта хранящего все матчи(LiveMatches)

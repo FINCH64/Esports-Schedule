@@ -15,10 +15,12 @@ class NewsModel: Model {
     
     private init(){}
     
+    //установить презентер,связанный с моделью на данный момент
     func setPresenter(newPresenter: Presenter) {
         self.presenter = newPresenter
     }
     
+    //обновить все новости асинхронно + обновить таблицу новостей в главном потоке, после подгрузки
     func getNews() {
         DispatchQueue.global().async {
             let headers = [
@@ -37,10 +39,9 @@ class NewsModel: Model {
                 if (error != nil) {
                     print(error as Any)
                 } else {
-                    let httpResponse = response as? HTTPURLResponse
                     do {
                         self.news = try JSONDecoder().decode(News.self, from: data ?? Data())
-                        let news = self.news
+
                         DispatchQueue.main.sync {
                             self.updateNewsCells()
                         }
@@ -54,6 +55,7 @@ class NewsModel: Model {
         }
     }
     
+    //метод обновления таблицы новостей
     func updateNewsCells() {
         if let presenter = presenter as? NewsPresenter {
             presenter.updateNewsCells()

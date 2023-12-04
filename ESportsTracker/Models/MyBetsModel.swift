@@ -27,33 +27,27 @@ class MyBetsModel: Model {
         self.presenter = presenter
     }
     
-    //функция для загрузки всех ставок из CoreData
+    //функция для загрузки всех ставок из CoreData,асинхронно
     func fetchBets() {
         DispatchQueue.global(qos: .userInteractive).async(flags: .barrier) {
-            
             let fetchRequest: NSFetchRequest<Bet> = Bet.fetchRequest()
             
             if let results = try? self.viewContext.fetch(fetchRequest) {
                 self.allMyBets = results
-                //self.betsInSelectedRange = results
                 
-//                for bet in results {
-//                    bet.matchResultChecked = false
-//                }
-                
-                let myBetsToCheckResult = results.filter{bet in
-                    if bet.matchResultChecked == false {
+                let finishedBets = results.filter{bet in
+                    if bet.isLive == false {
                         return true
                     }
                     return false
                 }
                 
-                
-                
-                for bet in myBetsToCheckResult {
+                //для всех завершённых матчей проверки результата ставки
+                for bet in finishedBets {
                     self.getBetResult(bet: bet)
                 }
                 
+                //при обновлении матчей поиск идущих,для отображения на соответственном экране
                 let liveBets = results.filter{bet in
                     if bet.isLive == true {
                         return true
@@ -64,6 +58,7 @@ class MyBetsModel: Model {
                 self.myLiveBets = liveBets
             }
             
+            //проверка результатов ставок изменяет данные CoreData,сохраняем их в главном потоке + обновим таблицу ставок презентера
             DispatchQueue.main.sync{
                 do {
                     try self.viewContext.save()
@@ -76,10 +71,11 @@ class MyBetsModel: Model {
         }
     }
     
+    //метод асинхронной проверки ставки,если матч закончился,то ставку в CoreData завменим копией с доп информацией на основе того кто победил в матче,ставки и суммы
     func getBetResult(bet: Bet) {
         let decoder = JSONDecoder()
         if let event = try? decoder.decode(Event.self, from: bet.matchEvent ?? Data()),
-            let eventId = event.id
+           let eventId = event.id
         {
             let headers = [
                 "X-RapidAPI-Key": "af06df5541msh49a64a9df42bb9cp153137jsn4398a4d33471",
@@ -108,8 +104,11 @@ class MyBetsModel: Model {
                             let betAmmount = checkedResultBet.betAmount
                             let betProfit = (betOdd * betAmmount) - betAmmount
                             
-                            checkedResultBet.isLive = false
-                            checkedResultBet.matchResultChecked = true
+                            if eventToCheck.status?.type != "finished" {
+                                checkedResultBet.isLive = true
+                            } else {
+                                checkedResultBet.isLive = false
+                            }
                             
                             if teamBettedOn ?? "none" == TeamType.home.rawValue {
                                 if eventToCheck.winnerCode ?? 3 == 1 {
@@ -140,6 +139,7 @@ class MyBetsModel: Model {
         }
     }
     
+    //найти ставки в диапазоне фильтра по времени + обновить таблицу статистики
     func findSelectedBets(inDates dateInterval: DateInterval? = nil) {
         if let dateInterval = dateInterval {
             betsInSelectedRange = allMyBets.filter { bet in
@@ -158,6 +158,7 @@ class MyBetsModel: Model {
         updateViewCells()
     }
     
+    //обновить таблицу View после подгрузки и обновления данных
     func updateViewCells() {
         if let liveMatchPresenter = self.presenter as? LiveBetsPresenter {
             liveMatchPresenter.updateMyBetsCells()
@@ -166,6 +167,7 @@ class MyBetsModel: Model {
         }
     }
     
+    //добавить созданную ставку в массив ставок
     func addCreatedBet(newBet: Bet) {
         myLiveBets.append(newBet)
     }

@@ -1,9 +1,6 @@
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let finishedEvent = try? JSONDecoder().decode(finishedEvent.self, from: jsonData)
-
 import Foundation
+
+//структура того как будет выглядеть объект прошедшего матча описана в этом файле
 
 // MARK: - finishedEvent
 struct finishedEvent: Codable {

@@ -8,11 +8,13 @@
 import Foundation
 import UIKit
 
+//словарь типов команд
 enum TeamType: String,Codable {
     case home = "homeTeam"
     case away = "awayTeam"
 }
 
+//словарь типов ставки
 enum BetType: String,Codable {
     case map = "map"
     case match = "match"
@@ -32,10 +34,9 @@ class MatchesInfoModel: Model {
     var liveCsMatchesInfo : [Event]?
     var upcomingCsMatches : [UpcomingEvent]?
     
+    //делает запрос к апи за текущими матчами,загружает данные асинхронно
+    //при окончании создает в главном потоке задачу обновления UITableView и всех ячеек
     func updateAllCurrentLiveMatches() {
-        //должен делать запрос к апи за текущими матчами,загружает данные асинхронно
-        //при окончании создает в главном потоке задачу обновления UITableView и всех ячеек
-
         DispatchQueue.global(qos: .userInteractive).async(flags: .barrier) {
             let headers = [
                 "X-RapidAPI-Key": "af06df5541msh49a64a9df42bb9cp153137jsn4398a4d33471",
@@ -54,10 +55,10 @@ class MatchesInfoModel: Model {
                     print(error as Any)
                 } else {
                     do {
-                        print(response as? HTTPURLResponse ?? "no server response")
                         self.liveMatchesInfo = try JSONDecoder().decode(LiveMatches.self, from: data!)
-                        let a = self.liveMatchesInfo
+                        
                         self.setLiveCSMatches(from: self.liveMatchesInfo?.events)
+                        
                         DispatchQueue.main.sync {
                             self.updateTVLiveMatchesCells()
                         }
@@ -70,12 +71,16 @@ class MatchesInfoModel: Model {
         }
     }
     
+    //делает запрос к апи за ближайшими матчами,загружает данные асинхронно
+    //при окончании создает в главном потоке задачу обновления UICollectionView и всех ячеек
     func updateUpcomingMatches() {
         DispatchQueue.global(qos: .userInteractive).async(flags: .barrier) {
             let headers = [
                 "X-RapidAPI-Key": "af06df5541msh49a64a9df42bb9cp153137jsn4398a4d33471",
                 "X-RapidAPI-Host": "esportapi1.p.rapidapi.com"
             ]
+            
+            //для запроса URL нужны день,месяц и год как числа,тк запрос идёт на завтрашние матчи,то и числа со здвигом на сутки
             let tomorrowDate = Date(timeInterval: 86400.0, since: Date())
             let tomorrowDateComponents = Calendar.current.dateComponents([.month, .day, .year], from: tomorrowDate)
             let tomorrowDayInt = tomorrowDateComponents.day ?? 0
@@ -93,12 +98,12 @@ class MatchesInfoModel: Model {
                 if (error != nil) {
                     print(error as Any)
                 } else {
-                    let httpResponse = response as? HTTPURLResponse
-                    print(httpResponse)
                     do {
                         let upcomingMatches = try JSONDecoder().decode(UpcomingMatches.self, from: data ?? Data())
+                        
                         self.setUpcomingCsMatches(upcomingMatches: upcomingMatches)
-                        if let upcomingCsMatches = self.upcomingCsMatches
+                        
+                        if let _ = self.upcomingCsMatches
                         {
                             DispatchQueue.main.sync {
                                 self.updateCVUpcomingMatchesCells()
@@ -134,7 +139,6 @@ class MatchesInfoModel: Model {
                 if (error != nil) {
                     print(error as Any)
                 } else {
-                    print(response as? HTTPURLResponse ?? "no server response")
                     var imageData = UIImage(named: "QuestionMark")!.pngData()
                     
                     if data != nil,
@@ -158,24 +162,25 @@ class MatchesInfoModel: Model {
         }
     }
     
-    //метод вызывающий через модель-презентер-вью обновление всех ячеек,вызывается после асинхронной загрузки данных о матчах
+    //метод устанавливающий текущие матчи в поле для последующего использования
     private func setLiveCSMatches(from matches: [Event]?) {
-        //выбирает все матчи по кс и записывает в переменную внутри модели
         if let matches = matches {
             self.liveCsMatchesInfo = matches.filter{$0.tournament?.category?.flag == "csgo"}
-            var matchIndex = 0 //нужен чтобы понимать в каком ряду будет отрисована ячейка с этим матчем,тк отрисовка идёт для всех кс матчей,то это будет сделано в таком же порядке
+            var matchIndex = 0 //нужен чтобы понимать в каком ряду будет отрисована ячейка с этим матчем,
+                               //тк отрисовка идёт для всех кс матчей,то это будет сделано в таком же порядке
                                //как и перебор снизу
             self.liveCsMatchesInfo?.forEach { match in
-                //self.getTeamImage(teamId: match.homeTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .home)
-                //self.getTeamImage(teamId: match.awayTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .away)
+                self.getTeamImage(teamId: match.homeTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .home)
+                self.getTeamImage(teamId: match.awayTeam?.id ?? 0, indexPath: IndexPath(item: matchIndex, section: 0), teamType: .away)
                 matchIndex += 1
             }
         }
     }
     
+    //метод устанавливающий текущие матчи в поле для последующего использования
     func setUpcomingCsMatches(upcomingMatches: UpcomingMatches?) {
         if let upcomingMatches = upcomingMatches {
-            let upcomingCsMatches = upcomingMatches.events?.filter {upcomingEvent in
+           let upcomingCsMatches = upcomingMatches.events?.filter {upcomingEvent in
                 if upcomingEvent.tournament?.category?.slug?.rawValue == "csgo" {
                     return true
                 }
@@ -211,6 +216,7 @@ class MatchesInfoModel: Model {
         liveCsMatchesInfo![index]
     }
     
+    //после загрузки ближайших матчей обновление CollectionView
     func updateCVUpcomingMatchesCells() {
         if let presenter = presenter as? NewsPresenter {
             presenter.updateUpcomingMatchesCells()
