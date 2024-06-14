@@ -2,7 +2,7 @@
 //  StatisticsPresenter.swift
 //  ESportsTracker
 //
-//  Created by f1nch on 26.11.23.
+//  Created by f1nch on 28.4.24.
 //
 
 import Foundation
@@ -43,10 +43,10 @@ class StatisticsPresenter: Presenter {
 
             if bet.matchResultChecked == true {
                 cell.betStatusLabel.text = bet.betWon ? "Win" : "Lose"
-                cell.betProfitLabel.text = bet.betWon ? "+ \(betProfit)" : "- \(betAmmount)"
+                cell.betProfitLabel.text = bet.betWon ? "+ \(betProfit)$" : "- \(betAmmount)$"
             } else {
                 cell.betStatusLabel.text = "Not finished"
-                cell.betProfitLabel.text = "0.0"
+                cell.betProfitLabel.text = "0.0$"
             }
             
             
@@ -64,8 +64,11 @@ class StatisticsPresenter: Presenter {
         getStatsVC().spinnerStopAnimating()
         
         if getBetsModel().betsInSelectedRange.count > 0 {
+            getStatsVC().hideNoStatBetsLabelMessage()
             self.calculateAndShowStats()
             reloadData()
+        } else {
+            getStatsVC().showNoStatBetsLabelMessage()
         }
     }
     

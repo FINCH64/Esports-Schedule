@@ -2,7 +2,7 @@
 //  StatisticsVC.swift
 //  ESportsTracker
 //
-//  Created by f1nch on 26.11.23.
+//  Created by f1nch on 26.4.24.
 //
 
 import UIKit
@@ -17,6 +17,7 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
     @IBOutlet weak var statisticBetsTableView: UITableView!
     @IBOutlet var statisticsView: UIView!
     @IBOutlet var spinner: UIActivityIndicatorView?
+    @IBOutlet var noStatBetsLabel: UILabel?
     
     var filterBeginningDate: Date?
     var filterEndingDate: Date?
@@ -24,6 +25,13 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
     //при загрузке включим спинер,отображающийся пока подгружаются ставки пользователя
     override func loadView() {
         super.loadView()
+        
+        noStatBetsLabel = UILabel(frame: CGRect(x: 41, y: 383, width: 310, height: 76))
+        noStatBetsLabel!.font = UIFont.boldSystemFont(ofSize: 25)
+        noStatBetsLabel!.text = "No bets found 🔍"
+        noStatBetsLabel!.textAlignment = NSTextAlignment.center
+        noStatBetsLabel!.textColor = UIColor.white
+        noStatBetsLabel!.isHidden = true
         
         spinner = UIActivityIndicatorView(style: .medium)
         self.statisticBetsTableView.backgroundView = spinner
@@ -108,7 +116,7 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
             overallIncomeLabel.textColor = .systemRed
         }
         
-        overallIncomeLabel.text = "\(overallIncome)"
+        overallIncomeLabel.text = "\(overallIncome)$"
     }
  
     //включить крутилку означающую загрузку данных о матчах
@@ -119,8 +127,21 @@ class StatisticsVC: UIViewController,UITableViewDataSource,View {
     
     //выключить крутилку означающую загрузку данных о матчах
     func spinnerStopAnimating() {
+        self.statisticBetsTableView.backgroundView = noStatBetsLabel
         spinner!.stopAnimating()
         spinner!.isHidden = true
+    }
+    
+    //показать сообщение если нет активных матчей
+    func showNoStatBetsLabelMessage() {
+        noStatBetsLabel?.isHidden = false
+        self.statisticBetsTableView.backgroundView = noStatBetsLabel
+    }
+    
+    //скрыть сообщение если матчи появились
+    func hideNoStatBetsLabelMessage() {
+        noStatBetsLabel?.isHidden = true
+        self.statisticBetsTableView.backgroundView = spinner
     }
     
     //при зыкрытии обновлении границ поиска найти все ставки в этом диапазоне

@@ -2,7 +2,7 @@
 //  LiveMatchDetailsVC.swift
 //  ESportsTracker
 //
-//  Created by f1nch on 15.11.23.
+//  Created by f1nch on 8.4.24.
 //
 
 import UIKit
@@ -57,32 +57,32 @@ class LiveMatchDetailsVC: UIViewController,MatchView {
     
     //при нажатии на кнопку проверяет введённые данные и если они верны пытается сохранить ставку
     @IBAction func placeBetTapped(_ sender: UIButton) {
-        let alertController = UIAlertController()
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
         let okAction =  UIAlertAction(title: "OK", style: .default)
         alertController.addAction(okAction)
         alertController.title = "Wrong input"
         
         guard let betAmmount = Double(betAmountTextField.text ?? "err") else {
             alertController.message = "Bet ammount must contain only numbers"
-            present(alertController, animated: true)
+            present(alertController, animated: false)
             return
         }
         
         guard let betOdd = Double(betOddsTextField.text ?? "err") else {
             alertController.message = "Bet odd must contain only numbers"
-            present(alertController, animated: true)
+            present(alertController, animated: false)
             return
         }
         
         guard betTypeSegmentedControl.selectedSegmentIndex == 0 || betTypeSegmentedControl.selectedSegmentIndex == 1 else {
             alertController.message = "Select bet type"
-            present(alertController, animated: true)
+            present(alertController, animated: false)
             return
         }
         
         guard teamToBetSegmentedControl.selectedSegmentIndex == 0 || teamToBetSegmentedControl.selectedSegmentIndex == 1 else {
             alertController.message = "Select on which team to bet"
-            present(alertController, animated: true)
+            present(alertController, animated: false)
             return
         }
         

@@ -2,7 +2,7 @@
 //  LiveMatchDetailsPresenter.swift
 //  ESportsTracker
 //
-//  Created by f1nch on 20.11.23.
+//  Created by f1nch on 9.4.24.
 //
 
 import Foundation

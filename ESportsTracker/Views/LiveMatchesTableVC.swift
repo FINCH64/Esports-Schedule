@@ -2,7 +2,7 @@
 //  AllMatchesTableViewController.swift
 //  ESportsTracker
 //
-//  Created by f1nch on 15.11.23.
+//  Created by f1nch on 5.4.24.
 //
 
 import UIKit
@@ -11,6 +11,8 @@ class AllMatchesTableViewController: UITableViewController,MatchView {
         
     var presenter: Presenter?
     @IBOutlet var spinner: UIActivityIndicatorView?
+    @IBOutlet var noLiveMatchesLabel: UILabel?
+    
     
     //при загрузке установим крутилку пока матчи грузятся + установим презентер модели,
     override func loadView() {
@@ -18,8 +20,16 @@ class AllMatchesTableViewController: UITableViewController,MatchView {
         
         spinner = UIActivityIndicatorView(style: .medium)
         spinner!.isHidden = true
-        self.tableView.backgroundView = spinner
-        spinner!.startAnimating()
+        
+        spinnerStartAnimating()
+        
+        noLiveMatchesLabel = UILabel(frame: CGRect(x: 41, y: 383, width: 310, height: 76))
+        noLiveMatchesLabel!.font = UIFont.boldSystemFont(ofSize: 25)
+        noLiveMatchesLabel!.text = "Matches are missing 😔"
+        noLiveMatchesLabel!.textAlignment = NSTextAlignment.center
+        noLiveMatchesLabel!.textColor = UIColor.white
+        noLiveMatchesLabel!.isHidden = true
+        
         
         presenter = LiveMatchPresenter(viewToPresent: self, matchesModel: MatchesInfoModel.shared)
         setModelPresenter(newPresenter: presenter)
@@ -30,6 +40,7 @@ class AllMatchesTableViewController: UITableViewController,MatchView {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.rowHeight = 123
+        
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,14 +63,20 @@ class AllMatchesTableViewController: UITableViewController,MatchView {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.clear
+    }
+    
     //включить крутилку означающую загрузку данных о матчах
     func spinnerStartAnimating() {
+        self.tableView.backgroundView = spinner
         spinner!.startAnimating()
         spinner!.isHidden = false
     }
     
     //выключить крутилку означающую загрузку данных о матчах
     func spinnerStopAnimating() {
+        self.tableView.backgroundView = noLiveMatchesLabel
         spinner!.stopAnimating()
         spinner!.isHidden = true
     }
@@ -77,6 +94,7 @@ class AllMatchesTableViewController: UITableViewController,MatchView {
     
     //обновить список идущих матчей
     func updateCurrentLiveMatches() {
+        hideNoMatchesMessage()
         getLiveMatchPresenter().updateCurrentLiveMatches()
     }
     
@@ -95,6 +113,17 @@ class AllMatchesTableViewController: UITableViewController,MatchView {
         tableView.reloadData()
     }
     
+    //показать сообщение если нет активных матчей
+    func showNoMatchesMessage() {
+        noLiveMatchesLabel?.isHidden = false
+        self.tableView.backgroundView = noLiveMatchesLabel
+    }
+    
+    //скрыть сообщение если матчи появились
+    func hideNoMatchesMessage() {
+        noLiveMatchesLabel?.isHidden = true
+        self.tableView.backgroundView = spinner
+    }
     
     // MARK: - Navigation
     

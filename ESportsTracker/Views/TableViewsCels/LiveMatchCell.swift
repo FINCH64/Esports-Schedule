@@ -19,17 +19,20 @@ class LiveMatchCell: UITableViewCell {
     @IBOutlet weak var awayTeamImageLoadIndicator: UIActivityIndicatorView!
     @IBOutlet weak var homeTeamName: UILabel!
     @IBOutlet weak var awayTeamName: UILabel!
+    @IBOutlet weak var cellSubview: UIView!
     
     //нужно сохранить id команд чтобы после загрузки их лого,можно было понять какое из них к какой команде отнести
     //кроме id с этим поможет indexRow передаваемый в загрузку картинок и обновленние ячейки.Он будет указывать в каком ряду искать команды с id загруженных картинок
     var homeTeamId = 0
     var awayTeamId = 0
     
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.cellSubview.layer.cornerRadius = CGFloat(30)
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

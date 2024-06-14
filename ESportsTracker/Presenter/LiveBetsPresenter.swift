@@ -2,7 +2,7 @@
 //  MyBetsPresenter.swift
 //  ESportsTracker
 //
-//  Created by f1nch on 21.11.23.
+//  Created by f1nch on 18.4.24.
 //
 
 import Foundation
@@ -59,7 +59,10 @@ class LiveBetsPresenter: Presenter {
         getLiveBetsVC().spinnerStopAnimating()
    
         if getBetsModel().myLiveBets.count > 0 {
+            getLiveBetsVC().hideNoBetsMessage()
             reloadData()
+        } else {
+            getLiveBetsVC().showNoBetsMessage()
         }
     }
     

@@ -2,7 +2,7 @@
 //  MyBetsCell.swift
 //  ESportsTracker
 //
-//  Created by f1nch on 22.11.23.
+//  Created by f1nch on 14.4.24.
 //
 
 import Foundation

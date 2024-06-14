@@ -2,7 +2,7 @@
 //  ModelProtocol.swift
 //  ESportsTracker
 //
-//  Created by f1nch on 17.11.23.
+//  Created by f1nch on 5.4.24.
 //
 
 import Foundation

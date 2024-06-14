@@ -2,7 +2,7 @@
 //  TabBarNavigationController.swift
 //  ESportsTracker
 //
-//  Created by f1nch on 2.12.23.
+//  Created by f1nch on 8.6.24.
 //
 
 import UIKit

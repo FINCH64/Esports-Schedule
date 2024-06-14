@@ -2,7 +2,7 @@
 //  NewsCell.swift
 //  ESportsTracker
 //
-//  Created by f1nch on 28.11.23.
+//  Created by f1nch on 15.5.24.
 //
 
 import UIKit

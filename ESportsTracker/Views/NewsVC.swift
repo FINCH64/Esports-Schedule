@@ -2,7 +2,7 @@
 //  NewsVC.swift
 //  ESportsTracker
 //
-//  Created by f1nch on 28.11.23.
+//  Created by f1nch on 11.5.24.
 //
 
 import UIKit
@@ -14,10 +14,26 @@ class NewsVC: UIViewController,UITableViewDataSource,UICollectionViewDataSource 
     @IBOutlet weak var upcomingMatchesCollectionView: UICollectionView!
     @IBOutlet var newsLoadingSpinner: UIActivityIndicatorView?
     @IBOutlet var matchesLoadingSpinner: UIActivityIndicatorView?
+    @IBOutlet var noNewsLabel: UILabel?
+    @IBOutlet var noUpcomingMatchesLabel: UILabel?
     
     //при загрузке включим 2 спинера,отображающиеся пока подгружаются новости и ближайшие матчи
     override func loadView() {
         super.loadView()
+        
+        noNewsLabel = UILabel(frame: CGRect(x: 41, y: 383, width: 310, height: 76))
+        noNewsLabel!.font = UIFont.boldSystemFont(ofSize: 25)
+        noNewsLabel!.text = "No discussions 🧐"
+        noNewsLabel!.textAlignment = NSTextAlignment.center
+        noNewsLabel!.textColor = UIColor.white
+        noNewsLabel!.isHidden = true
+        
+        noUpcomingMatchesLabel = UILabel(frame: CGRect(x: 41, y: 383, width: 310, height: 76))
+        noUpcomingMatchesLabel!.font = UIFont.boldSystemFont(ofSize: 25)
+        noUpcomingMatchesLabel!.text = "No matches tommorow 👀"
+        noUpcomingMatchesLabel!.textAlignment = NSTextAlignment.center
+        noUpcomingMatchesLabel!.textColor = UIColor.white
+        noUpcomingMatchesLabel!.isHidden = true
         
         newsLoadingSpinner = UIActivityIndicatorView(style: .medium)
         self.newsTableView.backgroundView = newsLoadingSpinner
@@ -81,6 +97,18 @@ class NewsVC: UIViewController,UITableViewDataSource,UICollectionViewDataSource 
         matchesLoadingSpinner!.isHidden = true
     }
     
+    //показать сообщение если нет ближайщих матчей
+    func showNoMatchesMessage() {
+        noUpcomingMatchesLabel?.isHidden = false
+        self.upcomingMatchesCollectionView.backgroundView = noUpcomingMatchesLabel
+    }
+    
+    //скрыть сообщение если матчи появились
+    func hideNoMatchesMessage() {
+        noUpcomingMatchesLabel?.isHidden = true
+        self.upcomingMatchesCollectionView.backgroundView = matchesLoadingSpinner
+    }
+    
     //включить крутилку означающую загрузку данных о новостях
     func newsSpinnerStartAnimating() {
         newsLoadingSpinner!.startAnimating()
@@ -91,6 +119,18 @@ class NewsVC: UIViewController,UITableViewDataSource,UICollectionViewDataSource 
     func newsSpinnerStopAnimating() {
         newsLoadingSpinner!.stopAnimating()
         newsLoadingSpinner!.isHidden = true
+    }
+    
+    //показать сообщение если нет новостей
+    func showNoNewsMessage() {
+        noNewsLabel?.isHidden = false
+        self.newsTableView.backgroundView = noNewsLabel
+    }
+    
+    //скрыть сообщение если новости появились
+    func hideNoNewsMessage() {
+        noNewsLabel?.isHidden = true
+        self.newsTableView.backgroundView = newsLoadingSpinner
     }
     
     //при нажатии на новость передадим её индекс в модели(совпадает с индексом ряда) во view с её деталями

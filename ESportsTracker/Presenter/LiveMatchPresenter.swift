@@ -2,7 +2,7 @@
 //  Presenter.swift
 //  ESportsTracker
 //
-//  Created by f1nch on 15.11.23.
+//  Created by f1nch on 5.4.24.
 //
 
 import Foundation
@@ -33,6 +33,7 @@ class LiveMatchPresenter: Presenter {
     
     //обновить текущие матчи
     func updateCurrentLiveMatches() {
+        spinnerStartAnimating()
         getMatchesModel().updateAllCurrentLiveMatches()
     }
     
@@ -80,6 +81,7 @@ class LiveMatchPresenter: Presenter {
     
     //reloadData вызывает заново у TableView мтетоды подсчёта колличества рядов и создание каждой ячейки
     func reloadData() {
+        spinnerStopAnimating()
         getLiveMatchesVC().reloadData()
     }
     
@@ -89,7 +91,10 @@ class LiveMatchPresenter: Presenter {
         
         if let matchesCount = getMatchesModel().liveCsMatchesInfo?.count,
             matchesCount > 0 {
+            getLiveMatchesVC().hideNoMatchesMessage()
             reloadData()
+        } else {
+            getLiveMatchesVC().showNoMatchesMessage()
         }
     }
     
@@ -106,5 +111,10 @@ class LiveMatchPresenter: Presenter {
     //остановить спинер означающий подгрузку лайв матчей
     func spinnerStopAnimating() {
         getLiveMatchesVC().spinnerStopAnimating()
+    }
+    
+    //
+    func spinnerStartAnimating() {
+        getLiveMatchesVC().spinnerStartAnimating()
     }
 }

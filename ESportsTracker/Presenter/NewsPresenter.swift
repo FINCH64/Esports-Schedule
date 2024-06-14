@@ -2,7 +2,7 @@
 //  NewsPresenter.swift
 //  ESportsTracker
 //
-//  Created by f1nch on 28.11.23.
+//  Created by f1nch on 13.5.24.
 //
 
 import Foundation
@@ -69,7 +69,10 @@ class NewsPresenter: Presenter {
         if let news = getNewsModel().news?.data,
             news.count > 0
         {
+            getNewsVC().hideNoNewsMessage()
             reloadNewsData()
+        } else {
+            getNewsVC().showNoNewsMessage()
         }
     }
     
@@ -80,7 +83,10 @@ class NewsPresenter: Presenter {
         if let upcomingMatches = getMatchesModel().upcomingCsMatches,
             upcomingMatches.count > 0
         {
+            getNewsVC().hideNoMatchesMessage()
             getNewsVC().upcomingMatchesCollectionView.reloadData()
+        } else {
+            getNewsVC().showNoMatchesMessage()
         }
     }
     
@@ -106,6 +112,7 @@ class NewsPresenter: Presenter {
     
     //reloadData вызывает заново у TableView мтетоды подсчёта колличества рядов и создание каждой ячейки
     func reloadUpcomingMatchesData() {
+        getNewsVC().hideNoMatchesMessage()
         getNewsVC().upcomingMatchesCollectionView.reloadData()
     }
 }
